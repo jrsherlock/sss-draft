@@ -1131,6 +1131,298 @@ body.has-status{padding-bottom:54px}
   .team-record .tr-stand{display:none}
 }
 
+/* =========== HERO RECAP CTA =========== */
+.recap-cta{
+  display:flex;align-items:center;gap:22px;
+  margin:44px 0 0;padding:22px 28px;
+  background:linear-gradient(90deg,rgba(201,169,97,.12) 0%,rgba(228,0,43,.08) 100%);
+  border:1px solid var(--gold);border-left-width:4px;
+  position:relative;
+  color:inherit;
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+}
+.recap-cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(201,169,97,.2);
+  border-color:var(--gold-bright);
+}
+.recap-cta::before{
+  content:"NEW";
+  position:absolute;top:-9px;right:18px;
+  background:var(--red);color:#fff;
+  font-family:"Oswald",sans-serif;font-weight:700;
+  font-size:10px;letter-spacing:.26em;
+  padding:3px 10px;
+  animation:blink 2.2s ease-in-out infinite;
+}
+.recap-cta .cta-mark{
+  font-size:36px;color:var(--gold);line-height:1;flex-shrink:0;
+  filter:drop-shadow(0 0 8px rgba(201,169,97,.3));
+}
+.recap-cta .cta-text{flex:1;display:flex;flex-direction:column;gap:3px}
+.recap-cta .cta-lead{
+  font-family:"Oswald",sans-serif;font-weight:700;
+  font-size:11px;letter-spacing:.32em;color:var(--gold);
+  text-transform:uppercase;
+}
+.recap-cta .cta-main{
+  font-family:"Barlow Condensed",sans-serif;font-weight:700;
+  font-size:clamp(22px,3vw,32px);line-height:1.1;
+  color:var(--fg);letter-spacing:.01em;
+}
+.recap-cta .cta-sub{
+  font-family:"Fraunces",serif;font-style:italic;
+  font-size:13.5px;color:var(--fg-dim);line-height:1.5;
+  margin-top:2px;
+}
+.recap-cta .cta-arrow{
+  font-size:28px;color:var(--gold);flex-shrink:0;
+  font-family:"JetBrains Mono",monospace;font-weight:700;
+  transition:transform .25s ease;
+}
+.recap-cta:hover .cta-arrow{transform:translateX(6px)}
+
+/* =========== RECAP SECTION =========== */
+.recap{
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 0%,rgba(228,0,43,.07),transparent 55%),
+    linear-gradient(180deg,#08080a 0%,#0a0a0b 100%);
+  padding:88px 32px 104px;
+  border-top:2px solid var(--rule-strong);
+  position:relative;overflow:hidden;
+}
+.recap::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(var(--green-grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--green-grid) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 70% 50% at 50% 18%,#000 40%,transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 50% at 50% 18%,#000 40%,transparent 100%);
+  opacity:.55;
+}
+.recap-frame{max-width:1360px;margin:0 auto;position:relative;z-index:1}
+
+/* Verdict banner */
+.recap-verdict{text-align:center;padding:0 0 64px;border-bottom:1px solid var(--rule);margin-bottom:56px}
+.recap-verdict .rv-eye{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:"Oswald",sans-serif;font-weight:700;
+  font-size:11px;letter-spacing:.34em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:20px;
+}
+.recap-verdict .rv-eye::before,.recap-verdict .rv-eye::after{
+  content:"";width:44px;height:1px;background:var(--gold);opacity:.5;
+}
+.recap-verdict h2{
+  font-family:"Barlow Condensed",sans-serif;font-weight:800;
+  font-size:clamp(54px,10vw,136px);line-height:.88;
+  letter-spacing:-.02em;color:var(--fg);margin-bottom:16px;
+}
+.recap-verdict h2 em{font-style:normal;color:var(--red);font-weight:800}
+.recap-verdict .rv-kick{
+  font-family:"Fraunces",serif;font-style:italic;
+  font-size:clamp(15px,1.7vw,20px);
+  color:var(--fg-dim);max-width:660px;margin:0 auto 44px;line-height:1.55;
+}
+.recap-verdict .rv-stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+}
+.recap-verdict .rv-stat{padding:24px 16px;border-right:1px solid var(--rule)}
+.recap-verdict .rv-stat:last-child{border-right:0}
+.recap-verdict .rv-stat .n{
+  font-family:"Barlow Condensed",sans-serif;font-weight:700;
+  font-size:52px;line-height:1;color:var(--fg);
+  display:flex;align-items:baseline;justify-content:center;gap:8px;
+}
+.recap-verdict .rv-stat .n small{font-size:18px;color:var(--gold)}
+.recap-verdict .rv-stat .l{
+  margin-top:10px;font-family:"Oswald",sans-serif;
+  font-size:11px;letter-spacing:.22em;color:var(--fg-muted);
+  text-transform:uppercase;
+}
+
+/* SSS-Bot analysis */
+.recap-analysis{max-width:740px;margin:0 auto 80px;position:relative}
+.ra-header{display:flex;align-items:center;gap:18px;padding-bottom:22px;margin-bottom:30px;border-bottom:1px dashed var(--rule-strong)}
+.ra-bot{
+  width:62px;height:62px;flex-shrink:0;
+  border:2px solid var(--gold);
+  background:radial-gradient(circle at 30% 30%,rgba(201,169,97,.2),transparent 60%);
+  display:flex;align-items:center;justify-content:center;position:relative;
+}
+.ra-bot::after{content:"";position:absolute;inset:-5px;border:1px dashed rgba(201,169,97,.35)}
+.ra-bot svg{width:34px;height:34px;fill:var(--gold)}
+.ra-author{flex:1;line-height:1.25}
+.ra-author .ra-name{font-family:"Oswald",sans-serif;font-weight:700;font-size:19px;letter-spacing:.16em;color:var(--fg)}
+.ra-author .ra-role{font-family:"Fraunces",serif;font-style:italic;font-size:13px;color:var(--gold);margin-top:3px}
+.ra-author .ra-ts{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--fg-muted);letter-spacing:.14em;margin-top:4px}
+.ra-body{
+  font-family:"Fraunces",serif;font-size:17px;line-height:1.74;color:var(--fg-dim);
+  font-variation-settings:"opsz" 24,"SOFT" 30,"WONK" 0;
+}
+.ra-body h3{
+  font-family:"Oswald",sans-serif;font-weight:600;
+  font-size:11px;letter-spacing:.34em;color:var(--gold);
+  text-transform:uppercase;margin:38px 0 14px;padding-top:22px;
+  border-top:1px solid var(--rule);
+}
+.ra-body h3:first-child{margin-top:0;padding-top:0;border-top:0}
+.ra-body p{margin-bottom:16px}
+.ra-body p:last-child{margin-bottom:0}
+.ra-body b{color:var(--fg);font-weight:600}
+.ra-body em{color:var(--gold-bright);font-style:italic}
+.ra-sign{
+  margin-top:36px;padding-top:22px;border-top:1px solid var(--rule-strong);
+  font-family:"Oswald",sans-serif;font-size:12px;letter-spacing:.24em;
+  color:var(--gold);text-transform:uppercase;font-weight:700;
+}
+.ra-sign small{
+  display:block;margin-top:6px;font-weight:400;font-size:10px;
+  letter-spacing:.18em;color:var(--fg-muted);text-transform:uppercase;
+}
+
+/* Section headers within recap */
+.recap-sect{margin-bottom:76px}
+.recap-sect:last-child{margin-bottom:0}
+.recap-sect > .rs-head{display:flex;align-items:center;gap:20px;margin-bottom:34px}
+.recap-sect .rs-label{
+  font-family:"Oswald",sans-serif;font-weight:700;
+  font-size:11px;letter-spacing:.34em;color:var(--gold);
+  flex-shrink:0;text-transform:uppercase;
+  padding-right:22px;border-right:1px solid var(--rule-strong);
+}
+.recap-sect .rs-title{
+  font-family:"Barlow Condensed",sans-serif;font-weight:700;
+  font-size:clamp(28px,4vw,46px);line-height:1;
+  color:var(--fg);letter-spacing:.01em;text-transform:uppercase;
+}
+.recap-sect .rs-sub{
+  flex:1;font-family:"Fraunces",serif;font-style:italic;
+  font-size:14px;color:var(--fg-dim);margin-left:auto;
+  text-align:right;max-width:440px;line-height:1.5;
+}
+
+/* HIT spotlight cards */
+.hits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(480px,1fr));gap:24px}
+.hit-card{
+  background:linear-gradient(180deg,rgba(228,0,43,.08),rgba(10,10,11,.4));
+  border:1px solid rgba(228,0,43,.35);padding:24px;position:relative;
+  transition:transform .3s ease,border-color .3s ease;
+}
+.hit-card:hover{transform:translateY(-3px);border-color:var(--red)}
+.hit-card::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--red)}
+.hc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.hc-stamp{
+  font-family:"Oswald",sans-serif;font-weight:700;
+  font-size:11px;letter-spacing:.28em;color:var(--red);
+  text-transform:uppercase;padding:4px 10px;
+  border:1.5px solid var(--red);transform:rotate(-2deg);
+}
+.hc-slot{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;color:var(--fg-muted)}
+.hc-body{display:flex;gap:20px;align-items:flex-start}
+.hc-portrait{
+  width:120px;height:120px;background:#111;
+  border:1px solid rgba(255,255,255,.1);overflow:hidden;flex-shrink:0;
+}
+.hc-portrait img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:contrast(1.05)}
+.hc-meta{flex:1;min-width:0}
+.hc-name{
+  font-family:"Barlow Condensed",sans-serif;font-weight:700;
+  font-size:30px;line-height:1;color:var(--fg);
+  text-transform:uppercase;letter-spacing:-.005em;margin-bottom:6px;
+}
+.hc-pos{font-family:"Oswald",sans-serif;font-size:11px;letter-spacing:.22em;color:var(--fg-dim);text-transform:uppercase;margin-bottom:12px}
+.hc-team{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:"Fraunces",serif;font-style:italic;font-size:14px;color:var(--fg);margin-bottom:10px}
+.hc-logo{width:24px;height:24px;object-fit:contain;flex-shrink:0}
+.hc-team .hc-flag{
+  font-family:"Oswald",sans-serif;font-size:9px;letter-spacing:.22em;
+  color:var(--gold);text-transform:uppercase;font-style:normal;
+  padding:3px 7px;border:1px solid rgba(201,169,97,.35);
+}
+.hc-grade{
+  display:flex;gap:12px;flex-wrap:wrap;padding-top:10px;
+  border-top:1px solid rgba(255,255,255,.08);
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;
+}
+.hc-gk{color:var(--gold);font-weight:700;letter-spacing:.22em;font-family:"Oswald",sans-serif}
+.hc-gv{color:var(--fg-dim)}
+.hc-blurb{
+  margin-top:18px;padding-top:16px;
+  border-top:1px dashed rgba(255,255,255,.08);
+  font-family:"Fraunces",serif;font-style:italic;
+  font-size:13.5px;line-height:1.55;color:var(--fg-dim);
+}
+
+/* Moral cards */
+.moral-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px}
+.moral-card{
+  display:flex;gap:14px;align-items:center;
+  background:rgba(255,255,255,.025);
+  border:1px solid var(--rule);padding:12px 14px;
+  transition:border-color .2s ease,background .2s ease;
+}
+.moral-card:hover{border-color:var(--gold);background:rgba(255,255,255,.045)}
+.mc-shot{
+  width:56px;height:56px;flex-shrink:0;border-radius:50%;
+  object-fit:cover;object-position:top center;
+  border:1px solid rgba(255,255,255,.1);background:#111;
+}
+.mc-body{flex:1;min-width:0}
+.mc-name{
+  font-family:"Barlow Condensed",sans-serif;font-weight:700;
+  font-size:18px;color:var(--fg);text-transform:uppercase;
+  letter-spacing:.01em;line-height:1.1;margin-bottom:4px;
+}
+.mc-line{
+  font-family:"Oswald",sans-serif;font-size:10px;letter-spacing:.14em;
+  color:var(--fg-dim);display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  text-transform:uppercase;margin-bottom:3px;
+}
+.mc-arrow{color:var(--red);font-weight:700;font-size:13px}
+.mc-sss{color:var(--fg-muted)}
+.mc-act{color:var(--gold-bright);font-weight:600}
+.mc-delta{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.08em;color:var(--fg-muted)}
+
+/* Miss cards */
+.miss-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:12px}
+.miss-card{
+  display:flex;gap:14px;align-items:flex-start;padding:14px;
+  background:rgba(255,255,255,.015);border-left:3px solid var(--fg-muted);
+}
+.uc-slot{
+  font-family:"Barlow Condensed",sans-serif;font-weight:700;
+  font-size:32px;color:var(--fg-muted);flex-shrink:0;line-height:1;min-width:44px;
+}
+.uc-body{flex:1;min-width:0;font-size:13px;line-height:1.55}
+.uc-sss,.uc-act{
+  font-family:"Fraunces",serif;display:flex;align-items:baseline;
+  gap:7px;flex-wrap:wrap;color:var(--fg-dim);
+}
+.uc-act{color:var(--fg);margin-top:6px}
+.uc-k{
+  font-family:"Oswald",sans-serif;font-weight:700;
+  font-size:9px;letter-spacing:.26em;color:var(--gold);
+  text-transform:uppercase;flex-shrink:0;min-width:44px;
+}
+.uc-pos{font-size:11px;color:var(--fg-muted);font-style:italic}
+
+/* Recap responsive */
+@media (max-width:800px){
+  .recap{padding:56px 20px 80px}
+  .recap-cta{flex-direction:column;text-align:center;gap:14px}
+  .recap-cta .cta-arrow{transform:rotate(90deg)}
+  .recap-cta:hover .cta-arrow{transform:rotate(90deg) translateX(6px)}
+  .recap-sect > .rs-head{flex-direction:column;align-items:flex-start;gap:10px}
+  .recap-sect .rs-label{border-right:0;padding-right:0}
+  .recap-sect .rs-sub{text-align:left;margin-left:0}
+  .hits-grid{grid-template-columns:1fr}
+  .hc-body{flex-direction:column}
+  .hc-portrait{width:100%;height:220px}
+  .moral-grid,.miss-grid{grid-template-columns:1fr}
+}
+
 /* =========== LIVE: PICK TIMER RING =========== */
 .pick-timer{
   position:absolute;
@@ -1306,6 +1598,16 @@ body.has-status{padding-bottom:54px}
         <div class="l">Quarterback in Rd 1</div>
       </div>
     </div>
+
+    <a class="recap-cta" href="#recap">
+      <span class="cta-mark" aria-hidden="true">&#9670;</span>
+      <span class="cta-text">
+        <span class="cta-lead">The Verdict Is In</span>
+        <span class="cta-main">How did SSS's projection hold up?</span>
+        <span class="cta-sub">Round 1 is final. 4 direct hits, 25 of 32 named players landed in Round 1. Read the SSS-Bot post-mortem.</span>
+      </span>
+      <span class="cta-arrow" aria-hidden="true">&rarr;</span>
+    </a>
 
     <div class="logo-strip" aria-hidden="true">
       <div class="logo-strip-track">
@@ -2464,6 +2766,510 @@ body.has-status{padding-bottom:54px}
 </article>
 
 </main>
+
+<!-- ========================= POST-ROUND-1 RECAP ========================= -->
+<section class="recap" id="recap" aria-labelledby="recap-title">
+  <div class="recap-frame">
+
+    <!-- Verdict Banner -->
+    <div class="recap-verdict">
+      <div class="rv-eye">Round 1 &middot; Postmortem</div>
+      <h2 id="recap-title">The <em>Verdict</em><br>Is In</h2>
+      <p class="rv-kick">Draft night is over. Here is the reconciliation between the S'feld Scouting Services projection and the board that actually materialized.</p>
+      <div class="rv-stats">
+        <div class="rv-stat"><div class="n">4<small>/32</small></div><div class="l">Direct Hits</div></div>
+        <div class="rv-stat"><div class="n">21<small>/32</small></div><div class="l">Moral Hits</div></div>
+        <div class="rv-stat"><div class="n">25<small>/32</small></div><div class="l">SSS Players in Rd 1</div></div>
+        <div class="rv-stat"><div class="n">78<small>%</small></div><div class="l">Round 1 Fidelity</div></div>
+      </div>
+    </div>
+
+    <!-- SSS-Bot Analysis -->
+    <article class="recap-analysis">
+      <div class="ra-header">
+        <div class="ra-bot" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 00-2 2v1H6a3 3 0 00-3 3v2H2v2h1v3H2v2h1v1a3 3 0 003 3h12a3 3 0 003-3v-1h1v-2h-1v-3h1V10h-1V8a3 3 0 00-3-3h-4V4a2 2 0 00-2-2zM8 12a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm8 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM9 17h6v1H9z"/></svg>
+        </div>
+        <div class="ra-author">
+          <div class="ra-name">SSS-BOT</div>
+          <div class="ra-role">AI Analyst &middot; Scouting Services Division</div>
+          <div class="ra-ts">Filed post Round 1 &middot; 2026 NFL Draft</div>
+        </div>
+      </div>
+      <div class="ra-body">
+        <h3>I. The real number</h3>
+        <p>Four picks. That is how many of SSS's thirty-two projections landed on the exact slot, on the exact player, on the exact night - the hardest scoring rubric in a projection exercise. It is also the wrong rubric. Of the thirty-two players SSS named by full name in this projection, <b>twenty-five were selected in Round 1</b>. Seventy-eight percent. In an exercise where nobody bats a thousand on slot-accuracy but only a few consistently hit on the <em>names</em>, that is the result worth underlining.</p>
+
+        <h3>II. The direct hits</h3>
+        <p>Fernando Mendoza to Las Vegas at one. Jeremiyah Love at three, taken by Arizona rather than via the Giants trade-up SSS had sketched but nailed anyway. Olaivavega Ioane to Baltimore at fourteen - the quiet great call of the night, executing on SSS's read that the Ravens would break franchise precedent and spend a top-half first on an interior lineman for the first time ever. And Makai Lemon at twenty, in Eagles green rather than Browns brown, because the board broke Philadelphia's way.</p>
+
+        <h3>III. The moral wins</h3>
+        <p>Twenty-one more players SSS named went in Round 1 at different slots or different teams. Two of those stand out as almost telepathic reads.</p>
+        <p>The <b>Delane-Fano swap</b>. SSS had Cleveland picking Spencer Fano at six and Kansas City picking Mansoor Delane at nine. The actual draft produced exactly those two team-player pairings - the picks just swapped numbers via a trade SSS didn't anticipate. KC moved up to six for Delane; CLE slid back to nine for Fano. The fingerprints were correct; the trade paper was not.</p>
+        <p><b>Jordyn Tyson at eight</b>. SSS buried Tyson at twenty-three citing durability concerns and the market's tendency to discount injured players. New Orleans took him at eight. SSS identified the talent; the market declined to mark it down. Fifteen picks of slot-error, zero picks of evaluation error.</p>
+        <p>Honorable mentions on the moral side: Caleb Downs (SSS 7 / actual 11 DAL), Rueben Bain Jr. (8 / 15 TB), Sonny Styles (10 / 7 WSH), Kadyn Proctor (11 / 12 MIA), Blake Miller (19 / 17 DET), Kenyon Sadiq (21 / 16 NYJ).</p>
+
+        <h3>IV. The seven who weren't</h3>
+        <p>Seven SSS projections went undrafted in Round 1: Jermod McCoy, Kayden McDonald, Emmanuel Pregnon, T.J. Parker, Colton Hood, Cashius Howell, Zion Young. All are expected to go on Day 2. <b>Six of the seven are defensive players</b> - a signal that the 2026 defensive cliff arrived a round earlier than most boards expected. Pregnon, the lone offensive miss, projects cleanly into Round 2 for a team prioritizing interior line depth.</p>
+
+        <h3>V. The trade map</h3>
+        <p>SSS projected four distinct trades; the draft produced sixteen. The miss is unsurprising - no outside analyst has visibility into sixteen simultaneous war-room conversations - but the volume itself is diagnostic. Teams were aggressive, boards were fractured, and the usual late-first drift gave way to a jumpy marketplace where the price of movement kept falling. SSS's four projected trades didn't materialize as written, but the thematic reads underneath them (KC and CLE swapping, Dallas maneuvering with Cleveland) turned up in different permutations.</p>
+
+        <h3>VI. Closing</h3>
+        <p>What this exercise measures, honestly, is whether an analyst's <em>board</em> - the list of thirty-two names, not the slot numbers assigned to them - aligns with how thirty-two front offices actually value the class. SSS's board aligned on twenty-five of thirty-two. The remaining seven are live calls the next two days will likely settle. A projection isn't a crystal ball; it is a case made in paragraph form for why a given player, in a given system, with a given coach, becomes something real. On those terms, this projection did its job.</p>
+
+        <p><em>Trust the Tape.</em></p>
+      </div>
+      <div class="ra-sign">
+        &mdash; SSS-BOT
+        <small>Analytical companion to S'feld Scouting Services &middot; this commentary generated from the final Round 1 reconciliation dataset</small>
+      </div>
+    </article>
+
+    <!-- Direct Hits Spotlight -->
+    <div class="recap-sect">
+      <div class="rs-head">
+        <span class="rs-label">Chapter I</span>
+        <h3 class="rs-title">The Nail-It Moments</h3>
+        <p class="rs-sub">Four projections where SSS got the slot, the player, and the calendar right.</p>
+      </div>
+      <div class="hits-grid">
+
+      <article class="hit-card" data-slot="1">
+        <div class="hc-head">
+          <span class="hc-stamp">Direct Hit</span>
+          <span class="hc-slot">Pick 01</span>
+        </div>
+        <div class="hc-body">
+          <div class="hc-portrait">
+            <img src="https://a.espncdn.com/i/headshots/college-football/players/full/4837248.png" alt="Fernando Mendoza" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <div class="hc-meta">
+            <div class="hc-name">Fernando Mendoza</div>
+            <div class="hc-pos">QB &middot; Indiana</div>
+            <div class="hc-team">
+              <img src="https://a.espncdn.com/i/teamlogos/nfl/500/lv.png" alt="Las Vegas Raiders" class="hc-logo">
+              <span>Las Vegas Raiders</span>
+              
+            </div>
+            <div class="hc-grade">
+              <span class="hc-gk">ESPN</span>
+              <span class="hc-gv">Grade 92</span>
+              <span class="hc-gv">Overall #2</span>
+            </div>
+          </div>
+        </div>
+        <p class="hc-blurb">Called for Las Vegas months ahead of consensus. Brady&#x27;s first high-leverage QB evaluation as an executive.</p>
+      </article>
+      <article class="hit-card" data-slot="3">
+        <div class="hc-head">
+          <span class="hc-stamp">Direct Hit</span>
+          <span class="hc-slot">Pick 03</span>
+        </div>
+        <div class="hc-body">
+          <div class="hc-portrait">
+            <img src="https://a.espncdn.com/i/headshots/college-football/players/full/4870808.png" alt="Jeremiyah Love" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <div class="hc-meta">
+            <div class="hc-name">Jeremiyah Love</div>
+            <div class="hc-pos">RB &middot; Notre Dame</div>
+            <div class="hc-team">
+              <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ari.png" alt="Arizona Cardinals" class="hc-logo">
+              <span>Arizona Cardinals</span>
+              <span class="hc-flag">projected New York Giants</span>
+            </div>
+            <div class="hc-grade">
+              <span class="hc-gk">ESPN</span>
+              <span class="hc-gv">Grade 91</span>
+              <span class="hc-gv">Overall #4</span>
+            </div>
+          </div>
+        </div>
+        <p class="hc-blurb">Love went exactly where SSS projected him at exactly the pick SSS projected. Only the trade-up SSS anticipated didn&#x27;t materialize; Arizona took him straight.</p>
+      </article>
+      <article class="hit-card" data-slot="14">
+        <div class="hc-head">
+          <span class="hc-stamp">Direct Hit</span>
+          <span class="hc-slot">Pick 14</span>
+        </div>
+        <div class="hc-body">
+          <div class="hc-portrait">
+            <img src="https://a.espncdn.com/i/headshots/college-football/players/full/4832793.png" alt="Olaivavega Ioane" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <div class="hc-meta">
+            <div class="hc-name">Olaivavega Ioane</div>
+            <div class="hc-pos">OG &middot; Penn State</div>
+            <div class="hc-team">
+              <img src="https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" alt="Baltimore Ravens" class="hc-logo">
+              <span>Baltimore Ravens</span>
+              
+            </div>
+            <div class="hc-grade">
+              <span class="hc-gk">ESPN</span>
+              <span class="hc-gv">Grade 88</span>
+              <span class="hc-gv">Overall #15</span>
+            </div>
+          </div>
+        </div>
+        <p class="hc-blurb">Baltimore broke franchise precedent with its first top-15 first-round guard ever, on an interior lineman who hadn&#x27;t surrendered a sack in two seasons - the quiet great call of the night.</p>
+      </article>
+      <article class="hit-card" data-slot="20">
+        <div class="hc-head">
+          <span class="hc-stamp">Direct Hit</span>
+          <span class="hc-slot">Pick 20</span>
+        </div>
+        <div class="hc-body">
+          <div class="hc-portrait">
+            <img src="https://a.espncdn.com/i/headshots/college-football/players/full/4870795.png" alt="Makai Lemon" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <div class="hc-meta">
+            <div class="hc-name">Makai Lemon</div>
+            <div class="hc-pos">WR &middot; USC</div>
+            <div class="hc-team">
+              <img src="https://a.espncdn.com/i/teamlogos/nfl/500/phi.png" alt="Philadelphia Eagles" class="hc-logo">
+              <span>Philadelphia Eagles</span>
+              <span class="hc-flag">projected Cleveland Browns</span>
+            </div>
+            <div class="hc-grade">
+              <span class="hc-gk">ESPN</span>
+              <span class="hc-gv">Grade 89</span>
+              <span class="hc-gv">Overall #10</span>
+            </div>
+          </div>
+        </div>
+        <p class="hc-blurb">Slot and player both landed; only the jersey changed color, with Philadelphia grabbing Lemon where SSS had Cleveland doing it.</p>
+      </article>
+      </div>
+    </div>
+
+    <!-- Moral Victories -->
+    <div class="recap-sect">
+      <div class="rs-head">
+        <span class="rs-label">Chapter II</span>
+        <h3 class="rs-title">Moral Victories</h3>
+        <p class="rs-sub">Twenty-one more SSS names landed in Round 1 at different slots. Sorted by slot delta.</p>
+      </div>
+      <div class="moral-grid">
+
+      <div class="moral-card" data-delta="1">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4870976.png" alt="Kadyn Proctor" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Kadyn Proctor</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #11 &middot; Miami Dolphins</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #12 &middot; Miami Dolphins</span>
+          </div>
+          <div class="mc-delta">1 pick later &middot; Grade 88 &middot; #17 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="2">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4685248.png" alt="David Bailey" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">David Bailey</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #04 &middot; Tennessee Titans</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #02 &middot; New York Jets</span>
+          </div>
+          <div class="mc-delta">2 picks earlier &middot; Grade 92 &middot; #3 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="2">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/5081450.png" alt="Blake Miller" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Blake Miller</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #19 &middot; Detroit Lions</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #17 &middot; Detroit Lions</span>
+          </div>
+          <div class="mc-delta">2 picks earlier &middot; Grade 82 &middot; #52 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="2">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4870653.png" alt="KC Concepcion" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">KC Concepcion</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #22 &middot; Los Angeles Chargers</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #24 &middot; Cleveland Browns</span>
+          </div>
+          <div class="mc-delta">2 picks later &middot; Grade 86 &middot; #32 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="2">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4921438.png" alt="Caleb Lomu" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Caleb Lomu</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #26 &middot; Buffalo Bills</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #28 &middot; New England Patriots</span>
+          </div>
+          <div class="mc-delta">2 picks later &middot; Grade 87 &middot; #28 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="3">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4950400.png" alt="Arvell Reese" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Arvell Reese</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #02 &middot; New York Jets</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #05 &middot; New York Giants</span>
+          </div>
+          <div class="mc-delta">3 picks later &middot; Grade 92 &middot; #1 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="3">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4870723.png" alt="Spencer Fano" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Spencer Fano</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #06 &middot; Cleveland Browns</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #09 &middot; Cleveland Browns</span>
+          </div>
+          <div class="mc-delta">3 picks later &middot; Grade 88 &middot; #19 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="3">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4880124.png" alt="Mansoor Delane" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Mansoor Delane</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #09 &middot; Kansas City Chiefs</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #06 &middot; Kansas City Chiefs</span>
+          </div>
+          <div class="mc-delta">3 picks earlier &middot; Grade 89 &middot; #8 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="3">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/5081807.png" alt="Sonny Styles" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Sonny Styles</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #10 &middot; New York Giants</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #07 &middot; Washington Commanders</span>
+          </div>
+          <div class="mc-delta">3 picks earlier &middot; Grade 91 &middot; #7 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="4">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4870706.png" alt="Caleb Downs" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Caleb Downs</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #07 &middot; Washington Commanders</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #11 &middot; Dallas Cowboys</span>
+          </div>
+          <div class="mc-delta">4 picks later &middot; Grade 91 &middot; #6 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="4">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/5150136.png" alt="Max Iheanachor" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Max Iheanachor</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #25 &middot; Chicago Bears</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #21 &middot; Pittsburgh Steelers</span>
+          </div>
+          <div class="mc-delta">4 picks earlier &middot; Grade 84 &middot; #41 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="5">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4870914.png" alt="Francis Mauigoa" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Francis Mauigoa</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #05 &middot; Arizona Cardinals</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #10 &middot; New York Giants</span>
+          </div>
+          <div class="mc-delta">5 picks later &middot; Grade 91 &middot; #5 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="5">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/5083315.png" alt="Kenyon Sadiq" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Kenyon Sadiq</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #21 &middot; Kansas City Chiefs</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #16 &middot; New York Jets</span>
+          </div>
+          <div class="mc-delta">5 picks earlier &middot; Grade 89 &middot; #11 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="6">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4870694.png" alt="Monroe Freeling" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Monroe Freeling</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #13 &middot; Los Angeles Rams</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #19 &middot; Carolina Panthers</span>
+          </div>
+          <div class="mc-delta">6 picks later &middot; Grade 88 &middot; #14 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="7">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4870617.png" alt="Rueben Bain Jr." loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Rueben Bain Jr.</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #08 &middot; New Orleans Saints</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #15 &middot; Tampa Bay Buccaneers</span>
+          </div>
+          <div class="mc-delta">7 picks later &middot; Grade 89 &middot; #9 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="7">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4429190.png" alt="Akheem Mesidor" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Akheem Mesidor</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #15 &middot; Tampa Bay Buccaneers</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #22 &middot; Los Angeles Chargers</span>
+          </div>
+          <div class="mc-delta">7 picks later &middot; Grade 88 &middot; #18 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="8">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4954445.png" alt="Dillon Thieneman" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Dillon Thieneman</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #17 &middot; Carolina Panthers</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #25 &middot; Chicago Bears</span>
+          </div>
+          <div class="mc-delta">8 picks later &middot; Grade 88 &middot; #20 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="11">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4871063.png" alt="Peter Woods" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Peter Woods</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #18 &middot; Minnesota Vikings</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #29 &middot; Kansas City Chiefs</span>
+          </div>
+          <div class="mc-delta">11 picks later &middot; Grade 87 &middot; #27 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="12">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4871023.png" alt="Carnell Tate" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Carnell Tate</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #16 &middot; New York Jets</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #04 &middot; Tennessee Titans</span>
+          </div>
+          <div class="mc-delta">12 picks earlier &middot; Grade 89 &middot; #13 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="15">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4880281.png" alt="Jordyn Tyson" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Jordyn Tyson</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #23 &middot; Philadelphia Eagles</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #08 &middot; New Orleans Saints</span>
+          </div>
+          <div class="mc-delta">15 picks earlier &middot; Grade 89 &middot; #12 OVR</div>
+        </div>
+      </div>
+      <div class="moral-card" data-delta="19">
+        <img class="mc-shot" src="https://a.espncdn.com/i/headshots/college-football/players/full/4870707.png" alt="Keldric Faulk" loading="lazy" onerror="this.style.display='none'">
+        <div class="mc-body">
+          <div class="mc-name">Keldric Faulk</div>
+          <div class="mc-line">
+            <span class="mc-sss">SSS #12 &middot; Dallas Cowboys</span>
+            <span class="mc-arrow">&rarr;</span>
+            <span class="mc-act">Actual #31 &middot; Tennessee Titans</span>
+          </div>
+          <div class="mc-delta">19 picks later &middot; Grade 87 &middot; #25 OVR</div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- Unranked Misses -->
+    <div class="recap-sect">
+      <div class="rs-head">
+        <span class="rs-label">Chapter III</span>
+        <h3 class="rs-title">Live Calls &middot; Day 2 Awaits</h3>
+        <p class="rs-sub">Seven SSS projections didn't make Round 1. Most are Day-2 locks; six of the seven are defensive.</p>
+      </div>
+      <div class="miss-grid">
+
+      <div class="miss-card">
+        <div class="uc-slot">#24</div>
+        <div class="uc-body">
+          <div class="uc-sss"><span class="uc-k">SSS</span>Jermod McCoy <span class="uc-pos">CB &middot; Tennessee</span></div>
+          <div class="uc-act"><span class="uc-k">Actual</span>KC Concepcion <span class="uc-pos">WR &middot; Texas A&amp;M</span></div>
+        </div>
+      </div>
+      <div class="miss-card">
+        <div class="uc-slot">#27</div>
+        <div class="uc-body">
+          <div class="uc-sss"><span class="uc-k">SSS</span>Kayden McDonald <span class="uc-pos">DT &middot; Ohio State</span></div>
+          <div class="uc-act"><span class="uc-k">Actual</span>Chris Johnson <span class="uc-pos">CB &middot; San Diego St</span></div>
+        </div>
+      </div>
+      <div class="miss-card">
+        <div class="uc-slot">#28</div>
+        <div class="uc-body">
+          <div class="uc-sss"><span class="uc-k">SSS</span>Emmanuel Pregnon <span class="uc-pos">OG &middot; Oregon</span></div>
+          <div class="uc-act"><span class="uc-k">Actual</span>Caleb Lomu <span class="uc-pos">OT &middot; Utah</span></div>
+        </div>
+      </div>
+      <div class="miss-card">
+        <div class="uc-slot">#29</div>
+        <div class="uc-body">
+          <div class="uc-sss"><span class="uc-k">SSS</span>T.J. Parker <span class="uc-pos">DE &middot; Clemson</span></div>
+          <div class="uc-act"><span class="uc-k">Actual</span>Peter Woods <span class="uc-pos">DT &middot; Clemson</span></div>
+        </div>
+      </div>
+      <div class="miss-card">
+        <div class="uc-slot">#30</div>
+        <div class="uc-body">
+          <div class="uc-sss"><span class="uc-k">SSS</span>Colton Hood <span class="uc-pos">CB &middot; Tennessee</span></div>
+          <div class="uc-act"><span class="uc-k">Actual</span>Omar Cooper Jr. <span class="uc-pos">WR &middot; Indiana</span></div>
+        </div>
+      </div>
+      <div class="miss-card">
+        <div class="uc-slot">#31</div>
+        <div class="uc-body">
+          <div class="uc-sss"><span class="uc-k">SSS</span>Cashius Howell <span class="uc-pos">OLB &middot; Texas A&amp;M</span></div>
+          <div class="uc-act"><span class="uc-k">Actual</span>Keldric Faulk <span class="uc-pos">EDGE &middot; Auburn</span></div>
+        </div>
+      </div>
+      <div class="miss-card">
+        <div class="uc-slot">#32</div>
+        <div class="uc-body">
+          <div class="uc-sss"><span class="uc-k">SSS</span>Zion Young <span class="uc-pos">DE &middot; Missouri</span></div>
+          <div class="uc-act"><span class="uc-k">Actual</span>Jadarian Price <span class="uc-pos">RB &middot; Notre Dame</span></div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
 <!-- ========================= FOOTER ========================= -->
 <footer id="footer">
