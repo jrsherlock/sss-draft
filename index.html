@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 NFL Draft Preview · S'FELD SCOUTING SERVICES</title>
+<meta name="description" content="S'FELD SCOUTING SERVICES — Projected First Round of the 2026 NFL Draft. Pick-by-pick analysis with Extra Points from the war room.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Barlow+Condensed:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   2026 NFL DRAFT PREVIEW · S'FELD SCOUTING SERVICES
+   ============================================================ */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+:root{
+  --bg:#0a0a0b;
+  --bg-lift:#111116;
+  --bg-panel:#17171d;
+  --bg-paper:#ece2cb;
+  --bg-paper-deep:#e0d2b3;
+  --ink:#1a1715;
+  --fg:#f2efe9;
+  --fg-dim:#c4bfb8;
+  --fg-muted:#7c7872;
+  --rule:rgba(242,239,233,.12);
+  --rule-strong:rgba(242,239,233,.22);
+  --red:#e4002b;
+  --red-deep:#a4001f;
+  --gold:#c9a961;
+  --gold-bright:#e8c775;
+  --green-grid:rgba(255,255,255,.04);
+}
+body{
+  font-family:"Fraunces",Georgia,serif;
+  font-optical-sizing:auto;
+  font-variation-settings:"opsz" 24,"SOFT" 30,"WONK" 0;
+  background:var(--bg);
+  color:var(--fg);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* =========== GRAIN & TEXTURE =========== */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:1000;
+  opacity:.28;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.5'/></svg>");
+}
+
+/* =========== TICKER =========== */
+.ticker{
+  position:sticky;top:0;z-index:80;
+  background:var(--red);
+  color:#fff;
+  border-bottom:1px solid #000;
+  overflow:hidden;
+  height:34px;
+  display:flex;align-items:center;
+  font-family:"Oswald",sans-serif;
+  font-weight:500;letter-spacing:.08em;font-size:12px;
+}
+.ticker-label{
+  flex-shrink:0;
+  background:#000;color:#fff;
+  padding:0 14px;height:100%;
+  display:flex;align-items:center;
+  font-weight:700;letter-spacing:.18em;
+  border-right:1px solid #fff;
+  position:relative;z-index:2;
+}
+.ticker-label::before{
+  content:"";
+  width:8px;height:8px;border-radius:50%;
+  background:var(--red);
+  margin-right:8px;
+  animation:blink 1.2s infinite;
+  box-shadow:0 0 10px var(--red);
+}
+@keyframes blink{0%,60%,100%{opacity:1}70%,90%{opacity:.2}}
+.ticker-track{
+  display:flex;gap:56px;
+  white-space:nowrap;
+  padding-left:28px;
+  animation:scroll 68s linear infinite;
+}
+.ticker-track span{display:inline-flex;align-items:center;gap:10px}
+.ticker-track span::before{content:"◆";color:#ffd7de;font-size:9px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* =========== TOP NAV =========== */
+.topnav{
+  position:sticky;top:34px;z-index:70;
+  background:rgba(10,10,11,.82);
+  backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  border-bottom:1px solid var(--rule);
+  padding:14px 32px;
+  display:flex;align-items:center;gap:24px;
+}
+.brand-mark{
+  display:flex;align-items:center;gap:12px;
+  font-family:"Oswald",sans-serif;
+  letter-spacing:.18em;
+}
+.brand-stamp{
+  width:42px;height:42px;
+  border:2px solid var(--gold);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:13px;color:var(--gold);
+  letter-spacing:0;
+  position:relative;
+  background:radial-gradient(circle at 30% 30%,rgba(201,169,97,.18),transparent 60%);
+}
+.brand-stamp::after{
+  content:"";position:absolute;inset:-5px;
+  border:1px dashed rgba(201,169,97,.35);
+  border-radius:50%;
+}
+.brand-txt{display:flex;flex-direction:column;line-height:1}
+.brand-txt .ln1{font-size:11px;color:var(--fg-muted);letter-spacing:.28em}
+.brand-txt .ln2{font-size:15px;font-weight:600;color:var(--fg);margin-top:3px}
+.nav-pills{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.nav-pills a{
+  font-family:"Oswald",sans-serif;
+  font-size:12px;letter-spacing:.15em;
+  padding:8px 14px;
+  border:1px solid var(--rule);
+  color:var(--fg-dim);
+  transition:all .2s ease;
+  text-transform:uppercase;
+}
+.nav-pills a:hover{background:var(--red);color:#fff;border-color:var(--red)}
+
+/* =========== HERO =========== */
+.hero{
+  position:relative;
+  padding:88px 32px 72px;
+  overflow:hidden;
+  border-bottom:1px solid var(--rule);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 100%,rgba(228,0,43,.08),transparent 60%),
+    radial-gradient(ellipse 60% 40% at 10% 10%,rgba(201,169,97,.06),transparent 60%),
+    linear-gradient(180deg,#0d0d10 0%,#0a0a0b 100%);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(var(--green-grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--green-grid) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,#000 40%,transparent 100%);
+}
+.hero-inner{
+  max-width:1360px;margin:0 auto;
+  position:relative;z-index:2;
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:14px;
+  font-family:"Oswald",sans-serif;
+  font-size:12px;letter-spacing:.34em;
+  color:var(--fg-dim);
+  margin-bottom:40px;
+}
+.hero-eyebrow .tag-live{
+  background:var(--red);color:#fff;
+  padding:4px 10px;
+  font-weight:700;letter-spacing:.22em;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.hero-eyebrow .tag-live::before{
+  content:"";width:7px;height:7px;border-radius:50%;
+  background:#fff;animation:blink 1.2s infinite;
+}
+.hero-eyebrow .divider{width:40px;height:1px;background:var(--rule-strong)}
+.hero-date{font-family:"JetBrains Mono",monospace;color:var(--fg-muted);font-size:11px;letter-spacing:.2em}
+
+.hero-title{
+  font-family:"Barlow Condensed","Oswald",sans-serif;
+  font-weight:800;
+  font-size:clamp(88px,18vw,280px);
+  line-height:.82;
+  letter-spacing:-.02em;
+  color:var(--fg);
+  margin-bottom:0;
+}
+.hero-title .year{
+  display:block;
+  background:linear-gradient(180deg,#fff 0%,#fff 40%,rgba(255,255,255,.35) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.15);
+}
+.hero-sub{
+  display:flex;align-items:baseline;gap:22px;flex-wrap:wrap;
+  margin-top:14px;
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:500;
+  font-size:clamp(30px,5vw,64px);
+  line-height:1;
+  color:var(--gold);
+  letter-spacing:.02em;
+}
+.hero-sub .slash{color:var(--red);font-weight:800}
+.hero-kicker{
+  margin-top:36px;
+  max-width:780px;
+  font-family:"Fraunces",serif;
+  font-style:italic;
+  font-size:clamp(16px,1.6vw,20px);
+  line-height:1.55;
+  color:var(--fg-dim);
+  font-variation-settings:"opsz" 72,"SOFT" 0,"WONK" 1;
+}
+.hero-kicker .pull{color:var(--fg);font-style:normal;font-weight:500}
+
+.hero-stats{
+  margin-top:64px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:0;
+  border-top:1px solid var(--rule-strong);
+  border-bottom:1px solid var(--rule-strong);
+}
+.hero-stat{
+  padding:24px 22px;
+  border-right:1px solid var(--rule);
+  position:relative;
+}
+.hero-stat:last-child{border-right:0}
+.hero-stat .n{
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:700;
+  font-size:48px;line-height:1;
+  color:var(--fg);
+  display:flex;align-items:baseline;gap:6px;
+}
+.hero-stat .n small{font-size:18px;color:var(--gold)}
+.hero-stat .l{
+  margin-top:8px;
+  font-family:"Oswald",sans-serif;
+  font-size:11px;letter-spacing:.2em;
+  color:var(--fg-muted);text-transform:uppercase;
+}
+
+/* logo strip in hero */
+.logo-strip{
+  margin-top:40px;
+  display:flex;align-items:center;gap:28px;
+  overflow:hidden;
+  mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+}
+.logo-strip-track{
+  display:flex;gap:28px;
+  animation:scroll 80s linear infinite;
+  flex-shrink:0;
+}
+.logo-strip img{
+  height:38px;width:auto;
+  filter:grayscale(1) brightness(1.4) opacity(.55);
+  transition:filter .3s ease;
+}
+.logo-strip img:hover{filter:grayscale(0) brightness(1) opacity(1)}
+
+/* =========== INTRO =========== */
+.intro{
+  max-width:1360px;
+  margin:0 auto;
+  padding:72px 32px 40px;
+  display:grid;grid-template-columns:260px 1fr;gap:64px;
+  border-bottom:1px solid var(--rule);
+}
+.intro-side{
+  font-family:"Oswald",sans-serif;
+  font-size:11px;letter-spacing:.28em;
+  color:var(--fg-muted);
+  position:sticky;top:120px;height:fit-content;
+}
+.intro-side .mark{
+  margin-top:18px;
+  font-family:"Fraunces",serif;font-style:italic;font-weight:400;
+  color:var(--gold);
+  letter-spacing:0;font-size:14px;text-transform:none;
+}
+.intro-body{
+  font-size:18px;line-height:1.65;
+  color:var(--fg-dim);
+  font-variation-settings:"opsz" 18;
+}
+.intro-body p+p{margin-top:18px}
+.intro-body .drop{
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:700;
+  font-size:84px;
+  line-height:.8;
+  float:left;
+  margin:6px 14px -6px 0;
+  color:var(--red);
+}
+
+/* =========== SECTION HEADER =========== */
+.round-banner{
+  max-width:1360px;
+  margin:48px auto 0;
+  padding:0 32px;
+  display:flex;align-items:center;gap:22px;
+}
+.round-banner .rule{flex:1;height:1px;background:var(--rule-strong)}
+.round-banner h2{
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:800;font-size:clamp(38px,5vw,68px);
+  letter-spacing:.04em;
+  color:var(--fg);
+  display:flex;align-items:baseline;gap:14px;
+}
+.round-banner h2 small{
+  font-family:"JetBrains Mono",monospace;
+  font-size:12px;letter-spacing:.3em;
+  color:var(--gold);
+  font-weight:500;
+}
+
+/* =========== PICK CARD =========== */
+.board{max-width:1360px;margin:0 auto;padding:24px 32px 72px}
+.pick{
+  position:relative;
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:40px;
+  padding:48px 0;
+  border-bottom:1px solid var(--rule);
+}
+.pick::before{
+  content:"";
+  position:absolute;
+  left:-32px;top:48px;bottom:48px;width:3px;
+  background:var(--team,var(--gold));
+  box-shadow:0 0 24px var(--team,var(--gold));
+  opacity:.85;
+}
+@media (max-width:800px){
+  .pick{grid-template-columns:1fr;gap:24px;padding:36px 0}
+  .pick::before{display:none}
+}
+
+/* LEFT COLUMN — team card */
+.pick-id{position:sticky;top:128px;align-self:start}
+.pick-num{
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:800;
+  font-size:150px;line-height:.82;
+  color:var(--fg);
+  letter-spacing:-.03em;
+  display:flex;align-items:baseline;
+  position:relative;
+}
+.pick-num::before{
+  content:"PICK";
+  position:absolute;top:-4px;left:0;
+  font-family:"Oswald",sans-serif;
+  font-size:11px;letter-spacing:.34em;
+  color:var(--gold);font-weight:500;
+}
+.pick-num em{
+  font-style:normal;
+  font-size:36px;color:var(--fg-muted);
+  margin-left:4px;
+  position:relative;top:-6px;
+}
+.pick-team{
+  margin-top:18px;
+  display:flex;align-items:center;gap:14px;
+  padding:14px 16px;
+  background:var(--bg-panel);
+  border:1px solid var(--rule);
+  border-left:3px solid var(--team,var(--gold));
+  position:relative;
+}
+.pick-team::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 0% 50%,var(--team,transparent),transparent 60%);
+  opacity:.12;pointer-events:none;
+}
+.pick-team img{
+  width:54px;height:54px;object-fit:contain;
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,.4));
+  flex-shrink:0;
+}
+.pick-team .meta{line-height:1.15;position:relative}
+.pick-team .meta .lbl{
+  font-family:"Oswald",sans-serif;font-size:10px;letter-spacing:.22em;
+  color:var(--fg-muted);text-transform:uppercase;
+}
+.pick-team .meta .team{
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:700;font-size:22px;
+  color:var(--fg);
+  letter-spacing:.01em;
+  margin-top:2px;
+}
+
+.pick-coord{
+  margin-top:14px;
+  font-family:"JetBrains Mono",monospace;
+  font-size:10px;letter-spacing:.14em;
+  color:var(--fg-muted);
+  display:flex;justify-content:space-between;
+  padding:8px 2px 0;
+  border-top:1px solid var(--rule);
+}
+
+/* RIGHT COLUMN — player & analysis */
+.pick-player{
+  display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;
+  padding-bottom:20px;border-bottom:1px solid var(--rule);
+}
+.player-name{
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:700;
+  font-size:clamp(42px,5.5vw,78px);
+  line-height:.88;
+  letter-spacing:-.01em;
+  color:var(--fg);
+  text-transform:uppercase;
+}
+.player-meta{display:flex;gap:10px;flex-wrap:wrap}
+.tag{
+  font-family:"Oswald",sans-serif;
+  font-size:11px;letter-spacing:.22em;
+  padding:6px 12px;
+  border:1px solid var(--rule-strong);
+  text-transform:uppercase;
+  font-weight:500;
+}
+.tag-pos{background:var(--team,var(--gold));color:#000;border-color:var(--team,var(--gold));font-weight:700}
+.tag-school{color:var(--fg-dim)}
+
+.pick-body{
+  margin-top:24px;
+  font-size:17.5px;line-height:1.72;
+  color:var(--fg-dim);
+  font-variation-settings:"opsz" 18;
+  max-width:72ch;
+}
+.pick-body p{margin-bottom:16px}
+.pick-body p:last-child{margin-bottom:0}
+
+/* EXTRA POINT CALLOUT */
+.extra-point{
+  margin-top:28px;
+  max-width:72ch;
+  background:var(--bg-paper);
+  color:var(--ink);
+  padding:28px 34px 30px;
+  position:relative;
+  font-family:"Fraunces",serif;
+  font-variation-settings:"opsz" 14;
+  box-shadow:
+    0 1px 0 rgba(0,0,0,.1),
+    inset 0 0 0 1px rgba(0,0,0,.06),
+    6px 10px 0 rgba(0,0,0,.25);
+  transform:rotate(-.18deg);
+}
+.extra-point::before{
+  content:"";
+  position:absolute;top:0;left:0;right:0;height:6px;
+  background:repeating-linear-gradient(90deg,var(--red) 0 12px,transparent 12px 18px);
+}
+.extra-point::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(rgba(0,0,0,.04) 1px,transparent 1px) 0 0/100% 28px,
+    radial-gradient(circle at 92% 8%,rgba(228,0,43,.08),transparent 25%);
+}
+.extra-head{
+  display:flex;align-items:center;gap:12px;
+  font-family:"Oswald",sans-serif;
+  font-weight:700;font-size:13px;
+  letter-spacing:.26em;
+  color:var(--red-deep);
+  margin-bottom:14px;
+  text-transform:uppercase;
+  position:relative;z-index:1;
+}
+.extra-head::before{
+  content:"●";font-size:8px;color:var(--red);
+}
+.extra-head small{
+  margin-left:auto;
+  font-family:"JetBrains Mono",monospace;
+  font-size:10px;letter-spacing:.2em;
+  color:rgba(26,23,21,.55);font-weight:400;
+}
+.extra-point p{
+  font-size:16px;line-height:1.7;
+  color:var(--ink);
+  font-variation-settings:"opsz" 16;
+  position:relative;z-index:1;
+}
+.extra-point p+p{margin-top:14px}
+
+/* =========== TRADE BANNER =========== */
+.trade{
+  max-width:1360px;
+  margin:16px auto 4px;
+  padding:0 32px;
+  display:flex;align-items:stretch;
+}
+.trade-inner{
+  flex:1;
+  display:flex;align-items:center;gap:16px;
+  background:linear-gradient(90deg,var(--red) 0%,var(--red-deep) 100%);
+  color:#fff;
+  padding:14px 22px;
+  font-family:"Oswald",sans-serif;
+  font-size:13px;letter-spacing:.12em;
+  text-transform:uppercase;
+  position:relative;
+  border:1px solid rgba(0,0,0,.4);
+  box-shadow:0 6px 20px rgba(228,0,43,.2);
+}
+.trade-inner::before,.trade-inner::after{
+  content:"";
+  width:22px;height:22px;
+  background:#000;
+  flex-shrink:0;
+  clip-path:polygon(0 50%,50% 0,100% 50%,50% 100%);
+  align-self:center;
+}
+.trade-inner .label{
+  background:#000;color:#fff;
+  padding:6px 12px;
+  letter-spacing:.28em;
+  font-weight:700;
+  flex-shrink:0;
+}
+.trade-inner .body{font-weight:400;letter-spacing:.06em;font-size:13px}
+.trade-inner .body strong{font-weight:700;letter-spacing:.1em}
+
+/* =========== FOOTER =========== */
+footer{
+  background:#000;
+  padding:72px 32px 40px;
+  text-align:center;
+  border-top:1px solid var(--rule);
+}
+.foot-stamp{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:120px;height:120px;
+  border:3px double var(--gold);
+  border-radius:50%;
+  font-family:"Oswald",sans-serif;
+  font-weight:700;font-size:28px;
+  color:var(--gold);
+  letter-spacing:.1em;
+  position:relative;
+  background:radial-gradient(circle at 30% 30%,rgba(201,169,97,.18),transparent 60%);
+  transform:rotate(-6deg);
+}
+.foot-stamp::before{
+  content:"S'FELD · SCOUTING · SERVICES · ";
+  position:absolute;inset:-4px;
+  font-size:9px;letter-spacing:.36em;
+  color:var(--gold);
+  opacity:.6;
+}
+.foot-line{
+  margin-top:28px;
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:600;
+  font-size:clamp(24px,3.2vw,38px);
+  color:var(--fg);
+  letter-spacing:.06em;
+}
+.foot-sub{
+  margin-top:8px;
+  font-family:"Fraunces",serif;font-style:italic;
+  color:var(--fg-muted);
+  font-size:14px;
+}
+.foot-legal{
+  margin-top:48px;padding-top:24px;
+  border-top:1px solid var(--rule);
+  font-family:"JetBrains Mono",monospace;
+  font-size:10px;letter-spacing:.18em;
+  color:var(--fg-muted);
+  text-transform:uppercase;
+}
+
+/* =========== SCROLL REVEAL =========== */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* =========== RESPONSIVE =========== */
+@media (max-width:900px){
+  .intro{grid-template-columns:1fr;gap:18px;padding:48px 24px 24px}
+  .intro-side{position:static}
+  .board{padding:8px 24px 48px}
+  .pick{padding:36px 0}
+  .pick-id{position:static}
+  .pick-num{font-size:110px}
+  .nav-pills{display:none}
+  .hero{padding:56px 24px 48px}
+  .round-banner{padding:0 24px}
+  .trade{padding:0 24px}
+}
+@media (max-width:560px){
+  .pick-num{font-size:88px}
+  .player-name{font-size:44px}
+  .ticker-track{animation-duration:50s}
+  .extra-point{padding:22px 22px 22px}
+  .pick-team{flex-direction:column;align-items:flex-start;gap:10px}
+}
+</style>
+</head>
+<body>
+
+<!-- ========================= TICKER ========================= -->
+<div class="ticker" role="marquee">
+  <div class="ticker-label">SSS&nbsp;·&nbsp;DRAFT NIGHT INTEL</div>
+  <div class="ticker-track">
+    <span>PROJECTED FIRST ROUND COMPLETE</span>
+    <span>RAIDERS ON THE CLOCK · MENDOZA TO LV</span>
+    <span>GIANTS TRADING UP TO #3 FOR LOVE</span>
+    <span>BROWNS STAYING PUT FOR FANO</span>
+    <span>COMMANDERS LAND CALEB DOWNS AT 7</span>
+    <span>CHIEFS GO DEFENSE AT 9 · DELANE</span>
+    <span>JERRY JONES OFF-BOARD AGAIN · FAULK AT 12</span>
+    <span>PANTHERS JUMP LIONS FOR THIENEMAN</span>
+    <span>EAGLES POUNCE ON TYSON · ROSEMAN STRIKES AGAIN</span>
+    <span>PROJECTED FIRST ROUND COMPLETE</span>
+    <span>RAIDERS ON THE CLOCK · MENDOZA TO LV</span>
+    <span>GIANTS TRADING UP TO #3 FOR LOVE</span>
+    <span>BROWNS STAYING PUT FOR FANO</span>
+    <span>COMMANDERS LAND CALEB DOWNS AT 7</span>
+    <span>CHIEFS GO DEFENSE AT 9 · DELANE</span>
+    <span>JERRY JONES OFF-BOARD AGAIN · FAULK AT 12</span>
+    <span>PANTHERS JUMP LIONS FOR THIENEMAN</span>
+    <span>EAGLES POUNCE ON TYSON · ROSEMAN STRIKES AGAIN</span>
+  </div>
+</div>
+
+<!-- ========================= TOP NAV ========================= -->
+<nav class="topnav">
+  <a href="#hero" class="brand-mark">
+    <div class="brand-stamp">SSS</div>
+    <div class="brand-txt">
+      <span class="ln1">S'FELD SCOUTING SERVICES</span>
+      <span class="ln2">2026 NFL Draft Preview</span>
+    </div>
+  </a>
+  <div class="nav-pills">
+    <a href="#top10">Top 10</a>
+    <a href="#pick-11">11–20</a>
+    <a href="#pick-21">21–32</a>
+    <a href="#footer">Colophon</a>
+  </div>
+</nav>
+
+<!-- ========================= HERO ========================= -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="tag-live">LIVE · FROM THE WAR ROOM</span>
+      <span class="divider"></span>
+      <span>VOLUME XXVI · THE FIRST ROUND</span>
+      <span class="divider"></span>
+      <span class="hero-date">APR · 2026</span>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="year">2026</span>
+    </h1>
+    <div class="hero-sub">
+      <span>NFL DRAFT</span>
+      <span class="slash">//</span>
+      <span>PREVIEW</span>
+    </div>
+
+    <p class="hero-kicker">
+      <span class="pull">Pick by pick,</span> coach by coach, narrative by narrative —
+      S'feld Scouting Services projects the opening night of the 2026 NFL Draft,
+      trades and all. Thirty-two decisions. Thirty-two franchises. One night
+      that doesn't just reshape rosters — it rewrites trajectories.
+    </p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="n">32<small>·pk</small></div>
+        <div class="l">First-Round Picks</div>
+      </div>
+      <div class="hero-stat">
+        <div class="n">4<small>·dl</small></div>
+        <div class="l">Projected Trades</div>
+      </div>
+      <div class="hero-stat">
+        <div class="n">14<small>·cf</small></div>
+        <div class="l">Conferences Represented</div>
+      </div>
+      <div class="hero-stat">
+        <div class="n">6<small>·pos</small></div>
+        <div class="l">OT &amp; OL Taken Rd 1</div>
+      </div>
+      <div class="hero-stat">
+        <div class="n">9<small>·D</small></div>
+        <div class="l">Defenders in Top 15</div>
+      </div>
+      <div class="hero-stat">
+        <div class="n">1<small>·QB</small></div>
+        <div class="l">Quarterback in Rd 1</div>
+      </div>
+    </div>
+
+    <div class="logo-strip" aria-hidden="true">
+      <div class="logo-strip-track">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/lv.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ten.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ari.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/cle.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/no.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/kc.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/mia.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/dal.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/lar.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/tb.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/car.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/min.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/det.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/pit.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/lac.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/phi.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/chi.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/buf.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/sf.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/hou.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ne.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/sea.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/lv.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ten.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ari.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/cle.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/no.png" alt="">
+        <img src="https://a.espncdn.com/i/teamlogos/nfl/500/kc.png" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= INTRO ========================= -->
+<section class="intro">
+  <aside class="intro-side">
+    <div>THE BOARD</div>
+    <div class="mark">— as we see it —</div>
+  </aside>
+  <div class="intro-body">
+    <p><span class="drop">W</span>elcome to the 2026 S'feld Scouting Services NFL Draft Preview — our projected First Round, built pick by pick with the unvarnished scouting takes our readers have come to expect. What follows is not a mock draft in the conventional sense. It is an intelligence brief. A war-room whisper. A reading of where the board breaks, where trades shake loose, and where value quietly hides in plain sight.</p>
+    <p>We project <strong>four in-round trades</strong>, a quarterback going No. 1, a record-tying offensive-line run, and at least one "did-they-just-do-that?" swing in the middle of Round 1. Each pick is paired with <em>The Extra Point</em> — our bonus take on the coach, executive, or franchise narrative riding shotgun with the selection.</p>
+    <p>As always, <em>Trust the Tape.</em></p>
+  </div>
+</section>
+
+<!-- ========================= ROUND 1 BANNER ========================= -->
+<div class="round-banner" id="top10">
+  <h2>ROUND ONE <small>PICKS 01 — 10</small></h2>
+  <div class="rule"></div>
+</div>
+
+<!-- ========================= BOARD ========================= -->
+<main class="board">
+
+<!-- ============== PICK 1 · LV · MENDOZA ============== -->
+<article class="pick reveal" id="pick-1" style="--team:#000000">
+  <div class="pick-id">
+    <div class="pick-num">01</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/lv.png" alt="Las Vegas Raiders">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Las Vegas Raiders</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · QB</span><span>SSS GRADE · A−</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Fernando Mendoza</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">QB</span>
+        <span class="tag tag-school">Indiana</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>In a draft that will see lots of drama within the first 10 selections in terms of how it shapes the rest of the night, there is no drama here as Las Vegas finally gets its chance to be relevant at the most important position selecting Indiana quarterback Fernando Mendoza with the No. 1 overall pick. The Raiders find themselves in a position they have rarely occupied - holding the keys to the draft - and Mendoza represents the type of foundational swing the franchise has long needed to take. In the same way the Bears and Commanders were offered a plethora of picks to move out of the #1 and #2 spots two years ago, the Raiders realize that extra capital is not worth potentially landing the next big thing. With a blend of size and mobility, Mendoza checks all the boxes scouts love, and for a team that has cycled through stopgap solutions under center, this is the kind of bet that simply must be made. That said, SSS believes that history tempers the excitement. While most pundits have labeled Mendoza a can't-miss prospect, S'feld is not quite ready to echo that level of certainty. The Raiders' track record with high-leverage decisions leaves little room for blind optimism, and even the most polished quarterback prospects are not immune to organizational instability. We have always said that it isn't always when you go – but where you go – and Mendoza is leaving a guy in Curt Cignetti who never misses for an organization that rarely hits. Here is hoping that having the biggest winner in NFL history in Tom Brady overseeing things in Las Vegas changes that narrative and allows Mendoza to expand his college success to the professional ranks. Mendoza may very well possess the tools to alter the trajectory of the franchise, but expecting an immediate turnaround ignores the organizational chaos and impatience that has plagued Las Vegas for years. This is most definitely the correct move to make, but not a guaranteed remedy for what has long been an ailment for the Raiders.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;01</small></div>
+      <p>With Tom Brady now firmly embedded in the Raiders' decision-making structure, this pick carries an added layer of intrigue. Brady's résumé as a player is untouchable, but projecting quarterback success from the front office is an entirely different challenge. By aligning himself with Mendoza, Brady is effectively staking his executive credibility on this evaluation. It's a fascinating watch in the same way that we watched Michael Jordan try but ultimately fail to bring excellence to the Charlotte Hornets after his career was over. The transition from greatest player to greatest executive is rarely achieved as the success and control these players had on the field or court is rarely replicated in the office. And for Brady, he is taking on what of the most challenging franchises in the NFL. In some ways, Mendoza's development will reflect not just on the Raiders' future, but on Brady's evolving legacy in the next phase of his football life.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 2 · NYJ · REESE ============== -->
+<article class="pick reveal" id="pick-2" style="--team:#125740">
+  <div class="pick-id">
+    <div class="pick-num">02</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png" alt="New York Jets">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">New York Jets</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · EDGE/LB</span><span>SSS GRADE · A</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Arvell Reese</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">OLB</span>
+        <span class="tag tag-school">Ohio State</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>While much of the conversation has centered around Texas Tech's David Bailey for this spot, Ohio State OLB Arvell Reese brings a different profile that will ultimately win out in the Jets war room. Though Reese carries a slightly smaller build than Bailey, he is widely regarded as the stronger of the two, and that strength shows up consistently at the point of attack as Reese consistently wins the physics battle. He plays like a coiled spring, converting power through contact, and that translates into stack-and-shed ability that pops on tape. He's not a traditional edge-only defender - Reese operates primarily as an off-ball linebacker who can seamlessly moonlight as a pass rusher, giving New York a chess piece rather than a single-position player. What separates Reese is his ability to impact every level of the defense and operate as a true weapon who can be deployed all over the field depending on the situation and matchup. His 251 coverage snaps showcase that versatility as that number that placed him among the most active second-level defenders in space in this class. Reese shows comfort dropping into zones, matching routes and closing windows with urgency. He can be used as a blitzer while maintaining a run-stop percentage that reflects his strength at the point of attack. Reese is a "do more of more" defender and someone who expands the playbook rather than merely fitting into it. The defensive equivalent of a utility knife, Reese is reliable across multiple situations, giving coordinators flexibility that offenses struggle to account for snap-to-snap.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;02</small></div>
+      <p>Head coach Aaron Glenn enters a pivotal second season after what can only be described as a disastrous first year at the helm. The margin for patience is gone and the pressure to prove he can lead this team is very real. Drafting a player like Reese would be like handing a builder high-end tools but what matters now is whether Glenn can actually construct something stable. Year two isn't just about marginal improvement, it's about establishing an actual direction and identity which was why they hired him from the Lions. If Reese becomes the initial tone-setter in a draft where the Jets have a lot of opportunities, it will go a long way in re-establishing Glenn's vision, but if the same issues persist, even high-end talent won't be enough to quiet the noise surrounding his future.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== TRADE · ARI ↔ NYG ============== -->
+<div class="trade reveal">
+  <div class="trade-inner">
+    <div class="label">★ TRADE ALERT</div>
+    <div class="body"><strong>ARIZONA</strong> trades with <strong>NY GIANTS</strong> · giving up Pick #3 to acquire Picks #5, #37, and a 2027 6<sup>th</sup> Rd Pick</div>
+  </div>
+</div>
+
+<!-- ============== PICK 3 · NYG · LOVE ============== -->
+<article class="pick reveal" id="pick-3" style="--team:#0B2265">
+  <div class="pick-id">
+    <div class="pick-num">03</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png" alt="New York Giants">
+      <div class="meta">
+        <div class="lbl">Via Trade · From Arizona</div>
+        <div class="team">New York Giants</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · RB</span><span>SSS GRADE · A</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Jeremiyah Love</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">RB</span>
+        <span class="tag tag-school">Notre Dame</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>Are we ready to have some fun? NFL insider Jay Glazer says he is confident of a major unforeseen trade going down tonight at the draft, but he can't disclose it. Well unlike Glazer, S'feld Services actually tells you what it is going to be! We project the New York Giants to move up two spots striking a deal with the Cardinals for the No. 3 overall pick, targeting Notre Dame RB Jeremiyah Love. Rather than sitting back and letting the draft come to them, the Giants and new head coach John Harbaugh get ahead of the posse and secure the consensus top tailback in the class before another team can make a similar move. Love profiles as a true workhorse - built for volume, yet explosive enough to flip the field in an instant. His production backs it up, averaging over 6.0 yards per carry while handling a heavy workload, and forcing missed tackles at a rate that consistently tilted drives in Notre Dame's favor. He runs with a downhill temperament but has the burst of a home-run hitter, the kind of dual-threat presence that can turn a routine first down into a momentum-shifting play. The vision here is clear - Harbaugh is looking to recreate the formula that brought sustained success during his time in Baltimore. That blueprint revolves around a dominant ground game anchored by a bell cow back - much like Harbaugh had with Derrick Henry at his peak - paired with a young quarterback who benefits from structure and balance. For second-year QB Jaxson Dart, Love becomes more than just a weapon, he's a stabilizer who can open up the offense. A reliable run game shortens third downs, slows pass rushes and simplifies coverages, all of which will accelerate Dart's development. SSS gets the sense the Giants are looking to make multiple a big splash in the 2026 Draft and no longer wade in the shallow end of the pool as they have the past several years.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;03</small></div>
+      <p>The Giants aren't just investing in Love, they're getting out of their own way and letting John Harbaugh attempt to restore credibility to a franchise that has drifted well below the league's standard of mediocrity. Ownership is signaling urgency and this aggressive trade-up reflects a belief that Harbaugh's culture can quickly recalibrate expectations. More importantly, Harbaugh represents the closest thing the Giants have had in years to the Bill Parcells/Tom Coughlin model which was built on a punishing run game and hard-nosed defense, which, not coincidentally, delivered the franchise's last Super Bowl titles.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 4 · TEN · BAILEY ============== -->
+<article class="pick reveal" id="pick-4" style="--team:#4B92DB">
+  <div class="pick-id">
+    <div class="pick-num">04</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ten.png" alt="Tennessee Titans">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Tennessee Titans</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · EDGE</span><span>SSS GRADE · A−</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">David Bailey</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">OLB</span>
+        <span class="tag tag-school">Texas Tech</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>In a spot where the board could break a dozen different ways, SSS feels Tennessee will stay put at No. 4 and select Texas Tech OLB David Bailey. The Titans are expected to field calls here, mirroring the activity around Arizona a pick earlier, from teams looking to jump the line, but the decision ultimately settles into a two-man debate: Bailey versus Miami's Rueben Bain Jr. Once the Giants swooped in for Jeremiyah Love, the "shiny object" offensive option disappeared, and Tennessee's focus snapped back to defense. This roster has more issues than a single running back could mask and adding a back would be like putting premium tires on a Yugo. Bailey, on the other hand provides edge disruption and gives the Titans a tone-setter who can immediately impact opposing quarterbacks. Bailey's appeal lies in his ability to consistently collapse the pocket and affect protection schemes. He brings a blend of length, burst and strength that shows up in both his pressure rate and his ability to convert speed to power, traits that separate good pass rushers from great ones. While Bain offers a compelling case with his polish, Bailey projects a higher-upside and is the kind of defender who can tilt a game with a strip-sack or force hurried throws that lead to turnovers. Tennessee's defense has lacked that kind of presence off the edge and Bailey fills that void in a way that aligns with building from the trenches outward. Robert Saleh got run out of New York on a rail because he couldn't figure out the offensive side of the ball, now he is getting back to his roots and building a defense that will allow QB Cam Ward to have a higher margin for error.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;04</small></div>
+      <p>After a turbulent run with the Jets, Saleh now inherits a Titans franchise where ownership involvement has been known to muddy long-term vision. The lesson here is clear - Saleh will need to apply what he learned in New York, particularly around managing expectations, staff cohesion and offensive support to avoid repeating the same cycle. It's his chance for a second act where the script is familiar, but the execution must be sharper. If Bailey becomes the defensive cornerstone he's projected to be, it gives Saleh a building block - but turning that into sustained success will depend on whether he can navigate both the locker room and the front office with greater control this time around.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== TRADE · NYG ↔ ARI ============== -->
+<div class="trade reveal">
+  <div class="trade-inner">
+    <div class="label">★ TRADE ALERT</div>
+    <div class="body"><strong>NY GIANTS</strong> trade with <strong>ARIZONA</strong> · giving up Picks #5, #37, and a 2027 6<sup>th</sup> Rd Pick to acquire Pick #3</div>
+  </div>
+</div>
+
+<!-- ============== PICK 5 · ARI · MAUIGOA ============== -->
+<article class="pick reveal" id="pick-5" style="--team:#97233F">
+  <div class="pick-id">
+    <div class="pick-num">05</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ari.png" alt="Arizona Cardinals">
+      <div class="meta">
+        <div class="lbl">Via Trade · From NYG</div>
+        <div class="team">Arizona Cardinals</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · OT</span><span>SSS GRADE · A</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Francis Mauigoa</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">OT</span>
+        <span class="tag tag-school">Miami (FL)</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>SSS feels strongly that the Arizona will make the correct decision and trade out of the No. 3 overall pick, leveraging their draft position to stockpile capital and address multiple roster deficiencies. In a brutally competitive NFC West, where stacking wins is a steep climb for a roster still in transition, GM Monti Ossenfort appears to be committing to a longer horizon rather than chasing short-term relevance. With one of the worst quarterback situations in the NFL, the logic is clear - take the best offensive tackle on the board in Francis Mauigoa, fortify the trenches and accumulate the draft ammunition needed to make a more informed swing at a franchise QB in what projects to be a far deeper quarterback class next year. The added flexibility could even allow Arizona to potentially double dip on trade-down opportunities as SSS sees a window for Ossenfort to move out of the 1st Round twice if the board breaks favorably. That kind of maneuvering would turn one premium pick into a multi-year roster-building toolkit, which is exactly the kind of asset management a rebuilding team needs when it's not ready to compete. Mauigoa becomes the initial move on the chessboard, an anchor at tackle who can protect whatever young passer eventually takes over. In today's age where instant gratification seems to be the only goal, the Cards instead compound value, turning a single chip into multiple hands at the table instead of going all-in too early.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;05</small></div>
+      <p>SSS has long believed Ossenfort was the right hire to reshape the Cardinals' long-term direction, but the inherited limitations of quarterback Kyler Murray slowed the timeline and complicated the evaluation process. In many ways, Ossenfort has been forced to build around a mismatch between his vision and roster reality. That tension has now led to a noticeable pivot in philosophy and staffing direction - moving from a defensive-minded hire in Jonathan Gannon to an offensive-driven approach with Mike LaFleur. It's a clear 180, signaling that Arizona is finally prioritizing quarterback development and offensive structure as the central pillar of its rebuild rather than trying to retrofit a defense-first identity onto an offense that hasn't had stability at its core.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 6 · CLE · FANO ============== -->
+<article class="pick reveal" id="pick-6" style="--team:#FF3C00">
+  <div class="pick-id">
+    <div class="pick-num">06</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/cle.png" alt="Cleveland Browns">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Cleveland Browns</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · OL</span><span>SSS GRADE · A−</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Spencer Fano</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">OL</span>
+        <span class="tag tag-school">Utah</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>There is a lot on the line for the Browns in this draft and SSS trusts that Cleveland will ultimately resist the temptation to trade out and instead stay put to select Utah offensive lineman Spencer Fano. While many around the league continue to assume this pick is available, Cleveland's internal math appears to be shifting toward stability over speculation. Fano isn't the kind of pick that will drive jersey sales or dominates highlight reels, but he represents something far more important for this roster. In a division where defensive fronts routinely dictate games, the Browns appear ready to build from the inside out rather than fall for the trap of chasing noise at the top of the draft. This is also where new head coach Todd Monken becomes central to the decision. Monken understands that quarterback development is less about flash and more about foundation, and Fano gives Cleveland exactly that. He is a tone-setting presence who can anchor protection schemes and reduce chaos for whoever ends up under center. Fano's strength at the point of attack and consistency in pass sets immediately raises the floor of the entire offense, and in a division defined by elite defenses, that kind of reliability matters more than skill position glamour.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;06</small></div>
+      <p>For several years, S'feld Services has been vocal in the belief that Todd Monken deserved a legitimate opportunity as a head coach, and Cleveland has now handed him that chance. This is a franchise that has too often cycled through leadership. Monken, however, brings a different tone - disciplined, detail-oriented and rooted in physical football. If there is any coach positioned to reconnect this team with the identity of the Dawg Pound, it's him. The selection of Fano would be an extension of that philosophy: less flash, more fight and a commitment to let everyone know who was letting the dogs out by building a roster that reflects toughness first.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 7 · WSH · DOWNS ============== -->
+<article class="pick reveal" id="pick-7" style="--team:#FFB612">
+  <div class="pick-id">
+    <div class="pick-num">07</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png" alt="Washington Commanders">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Washington Commanders</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · S</span><span>SSS GRADE · A+</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Caleb Downs</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">S</span>
+        <span class="tag tag-school">Ohio State</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>Washington may be sitting down the board at Pick #7, but S'feld is confident the Commanders are about to land one of our favorite players in the entire draft with Ohio State safety Caleb Downs. Downs isn't getting the proper credit he is deserved simply because he plays a position that is rarely coveted in the top 10. SSS places him firmly in the top-three talent tier, as he is a player whose tape consistently looks like a veteran operating in a rookie's body. From his early impact at Alabama to his immediate transition and dominance at Ohio State, Downs has done one thing at every stop: exceed expectations from Day 1 without needing an adjustment period. That kind of instant translation is rare, especially in the secondary, where most players need time for the game to slow down. What separates him from others is how often he shows up when the game is on the line. He is a safety in label only as he functions as a hybrid agitator who runs downhill like a linebacker and closes space like a corner. Against the run, he doesn't just fit gaps, he detonates them, routinely finishing plays in the backfield and forcing offenses to reconfigure protection schemes just to account for his alignment. Of the teams picking in front of Washington - pass on the OSU safety at your own risk because the arrow is pointing up on Downs.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;07</small></div>
+      <p>For Commanders GM Adam Peters, the decision comes down to one principle - don't overthink the label, evaluate the player. Downs is not merely a defensive back, he is a defensive centerpiece who expands what an entire scheme can become. Limiting his potential through the safety label is like limiting a great cheesecake simply because it comes after a ribeye. Downs is so good that teams won't realize until it is too late that the dessert was actually the main course.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 8 · NO · BAIN ============== -->
+<article class="pick reveal" id="pick-8" style="--team:#D3BC8D">
+  <div class="pick-id">
+    <div class="pick-num">08</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/no.png" alt="New Orleans Saints">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">New Orleans Saints</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · DE</span><span>SSS GRADE · B+</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Rueben Bain Jr.</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">DE</span>
+        <span class="tag tag-school">Miami (FL)</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>SSS feels this could be one of the most fascinating upside bets in the top 10 with New Orleans picking up Miami (FL) defensive end Rueben Bain Jr. at No. 8. While Caleb Downs landing in Washington remains SSS's favorite pick in the draft, Bain may be the most intriguing swing due to the sheer volatility of his ceiling. New Orleans' defense is in the middle of a necessary recalibration, and whether or not veteran Cam Jordan returns, the reality remains the same - the Saints need youth, burst, and chaos off the edge. Bain fits that mold as a potential tone-shifter for the front seven. What makes Bain so compelling is that he wins in ways that don't always fit the traditional prototype. Yes, the arm length concerns are real on paper, but they rarely show up as a limitation on tape where his power profile takes over. And as S'feld always says - "Trust the Tape." He plays with the torque of a defensive tackle and the first-step explosion of a pure edge rusher, creating a unique profile that offensive tackles struggle to time. Hurricane Bain was a battering ram at Miami showcasing inside counters, sudden leverage shifts and violent hands. Even when blockers think they've anchored, Bain has a way of collapsing space like a closing elevator door. For a Saints defense that has leaned too heavily on an aging front, Bain represents the kind of controlled chaos that can reset how they play up front.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;08</small></div>
+      <p>SSS believes both GM Mickey Loomis and second-year head coach Kellen Moore deserve a ton of credit for showing conviction last year when they selected QB Tyler Shough in the second round despite widespread skepticism around the league. That pick, viewed as a reach by many evaluators, is now being lauded as the Saints willingness to trust their internal grading over consensus opinion. For a position as important as QB, New Orleans gave themselves a major boost if Shough continues to play like he did in 2025. And don't be surprised if the Saints trade up in this draft as they have made 25 draft day trades since 2008 and have traded up all 25 times.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 9 · KC · DELANE ============== -->
+<article class="pick reveal" id="pick-9" style="--team:#E31837">
+  <div class="pick-id">
+    <div class="pick-num">09</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/kc.png" alt="Kansas City Chiefs">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Kansas City Chiefs</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · CB</span><span>SSS GRADE · A</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Mansoor Delane</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">CB</span>
+        <span class="tag tag-school">LSU</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>The Chiefs' secondary has undergone a sweeping reset this offseason, with multiple starters departing and the unit now requiring meaningful, high-end reinforcements. While Andy Reid and GM Brett Veach have already begun patching holes through free agency, that scale of turnover makes it clear that one offseason alone won't be enough. In that context, landing the top corner on the board in LSU CB Mansoor Delane becomes less of a luxury and more of a necessity - especially for a defense that will be asked to carry more weight while the offense transitions. Delane fits that need with both production and pedigree. A first-team All-SEC performer and finalist for the Jim Thorpe Award, he tied for ninth in the FBS with 1.2 passes defended per game, consistently disrupting timing-based passing attacks in the rugged SEC. He plays with the instincts of a seasoned NFL corner already, showing strong route anticipation and an ability to close throwing windows before quarterbacks fully commit. Given the Chiefs' significant turnover at corner, losing both starting outside roles through a combination of trade and free agency, the selection of Delane is the right move despite the fact the Chiefs may be tempted to add offensive weapons drafting this high.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;09</small></div>
+      <p>SSS is particularly interested to see whether Kansas City resists the temptation to "get cute" at No. 9, a draft slot they have rarely occupied in recent years given their consistent Super Bowl contention. This is unfamiliar territory for a franchise that has spent most of the last decade drafting at the back of rounds, not the top 10. The question becomes one of discipline - will Andy Reid prioritize a clear defensive need with a top-tier corner like Delane or will his long-standing offensive creativity pull him toward the allure of a skill position? It's a battle between logic to draft defense or the dopamine urge to add offense. For a team trying to sustain dominance while retooling on defense, the answer may define how this next Chiefs era begins.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 10 · NYG · STYLES ============== -->
+<article class="pick reveal" id="pick-10" style="--team:#A71930">
+  <div class="pick-id">
+    <div class="pick-num">10</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png" alt="New York Giants">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">New York Giants</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · LB</span><span>SSS GRADE · A</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Sonny Styles</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">LB</span>
+        <span class="tag tag-school">Ohio State</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>In one of the most balanced first-round strategies in the draft, the New York Giants follow up their selection of offensive dynamo Jeremiyah Love at No. 3 with Ohio State linebacker Sonny Styles at No. 10. If Love is the spark plug on offense, Styles is the engine on defense and this pick brings symmetry to the roster. Styles dramatically elevated his draft standing after one of the most memorable scouting combine performances in recent memory, where his movement skills at his size created a ripple effect across front offices. The combine highlighted his range and fluidity of a safety with the frame of a linebacker. Styles would immediately slot alongside recent free-agent acquisition Tremaine Edmunds, giving the Giants a long, physical, and versatile second level capable of reshaping how they defend the run. Last season's run defense ranked among the league's worst in yards before contact allowed, functioning more like a leaky dam than a front seven, but Styles brings the kind of downhill closing speed and block-shedding ability that can help turn that weakness into a strength. In many ways, this pairing begins to resemble a more Raven-like blueprint under John Harbaugh's influence - size, speed, and physicality layered in the middle of the defense to control tempo and force offenses into predictable situations. If the draft were to fall this way through 10 picks, the Giants would be putting the rest of the NFC East on notice.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;10</small></div>
+      <p>By pairing Love's explosive, space-creating offense with Styles' field-destroying defensive range, the Giants are effectively attacking both sides of the ball with two of the most dynamic players in the draft. Love provides the rhythm while Styles provides the resistance, and together they would create a framework where the Giants are no longer reacting to terms, but dictating them.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ================= ROUND 1 · 11–20 BANNER ================= -->
+<div class="round-banner" id="pick-11-banner" style="margin-top:32px">
+  <h2>ROUND ONE <small>PICKS 11 — 20</small></h2>
+  <div class="rule"></div>
+</div>
+
+<!-- ============== PICK 11 · MIA · PROCTOR ============== -->
+<article class="pick reveal" id="pick-11" style="--team:#008E97">
+  <div class="pick-id">
+    <div class="pick-num">11</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/mia.png" alt="Miami Dolphins">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Miami Dolphins</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · OT</span><span>SSS GRADE · A</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Kadyn Proctor</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">OT</span>
+        <span class="tag tag-school">Alabama</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>It's obvious that Miami is leaning into a full-scale reset, and for the Dolphins it begins by selecting Alabama offensive tackle Kadyn Proctor to protect newly signed free-agent quarterback Malik Willis. After effectively stripping the roster down to the studs, Miami enters this draft with more needs than almost any team in the league, and the new regime of GM Jon-Eric Sullivan and head coach Jeff Hafley appears aligned on a simple truth that you don't try to fix everything at once, you start inside and work outward. Proctor brings the rare physical profile teams dream of - massive frame, light feet for his size, and the raw anchor strength to immediately stabilize the edge of the offensive line. Hafley's influence is already visible in how this rebuild is being framed. Drawing from his Green Bay experience, there is a clear attempt to replicate a "Lambeau Southeast" identity - physical upfront, disciplined and built to develop quarterbacks rather than cycle through them. In that model, Proctor will be a tone-setter for the entire offensive rebuild. Miami's AFC East climb will not be immediate, but this is patience with a purpose. The best organizations know you protect the quarterback, stabilize the trenches and gradually layer in skill players once the foundation is secure.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;11</small></div>
+      <p>While Miami still has a long road back to contention, SSS notes that the decisiveness of the front office's early moves is significant. The pairing of Jon-Eric Sullivan and Jeff Hafley signals a clean break from the past, and perhaps more importantly, the acquisition of Malik Willis at a below-market cost reflects a belief that more than just the GM and Coach have bought in. In a league where quarterback prices dictate roster flexibility, Miami's ability to secure Willis without overextending resources gives them breathing room to build properly around him.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 12 · DAL · FAULK ============== -->
+<article class="pick reveal" id="pick-12" style="--team:#003594">
+  <div class="pick-id">
+    <div class="pick-num">12</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/dal.png" alt="Dallas Cowboys">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Dallas Cowboys</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · DE</span><span>SSS GRADE · B</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Keldric Faulk</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">DE</span>
+        <span class="tag tag-school">Auburn</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>SSS believes Jerry Jones will once again go off the reservation and select Auburn edge rusher Keldric Faulk with the No. 12 overall pick. While most mainstream media types don't have Faulk anywhere near this range, let alone inside the top 20, Dallas has rarely operated in lockstep with consensus, especially when traits outweigh production in their evaluations. The Cowboys enter this draft needing a defensive resurgence after surrendering the most points in the NFL last season, and Faulk offers exactly the kind of traits-based upside that tends to appeal to their war room with his long frame, explosive first step, and the ability to convert speed to power off the edge. Faulk's 2025 season wasn't dominant by any means, but this projection is built on what he can be, not what he currently is. In a different system, he might be viewed as a developmental piece, but Dallas often bets on ceiling over certainty, and Faulk's upside could be top-10 caliber if everything clicks. It should be known that the Cowboys have had a pretty good track record selecting disruptive pass rushing forces at Pick 12, however, as they selected Micah Parsons at Pick #12 five years ago. If Faulk is even half as good as the previous #12 selection, this pick is a home run.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;12</small></div>
+      <p>For all their flaws, the Cowboys have historically managed to stay competitive, even in seasons where the team felt uneven. However, there is growing concern that they are trending toward a third straight losing season, something the franchise has not experienced since the Dave Campo era from 2000 - 2002. The common denominator across much of Jerry Jones' tenure has been a tendency to do less with more - assembling talent without always achieving results. That puts added pressure on head coach Brian Schottenheimer, who now finds himself in the difficult position of not only maximizing a roster, but also navigating the influence of an owner known for thinking too far outside the box. Will Dallas finally align potential with production, or will it be the same circus, different clowns?</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 13 · LAR · FREELING ============== -->
+<article class="pick reveal" id="pick-13" style="--team:#FFA300">
+  <div class="pick-id">
+    <div class="pick-num">13</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/lar.png" alt="Los Angeles Rams">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Los Angeles Rams</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · OT</span><span>SSS GRADE · B+</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Monroe Freeling</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">OT</span>
+        <span class="tag tag-school">Georgia</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>It won't be popular opinion, but the Los Angeles Rams will pivot away from popular first-round speculation - ranging from USC receiver Makai Lemon to Tennessee corner Colton Hood - and instead secure Georgia offensive tackle Monroe Freeling with the No. 13 overall pick. While the consensus outside the building leans toward adding another weapon for the passing game, Los Angeles appears to be thinking several moves ahead. With the potential for a significant portion of their offensive line to hit free agency next offseason, the Rams are prioritizing insulation over excitement. Freeling represents exactly that kind of forward-looking investment. A long, technically refined tackle with light feet and the ability to mirror edge rushers in pass protection, he profiles as a player who can stabilize the blind side if developed properly. While wide receiver remains a tempting narrative given the Rams' history of uncovering gems like Puka Nacua, it just isn't the responsible play here and the Rams can attack that position down the board. The Freeling pick is about preserving Stafford for as long as possible and the system that makes the passing game function at a high level in the first place.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;13</small></div>
+      <p>Around league circles, Sean McVay is increasingly viewed as the NFL's closest modern equivalent to Bill Walsh, not just for offensive innovation but for the coaching ecosystem he has created. Every offseason, teams circle his staff and tree searching for the next schematic architect, much like how Walsh's influence once spread across the league through generations of assistants. McVay has shown he can zig when others zag and reinvent himself and his team to maximize where his strengths lie.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 14 · BAL · IOANE ============== -->
+<article class="pick reveal" id="pick-14" style="--team:#241773">
+  <div class="pick-id">
+    <div class="pick-num">14</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" alt="Baltimore Ravens">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Baltimore Ravens</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · OG</span><span>SSS GRADE · A−</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Olaivavega Ioane</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">OG</span>
+        <span class="tag tag-school">Penn State</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>Offensive line continues to be the theme as Baltimore's opts for Penn State offensive guard Olaivavega Ioane at #14. While flashier skill-position options may often dominate early in drafts, Baltimore's approach remains rooted in trench strength. This would mark the first time in franchise history that the Ravens have used a top-half first-round pick on a guard, underscoring just how urgent the need has become to provide further protection for QB Lamar Jackson. Ioane profiles as the best interior lineman in the class, bringing elite anchor strength and consistency, having not surrendered a sack over his last two seasons - quite an impressive feat. Jackson endured a 37.1% pressure rate in 2025, the second worst mark in the league, a number that essentially forced Baltimore's hand in addressing protection from the inside out. Ioane offers immediate help in reducing pocket collapse from the A-gaps, allowing Baltimore to reestablish timing and spacing in the passing game. It's a pick that won't lead Sportscenter, but it gives the Ravens a player who excels in a physical run scheme, and you are never going to go wrong making picks to keep Lamar Jackson upright.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;14</small></div>
+      <p>Owner Steve Bisciotti recently faced the difficult reality of moving on from a coach who had been part of the organization for an extraordinary 18 years. That kind of institutional continuity is rare in modern sports, and its end signals a turning point for the franchise. Around the division, it also marks the fading of an era defined by legendary AFC North battles, as both Mike Tomlin's long tenure in Pittsburgh and John Harbaugh's historic run in Baltimore now feel like overlapping chapters nearing their conclusion. For nearly two decades, those rivalries shaped the identity of the division; now, with both pillars shifting, the Ravens' next era begins not just with new personnel, but with a changing of the guard across the entire AFC North landscape.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 15 · TB · MESIDOR ============== -->
+<article class="pick reveal" id="pick-15" style="--team:#D50A0A">
+  <div class="pick-id">
+    <div class="pick-num">15</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/tb.png" alt="Tampa Bay Buccaneers">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Tampa Bay Buccaneers</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · EDGE</span><span>SSS GRADE · A−</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Akheem Mesidor</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">DE</span>
+        <span class="tag tag-school">Miami (FL)</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>Improving the pass rush is not optional for Todd Bowles' defense, it's a major necessity and Akheem Mesidor offers exactly the type of ready-made pass rusher the roster currently lacks. He is a polished, high-motor defender with a deep arsenal of pass-rush moves, violent hands and the kind of change-of-direction burst that allows him to win both around and through offensive tackles. In a defense that often asks its front to create pressure without heavy blitz reliance, Mesidor would be ready for action from Day 1. There are legitimate concerns that come with the profile - most notably his age, as he will enter the league as a 25-year-old rookie, along with a history of injuries that has kept some teams cautious. Still, the consensus around the league is that his medical risk is moderate given the talent. His final college season underscores that appeal with 12.5 sacks, a 21.3% pass rush win rate (just behind his elite peers like Bain and Bailey in this class), and four forced fumbles. That is precisely what the Buccaneers need to restore pressure and prevent opposing quarterbacks from operating comfortably in the pocket.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;15</small></div>
+      <p>Tampa Bay's late-season collapse effectively closed the book on what had been a remarkable run of consistency, ending a five-year playoff streak and four consecutive NFC South titles. That stretch masked some underlying roster erosion that is now becoming harder to ignore. Compounding the transition, long-time cornerstone Mike Evans has departed for San Francisco, and Baker Mayfield is no longer the young, vibrant quarterback the franchise can bank on to play all 17 games. The NFC South remains winnable, but teams are gaining on the Bucs despite the fact the division crowned a champion with only 8 wins. The margin for error has tightened on Tampa and moves like Mesidor represent an attempt to protect their hold over the division and regain burst before the pack fully catches up.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 16 · NYJ · TATE ============== -->
+<article class="pick reveal" id="pick-16" style="--team:#125740">
+  <div class="pick-id">
+    <div class="pick-num">16</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png" alt="New York Jets">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">New York Jets</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · WR</span><span>SSS GRADE · A</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Carnell Tate</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">WR</span>
+        <span class="tag tag-school">Ohio State</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>S'feld Services believes the New York Jets will select Ohio State wide receiver Carnell Tate at No. 16 - the first wideout off the board. In a draft cycle where receivers aren't flying off early like in recent years, Tate represents amazing value to go along with an immense ceiling, and drafting Ohio State receivers has never been an unwise move. With Garrett Wilson already in place, New York needs a complementary piece who can stretch the field and provide reliability, and Tate fits that mold with a blend of size, smooth athleticism and understated production. Tate's résumé is a classic case of production hidden in plain sight. Surrounded by elite talent at Ohio State like Marvin Harrison Jr., Emeka Egbuka and Jeremiah Smith, Tate was never the featured option, yet consistently delivered when called upon. His numbers tell a story of steady growth: 51 receptions for 875 yards and nine touchdowns in 2025, following 52 for 733 and four scores in 2024, and flashes as a freshman with 264 yards on limited touches. At 6-foot-3 and 195 pounds, he has the frame to win contested catches and the stride to create chunk plays, but perhaps most telling is his reliability - zero drops last season. While most folks highlight the positives, Tate excels at eliminating any negatives and projects as the kind of receiver who you may not remember on draft day, but who you can't forget on gameday.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;16</small></div>
+      <p>The broader reality in New York is harder to ignore: the Jets have managed just one winning season since 2010 (2015), a drought that speaks to deeper organizational instability. The current quarterback room—Geno Smith, Brady Cook, and Bailey Zappe—feels like the aftermath of an expansion draft, or a group of bad memes. At some point, the issue extends beyond players and coaches and lands squarely at the ownership level, where direction and continuity have been elusive. If Aaron Glenn cannot reverse that trajectory this season, the Jets may need to abandon the cycle of experimentation and bring in a proven, veteran head coach to steady the operation. Right now, the franchise feels like a team constantly resetting the table without ever finishing the meal and until that changes, even picks like Tate may only move the needle so far.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== TRADE · DET ↔ CAR ============== -->
+<div class="trade reveal">
+  <div class="trade-inner">
+    <div class="label">★ TRADE ALERT</div>
+    <div class="body"><strong>DETROIT</strong> trades with <strong>CAROLINA</strong> · giving up Pick #17 to acquire Picks #19, #158 and a 2027 4<sup>th</sup> Rd Pick</div>
+  </div>
+</div>
+
+<!-- ============== PICK 17 · CAR · THIENEMAN ============== -->
+<article class="pick reveal" id="pick-17" style="--team:#0085CA">
+  <div class="pick-id">
+    <div class="pick-num">17</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/car.png" alt="Carolina Panthers">
+      <div class="meta">
+        <div class="lbl">Via Trade · From Detroit</div>
+        <div class="team">Carolina Panthers</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · S</span><span>SSS GRADE · A</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Dillon Thieneman</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">S</span>
+        <span class="tag tag-school">Oregon</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>The Carolina Panthers in a stealthy move will jump the board by dealing with the Detroit Lions to slide in front of Minnesota and secure Oregon safety Dillon Thieneman. With the Vikings widely viewed as circling Thieneman as their potential heir to Harrison Smith, Carolina cuts the line to ensure they don't lose out on the First-Team All-Big Ten selection. It's great awareness and urgency by the Panthers as Thieneman brings the "Triple S" effect - size, speed and smarts to go along with being a physical performer in run support. The production backs up the profile. In 2025 at Oregon, Thieneman recorded 92 tackles, five passes defended, and two interceptions, continuing a trend of high-impact play that dates back to his Purdue days. In 2024, he posted 104 tackles with six breakups, and the year prior he erupted for 106 tackles, six interceptions, and two forced fumbles, numbers that read more like a linebacker-safety hybrid than a traditional defensive back. At 6-foot, 205 pounds, he plays downhill with authority while still maintaining the range to patrol deep zones, giving Carolina a true eraser on the back end. For a defense that has lacked both consistency and identity at safety, Thieneman becomes more than a starter – he's the nerve center.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;17</small></div>
+      <p>Despite the unconventional path, Carolina's division title last season, achieved with a sub-.500 record, marked a quiet but meaningful return to relevance for a franchise that had drifted since the Cam Newton era. While many may point to the record, S'feld Services isn't sure it was a fluke. Like a team finding its footing after years of instability, the Panthers are beginning to look like a professional organization. The addition of a player like Thieneman only reinforces that shift. Respectability may have arrived under unusual circumstances, but maintaining it will require moves exactly like this one.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 18 · MIN · WOODS ============== -->
+<article class="pick reveal" id="pick-18" style="--team:#4F2683">
+  <div class="pick-id">
+    <div class="pick-num">18</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/min.png" alt="Minnesota Vikings">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Minnesota Vikings</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · DT</span><span>SSS GRADE · A−</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Peter Woods</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">DT</span>
+        <span class="tag tag-school">Clemson</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>SSS believes the Minnesota Vikings will bypass the temptation to add another offensive weapon and instead double down on defense by selecting Clemson DT Peter Woods. While many assume an offensive-minded head coach like Kevin O'Connell would prioritize a receiver or tight end, Minnesota's offseason decisions tell a different story - most notably the commitment to defensive coordinator Brian Flores with a $6 million annual deal. That kind of investment demands reinforcement, and with both Jonathan Allen and Javon Hargrave gone after short stints, the Vikings' defensive front suddenly has more holes than a sieve. Minnesota leans into the trenches and gives Flores a disruptive interior presence to rebuild around. Woods fits that mold as a versatile, high-upside defensive lineman who can impact multiple fronts. At 6-foot-3, 315 pounds, he has the quickness to shoot gaps as a three-technique, the strength to anchor as a nose, and the motor to collapse pockets from the inside – a critical trait in today's NFL. While his 2025 stat line (30 tackles, two sacks, one pass deflection) doesn't jump off the page, his tape tells a different story, particularly in early-season matchups like Georgia, where he consistently disrupted timing and forced the offense off schedule. With Harrison Smith potentially nearing retirement, Ryan Kelly already stepping away, and offensive depth thinning, Minnesota has needs across the board, but adding a player like Woods is about building a spine for the whole defense to flourish.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;18</small></div>
+      <p>SSS has been critical of the Vikings' recent front office direction, particularly the attempt to lean heavily into analytics under Kwesi Adofo-Mensah, a move that never fully materialized with the coaching staff and yielded inconsistent draft results to be kind. Football decisions aren't made on spreadsheets alone, and the disconnect between process and personnel became increasingly evident. Looking ahead, SSS believes the Vikings would be wise to solidify alignment by pairing Kevin O'Connell with interim GM Rob Brzezinski, creating a more unified vision between coaching and roster construction. In a league where continuity often separates the contenders from pretenders, Minnesota's path forward may depend less on bold ideas and more on finally getting everyone in the building pulling in the same direction.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== TRADE · CAR ↔ DET ============== -->
+<div class="trade reveal">
+  <div class="trade-inner">
+    <div class="label">★ TRADE ALERT</div>
+    <div class="body"><strong>CAROLINA</strong> trades with <strong>DETROIT</strong> · giving up Picks #19, #158 and a 2027 4<sup>th</sup> Rd Pick to acquire Pick #17</div>
+  </div>
+</div>
+
+<!-- ============== PICK 19 · DET · MILLER ============== -->
+<article class="pick reveal" id="pick-19" style="--team:#0076B6">
+  <div class="pick-id">
+    <div class="pick-num">19</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/det.png" alt="Detroit Lions">
+      <div class="meta">
+        <div class="lbl">Via Trade · From Carolina</div>
+        <div class="team">Detroit Lions</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · OT</span><span>SSS GRADE · A</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Blake Miller</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">OT</span>
+        <span class="tag tag-school">Clemson</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>SSS believes the Detroit Lions will select Clemson offensive tackle Blake Miller as they look to rebuild what recently defined their success. At their peak from 2022–24, Detroit's offense was powered by one of the most physical and cohesive offensive lines in football - a unit that didn't just protect, but dictated terms. That identity has since eroded through a wave of departures, including Frank Ragnow's retirement and the exits of Taylor Decker, Graham Glasgow, Jonah Jackson and Kevin Zeitler. What was once the engine of the team has become patchwork, and the Lions now face the reality that you can't replicate dominance up front without reinvesting premium resources. Miller fits that mandate perfectly. At over 6-foot-6 and 317 pounds, with an 83 7/8-inch wingspan and 34 1/4-inch arms, he checks every measurable box teams look for in a franchise tackle. More importantly, he plays with the kind of balance and length that allows him to control edge rushers before they can even get into their rush plan. He's not just a replacement piece - he's the type of lineman who can help Detroit rediscover its physical edge. He would also allow Penei Sewell to move to left tackle. In many ways, this pick is less about adding talent and more about restoring what made the Lions great. If the Lions want to get back to controlling games, it starts here.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;19</small></div>
+      <p>In the span of just 12 months, the Lions have gone from looking like potential long-term kings of the NFC North to finishing last and chasing the rest of the division. That kind of swing highlights how fragile success can be when key players and coaches begin to turn over. Head coach Dan Campbell has earned credibility and patience through what he built, but the NFL rarely waits for rebuilds to catch up. If Detroit finds itself lagging behind again in 2026, the conversation will inevitably shift from roster turnover to leadership trajectory. Campbell may have a long leash, but when people start questioning who was actually responsible for the greatness a team achieved, even strong cultures are tested when results stop matching the standard that was set.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== TRADE · DAL ↔ CLE ============== -->
+<div class="trade reveal">
+  <div class="trade-inner">
+    <div class="label">★ TRADE ALERT</div>
+    <div class="body"><strong>DALLAS</strong> trades with <strong>CLEVELAND</strong> · giving up Pick #20 to acquire Picks #24, #70 and a 2027 5<sup>th</sup> Rd Pick</div>
+  </div>
+</div>
+
+<!-- ============== PICK 20 · CLE · LEMON ============== -->
+<article class="pick reveal" id="pick-20" style="--team:#FF3C00">
+  <div class="pick-id">
+    <div class="pick-num">20</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/cle.png" alt="Cleveland Browns">
+      <div class="meta">
+        <div class="lbl">Via Trade · From Dallas</div>
+        <div class="team">Cleveland Browns</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · WR</span><span>SSS GRADE · A</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Makai Lemon</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">WR</span>
+        <span class="tag tag-school">USC</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>With one 1<sup>st</sup> Round pick down, the Browns will use their second selection to draft USC wide receiver Makai Lemon, the second receiver off the board. Head coach Todd Monken is making an immediate imprint on the roster, pairing an offensive lineman earlier with a dynamic pass catcher here, signaling a deliberate attempt to rebuild an offense that has too often looked disjointed and inconsistent. Lemon fits neatly into that vision as a reliable, competitive target who thrives in structure but creates damage once the ball is in his hands. In Monken's system, where timing, spacing and yards-after-catch efficiency are critical, Lemon profiles as an ideal chess piece rather than just a downfield option. Lemon's production underscores why Cleveland is willing to invest premium capital in him. Last season, he posted 79 receptions for 1,156 yards and 11 touchdowns, but the most striking number is his 21 forced missed tackles - an indicator of how dangerous he becomes once he secures the football. With just one recorded drop, he also brings a level of dependability that Browns quarterbacks have rarely enjoyed in recent years. Makai turns routine catches into extended gains essentially turning lemons into lemonade. For a fanbase that has watched too many drives stall due to inconsistency, his YAC ability offers something tangible and that doesn't require perfect conditions to materialize.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;20</small></div>
+      <p>The broader context in the AFC North only adds to the urgency behind Cleveland's aggressive offensive overhaul. For the first time in a long stretch, the division feels genuinely wide open, with both Pittsburgh and Baltimore transitioning under new head coaching leadership and Cincinnati continuing to battle key injuries that disrupt their continuity year after year. That combination creates a rare window where if Cleveland can begin to resemble a sound, professional operation, they have a legitimate chance to reinsert themselves into contention. In a division often defined by physicality, the team that simply does its job cleanly may end up emerging.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ================= ROUND 1 · 21–32 BANNER ================= -->
+<div class="round-banner" id="pick-21-banner" style="margin-top:32px">
+  <h2>ROUND ONE <small>PICKS 21 — 32</small></h2>
+  <div class="rule"></div>
+</div>
+
+<!-- ============== TRADE · PIT ↔ KC ============== -->
+<div class="trade reveal">
+  <div class="trade-inner">
+    <div class="label">★ TRADE ALERT</div>
+    <div class="body"><strong>PITTSBURGH</strong> trades with <strong>KC</strong> · giving up Pick #21 to acquire Picks #29, #40 and a 2027 3<sup>rd</sup> Rd Pick</div>
+  </div>
+</div>
+
+<!-- ============== PICK 21 · KC · SADIQ ============== -->
+<article class="pick reveal" id="pick-21" style="--team:#FFB81C">
+  <div class="pick-id">
+    <div class="pick-num">21</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/kc.png" alt="Kansas City Chiefs">
+      <div class="meta">
+        <div class="lbl">Via Trade · From Pittsburgh</div>
+        <div class="team">Kansas City Chiefs</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · TE</span><span>SSS GRADE · A</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Kenyon Sadiq</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">TE</span>
+        <span class="tag tag-school">Oregon</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>If this prediction becomes a reality there will be a lot of frustrated AFC draft rooms on Thursday night. SSS projects the Chiefs will follow their defensive-heavy decision at No. 9 by making their most important offensive move yet - selecting Oregon tight end Kenyon Sadiq as the eventual successor to Travis Kelce. While the earlier pick addresses concerns on defense, this selection is about preserving the engine of the entire operation - Patrick Mahomes and the passing game identity that has defined a dynasty. Kansas City didn't need to be reminded of what elite seam-stretching tight ends do for an offense - they've lived it - but recent examples like Tyler Warren's impact in Indianapolis and Colston Loveland's influence in Chicago reinforce how valuable that archetype remains in today's NFL. With Kelce entering almost certainly the final year of his career, Kansas City is preparing for a transition a year ahead of schedule. Mahomes, increasingly expected to lean more on pocket timing and arm talent than scrambling as he ages, benefits enormously from a tight end who can operate as a built-in pressure release. Sadiq offers that outlet - vertical stress with mismatch exploitation against linebackers, and yards-after-catch ability that keeps drives alive when protection breaks down.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;21</small></div>
+      <p>Over the past decade, Kansas City has consistently stayed a step ahead of the league in personnel evaluation, often identifying potential issues before they are burnt by them. That forward-thinking approach is a major reason the dynasty has endured, even as the roster evolved. But SSS notes the margin for error moving forward tightens when Hall of Fame-level talent begins aging simultaneously, and that makes proactive decisions like drafting Sadiq the right move.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 22 · LAC · CONCEPCION ============== -->
+<article class="pick reveal" id="pick-22" style="--team:#0080C6">
+  <div class="pick-id">
+    <div class="pick-num">22</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/lac.png" alt="Los Angeles Chargers">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">L.A. Chargers</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · WR</span><span>SSS GRADE · A</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">KC Concepcion</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">WR</span>
+        <span class="tag tag-school">Texas A&amp;M</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>Head coach Jim Harbaugh will immediately arm new offensive coordinator Mike McDaniel with a dynamic chess piece by selecting Texas A&amp;M wide receiver KC Concepcion. It's a welcome-to-the-West-Coast moment built around one of the most versatile offensive players in the country. Concepcion was the 2025 Paul Hornung Award winner, given to the nation's most versatile player, and his film consistently shows a receiver who can bend defensive structure from multiple alignments. His burst off the line and acceleration through breaks make him arguably the best separator in the class, with defensive backs routinely forced into panic mode in man coverage when he gets vertical. When matched up against top-tier corners like LSU's Mansoor Delane and South Carolina's Brandon Cisse, Concepcion consistently created daylight early in routes, winning not just with speed but timing and a suddenness that stresses leverage. His usage profile only strengthens the appeal as he was a former freshman rushing leader at NC State, he brings jet sweep ability, designed touches and legitimate return value, functioning more like a Swiss Army Knife than a traditional wideout. In McDaniel's system, where motion and misdirection can be key, Concepcion becomes a formation advantage - someone who forces defenses to declare intent before the snap.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;22</small></div>
+      <p>Jim Harbaugh's coaching career has consistently shown a pattern of identifying inefficiencies quickly and correcting them with aggressive staffing and adjustments. From his Michigan tenure to previous NFL stops, he has demonstrated an ability to stabilize environments by empowering the right coordinators. In this scenario, Mike McDaniel benefits directly from that structure, stepping into a role that allows him to return to what he does best - designing and calling offense rather than managing the full scope of head coaching responsibilities. McDaniel is no longer steering the entire ship, but rather commanding one of its most explosive engines. And in that arrangement, a player like Concepcion becomes the perfect ignition for a system designed to create stress on the defense. These aren't your father's Chargers on offense any longer.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 23 · PHI · TYSON ============== -->
+<article class="pick reveal" id="pick-23" style="--team:#004C54">
+  <div class="pick-id">
+    <div class="pick-num">23</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/phi.png" alt="Philadelphia Eagles">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Philadelphia Eagles</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · WR</span><span>SSS GRADE · A−</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Jordyn Tyson</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">WR</span>
+        <span class="tag tag-school">Arizona State</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>Whoa S'feld!?! Jordyn Tyson at #23? Have you lost your mind? Nope. We believes ASU wide receiver Jordyn Tyson is the most likely to slide down the board on draft night. The talent is not in question - Tyson is a dynamic separator with legitimate game-breaking ability, but the durability concerns have become our central storyline, and in the NFL, availability is often treated like currency. The old saying holds that your best ability is availability, and for Tyson, that uncertainty is enough to push him down despite his obvious impact potential. This is the kind of player who can look like a steal at #18 and a risk at #12, depending entirely on how a front office values variance. That is precisely where Philadelphia enters the conversation. The Eagles have never shied away from calculated risk, and SSS believes they won't hesitate to pounce if Tyson begins to slip into their range. Philadelphia has long operated like a team willing to buy volatility if the ceiling justifies it, and Tyson's ceiling is exactly that type of temptation. Complicating the broader landscape is the league's worst-kept secret that A.J. Brown is expected to be wearing Patriots blue rather than Eagles green by the fall, creating an immediate need for another high-end target to keep QB Jalen Hurts operating at peak efficiency. In that context, Tyson becomes less of a gamble and more of a hedge against offensive attrition.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;23</small></div>
+      <p>Over the last four seasons, Philadelphia has quietly stacked one of the most consistent records in football: 14 wins, 11 wins, 14 wins, and 11 wins, along with a Super Bowl appearance and victory mixed in, yet the expectation level in the city often obscures just how sustained that success has been. It's the paradox of Philadelphia - success is expected so quickly that it rarely feels appreciated in real time. S'feld Services continues to view Howie Roseman as the league's premier draft manipulator, a GM whose off days would rank as good days for some executives. If Tyson slides, Roseman is exactly the type to exploit the board's hesitation, turning other teams' caution into Philadelphia's competitive advantage with precision.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== TRADE · CLE ↔ DAL ============== -->
+<div class="trade reveal">
+  <div class="trade-inner">
+    <div class="label">★ TRADE ALERT</div>
+    <div class="body"><strong>CLEVELAND</strong> trades with <strong>DALLAS</strong> · giving up Picks #24, #70 and a 2027 5<sup>th</sup> Rd Pick to acquire Pick #20</div>
+  </div>
+</div>
+
+<!-- ============== PICK 24 · DAL · McCOY ============== -->
+<article class="pick reveal" id="pick-24" style="--team:#869397">
+  <div class="pick-id">
+    <div class="pick-num">24</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/dal.png" alt="Dallas Cowboys">
+      <div class="meta">
+        <div class="lbl">Via Trade · From Cleveland</div>
+        <div class="team">Dallas Cowboys</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · CB</span><span>SSS GRADE · B+</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Jermod McCoy</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">CB</span>
+        <span class="tag tag-school">Tennessee</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>S'feld Services is impressed that the Dallas Cowboys, unlike several other teams holding multiple 1<sup>st</sup> Round selections, are doubling down on defense with both picks in an effort to fix a unit that ultimately cost defensive coordinator Matt Eberflus his job after just one season. After taking DE Keldric Faulk at #12, the second move comes at cornerback, where Dallas selects Tennessee's Jermod McCoy, a player many around the league believe the Cowboys have inside information on due to his medical situation. McCoy's ACL rehabilitation was overseen by a physician who also consults with the Cowboys' medical staff. McCoy's path has been anything but linear. After a standout 2024 season that had him trending toward first-round status, he suffered a torn ACL in his right knee during offseason training, wiping out his final year and forcing teams to project his recovery without recent game tape. That uncertainty was largely mitigated when he ran a 4.38-second 40-yard dash at Tennessee's pro day, signaling that his explosiveness has returned after more than a year of recovery. Dallas is effectively betting that they are getting a top-10 talent at Pick #24, trusting both their evaluation and their comfort level with his medical timeline. It's a familiar Cowboys approach of high-end traits discounted due to injury, with the upside outweighing the risk if the recovery holds.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;24</small></div>
+      <p>Across the league, there has been a noticeable recent trend of so-called "risky" or red-flag players ultimately delivering strong returns on investment, shifting how teams weigh medical or character concerns against elite upside. The Cowboys don't have to look far for an example within their own division as the Philadelphia Eagles' selection of defensive tackle Jalen Carter, despite significant pre-draft concerns, has become a benchmark case for how talent can outweigh perceived risk when properly developed. And that isn't the only example. That pattern has reinforced a growing belief among aggressive front offices that hesitation can be more costly than caution. For Dallas, McCoy represents an opportunity to acquire premium talent slightly discounted by circumstance, with the hope that the long-term payoff justifies the short-term uncertainty.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 25 · CHI · IHEANACHOR ============== -->
+<article class="pick reveal" id="pick-25" style="--team:#C83803">
+  <div class="pick-id">
+    <div class="pick-num">25</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/chi.png" alt="Chicago Bears">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Chicago Bears</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · OT</span><span>SSS GRADE · B</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Max Iheanachor</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">OT</span>
+        <span class="tag tag-school">Arizona State</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>GM Ryan Poles and head coach Ben Johnson once again ignore the traditional "draft for need" mantra and instead bet on traits and long-term impact with Arizona State OT Max Iheanachor at No. 25. After aggressively adding weapons last year and reshaping the offense overnight, the Bears now pivot back to the trenches, but not necessarily in a safe way. Iheanachor may be one of the most boom-or-bust prospects in the entire class, and that's exactly the kind of swing the Bears seems comfortable taking. The loss of tackle Ozzie Trapilo in last year's playoff run exposed just how fragile offensive line depth can be, and the Bears are clearly intent on making sure they're not one injury away from regression after a breakout 2025 season. It's not an ideal board for Chicago as by this point, they're likely half a dozen picks removed from a clear "difference-maker" tier, but the drop-off between first-round linemen and what would be available at their next selection is steep. That reality forces the decision. While players like CB Colton Hood may offer a cleaner projection, Iheanachor's ceiling is too enticing to pass up. He thrived in an outside zone scheme at Arizona State, which aligns perfectly with Johnson's offensive identity, and he showed he could hold his own against elite competition, including a Texas Tech front loaded with NFL-caliber pass rushers. Iheanachor is the type of prospect who feels like a high-stakes stock - volatile, occasionally unpredictable, but with the potential to outperform everything else in the portfolio if it hits. And for a Bears team trying to sustain momentum, that's a gamble worth taking.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;25</small></div>
+      <p>The early returns on Ben Johnson's tenure in Chicago have already reshaped expectations. In just one season, he helped revive the trajectory of quarterback Caleb Williams, who went from surviving the turbulence of the Matt Eberflus/Shane Waldron regime as a rookie to looking like a franchise cornerstone almost overnight. What's most notable isn't just the improvement, it's the attitude shift. This doesn't feel like a team bracing for pressure in 2026, it feels like one leaning into it. Like a quarterback stepping into a throw instead of fading away, the Bears are attacking the moment rather than reacting to it. And if Iheanachor hits his ceiling, Chicago won't just be maintaining progress, they'll be accelerating it.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 26 · BUF · LOMU ============== -->
+<article class="pick reveal" id="pick-26" style="--team:#C60C30">
+  <div class="pick-id">
+    <div class="pick-num">26</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/buf.png" alt="Buffalo Bills">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Buffalo Bills</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · OT</span><span>SSS GRADE · A−</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Caleb Lomu</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">OT</span>
+        <span class="tag tag-school">Utah</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>In a spot where the board may be screaming for the Bills to swing for the fences, S'feld Services believes new head coach Joe Brady will ultimately make the disciplined choice of putting the ball in play for singles and doubles and pass on the cluster of sliding wide receivers to select Utah OT Caleb Lomu. The temptation is obvious, receivers have fallen, value is staring them in the face, but Buffalo's real need is less about adding rockets and more about reinforcing the launch pad. Lomu gives them exactly that in a versatile, high-upside lineman who can step in at left guard early before eventually kicking out to right tackle. For a team built around QB Josh Allen, protecting the engine matters more than adding another accessory. Lomu's profile makes the decision easier once you look from 10,000 feet. At 6-foot-6 and 304 pounds, he moves like a much smaller player - agile, nimble, and comfortable handling speed off the edge. His experience forming a dominant tackle tandem with Spencer Fano shows up in his awareness and ability to mirror rushers, particularly in pass protection where he already looks pro-ready. SSS isn't saying there isn't work to be done as he needs to add strength and clean up some technique in the run game, but the foundation is strong. For Buffalo, that kind of stability up front is far more valuable than chasing another highlight-reel receiver.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;26</small></div>
+      <p>Joe Brady's rise to the head coaching role in Buffalo didn't come without a bit of controversy, as many around the league still point to the pivotal postseason loss to the Denver Broncos and the ripple effects of a questionable call that shifted momentum and perhaps careers. With Sean McDermott unable to quite push the team over the championship threshold despite consistent success, Brady now inherits both new opportunity with similar expectations. The addition of WR DJ Moore adds another weapon to the offense, but the real question remains: can this new iteration finally break through? Buffalo has often felt like a sports car with elite horsepower but mechanical hiccups at the worst moments. If Brady can smooth out those imperfections, starting with protection, this could be the year the Bills finally stop knocking on the door and finally kick it in.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 27 · SF · McDONALD ============== -->
+<article class="pick reveal" id="pick-27" style="--team:#B3995D">
+  <div class="pick-id">
+    <div class="pick-num">27</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/sf.png" alt="San Francisco 49ers">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">San Francisco 49ers</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · DT</span><span>SSS GRADE · A−</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Kayden McDonald</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">DT</span>
+        <span class="tag tag-school">Ohio State</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>In a draft that has quietly emphasized restraint over risk, SSS is seeing a clear league-wide theme: teams are no longer overextending themselves on boom-or-bust prospects that can leave roster holes if they miss. The all-in mentality has been replaced with a more measured approach to build depth, protect the floor, and avoid creating new problems while trying to solve old ones. While SSS has long supported a Best Player Available philosophy, that only works when it aligns with roster reality. At No. 27, the San Francisco 49ers thread that needle by addressing a glaring need and selecting Ohio State DT Kayden McDonald, a player who may not dominate headlines but fills a critical role on their defense. San Francisco's pass rush took a noticeable step back last season, due in part to injuries like the absence of Nick Bosa, but also because of a lack of interior presence to support the edge. McDonald gives them exactly that - a true nose tackle willing to do the unglamorous work that makes everything else function. His run-stop rate led all FBS defensive linemen last season, and his 9.5 tackles for loss show he's not just a space-eater but someone who can create disruption when needed. In many ways, he's the defensive equivalent of a great offensive lineman: rarely celebrated, yet constantly essential. No one admires the foundation of a house, but without it, everything else collapses.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;27</small></div>
+      <p>For all of head coach Kyle Shanahan's brilliance as an offensive schemer, the recurring issue in San Francisco has been durability. The 49ers' core weapons of George Kittle, Christian McCaffrey, and Brock Purdy have all battled injuries, and that doesn't even account for defensive anchors like Bosa and Fred Warner missing time. When even one of those pieces goes down, the ship takes on water quickly. Banking on perfect health year after year isn't a great strategy in a physical division, it's a tremendous gamble for a team that has a championship window, and SSS believes the 49ers must continue building depth across the board if they want to stay afloat in a loaded NFC West.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 28 · HOU · PREGNON ============== -->
+<article class="pick reveal" id="pick-28" style="--team:#A71930">
+  <div class="pick-id">
+    <div class="pick-num">28</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/hou.png" alt="Houston Texans">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Houston Texans</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · OG</span><span>SSS GRADE · A</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Emmanuel Pregnon</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">OG</span>
+        <span class="tag tag-school">Oregon</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>In a projection that reflects both foresight and discipline, SSS believes the Texans will select Oregon guard Emmanuel Pregnon as the next piece in their offensive line rebuild. Houston has already been aggressive this offseason by re-signing Ed Ingram, adding veteran Wyatt Teller on a short-term deal, and bringing in Braden Smith at tackle, but those moves are not the be-all, end-all. Teller, now 31, is not a long-term answer, and the Texans clearly understand that protecting their future means planning beyond the next 12 months. Enter Pregnon, a player whose draft range may vary wildly depending on who you ask, but who SSS views as the second-best guard in the class and among the safest prospects available at this stage. At 6-foot-4, 314 pounds with massive 11-inch hands, Pregnon brings both the physical profile and technical skill to contribute immediately. His strength at the point of attack and lateral quickness in pass protection allow him to mirror interior rushers effectively, making him a starting option, but also someone who can develop behind veterans before taking over full-time. He's a high-end insurance policy at worst. And for a team hinging its offensive future on C.J. Stroud, that protection is critical. This is shaping up to be a make-or-break season for Stroud, while he's been backed by a defense that resembles a modern-day '85 Bears, the offense must now prove it can carry its share of the load.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;28</small></div>
+      <p>Under head coach DeMeco Ryans, Houston's defense has quietly become one of the most intimidating units in the league, and S'feld Services believes that will continue. Personnel may rotate in and out over the years, but the core philosophy of relentless pressure, attacking fronts and physicality at every level feels ingrained. It's less about who lines up and more about how they play, like a band that keeps changing members but never loses its sound. The Texans may tweak the roster, but the aggression and intensity Ryans demands will remain constant, giving Houston a defensive backbone that can support any offensive evolution moving forward.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== TRADE · KC ↔ PIT ============== -->
+<div class="trade reveal">
+  <div class="trade-inner">
+    <div class="label">★ TRADE ALERT</div>
+    <div class="body"><strong>KC</strong> trades with <strong>PITTSBURGH</strong> · giving up Picks #29, #40 and a 2027 3<sup>rd</sup> Rd Pick to acquire Pick #21</div>
+  </div>
+</div>
+
+<!-- ============== PICK 29 · PIT · PARKER ============== -->
+<article class="pick reveal" id="pick-29" style="--team:#FFB612">
+  <div class="pick-id">
+    <div class="pick-num">29</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/pit.png" alt="Pittsburgh Steelers">
+      <div class="meta">
+        <div class="lbl">Via Trade · From KC</div>
+        <div class="team">Pittsburgh Steelers</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · DE</span><span>SSS GRADE · A</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">T.J. Parker</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">DE</span>
+        <span class="tag tag-school">Clemson</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>In a pick that feels very on-brand for Pittsburgh, SSS believes the Steelers will continue reinforcing their defensive identity by selecting Clemson edge defender T.J. Parker. The Steelers have already started getting younger along the defensive front with last year's addition of Derrick Harmon, and Parker represents the next step in that evolution. A three-year contributor at Clemson, Parker has been battle-tested since his true freshman season, compiling 21.5 sacks over his collegiate career while consistently facing top-tier competition. At 6-foot-4 and 265 pounds, he brings the kind of frame and play strength that fits seamlessly into Pittsburgh's long-standing blueprint of physical, disruptive front-seven play. What makes Parker particularly appealing is the combination of production and projection. His 2025 tape may actually be a better indicator of his NFL future than his more eye-popping 2024 numbers, showing a more refined, technically sound pass rusher who wins with leverage, hand usage and power. His testing backs that up as he posted a 4.68 40 time highlighting his burst, while a 34-inch vertical and strong broad jump reflect the explosiveness needed to convert speed to power off the edge. With 33 1/8-inch arms, he has the length to keep tackles at bay and control the point of attack. Think of him as a classic Steelers defender, not flashy, just fundamentally difficult to deal with snap after snap, like a metronome that never speeds up and never slows down - just keeps on, keeping on.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;29</small></div>
+      <p>Stability has long been Pittsburgh's calling card. Since 1969, the Steelers have had just three head coaches - an almost unbelievable stat in today's NFL, where turnover is the norm. That context makes the current situation under Mike McCarthy particularly interesting. While he may not be viewed as a decades-long solution in the same mold as his predecessors, he may not need to be. Pittsburgh's formula is already in place defensively, what's been missing is offensive consistency. If McCarthy can elevate that side of the ball, even incrementally, it could unlock a level of postseason success that has eluded the Steelers in recent years. In a way, he's less tasked with rebuilding the house and more with finally fixing the wiring, because everything else has already been standing strong.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 30 · MIA · HOOD ============== -->
+<article class="pick reveal" id="pick-30" style="--team:#FC4C02">
+  <div class="pick-id">
+    <div class="pick-num">30</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/mia.png" alt="Miami Dolphins">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">Miami Dolphins</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · CB</span><span>SSS GRADE · A−</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Colton Hood</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">CB</span>
+        <span class="tag tag-school">Tennessee</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>With their second 1<sup>st</sup> Round pick of the draft the Miami Dolphins select Tennessee cornerback Colton Hood to address a glaring weakness in their secondary. Miami finished 25th in yards allowed per game last season, and at times their pass defense looked less like coverage and more like a "Please Proceed" sign for opposing quarterbacks. Hood steps in as an immediate upgrade - a long, athletic corner with the ability to hold up in man coverage and disrupt timing at the line. He's expected to come off the board in the late 1<sup>st</sup> Round, so this isn't a reach. For a team that has stripped things down and is rebuilding with intention, adding a player like Hood stabilizes a unit that too often left the defense exposed. The fit with head coach Jeff Hafley makes this even more logical. Hafley's background is rooted in defense, and his preference for man-heavy schemes aligns perfectly with Hood's strengths. At Boston College and during his time in Green Bay, Hafley showed he could build disciplined, competitive defenses without elite personnel, so now, with a prospect like Hood, he gets a chance to install his system with a player tailor-made for it. In a draft cycle where the quarterback class lacks depth, Miami is wisely choosing to invest on defense now and circle back like Jen Psaki to offense when the talent pool improves.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;30</small></div>
+      <p>The 2026 Miami Dolphins are quietly sitting on one of the most valuable draft arsenals in the league, with a chance to tie an NFL record by making seven selections in the first three rounds. That's not just quantity, it's opportunity. After allowing opposing quarterbacks to complete a staggering 72% of their passes last season, the mission is clear to rebuild the defense with speed, youth, and versatility. It's like having a full toolbox after years of trying to fix things with duct tape. Now Miami can finally address multiple weak points at once. If they hit on even half of those picks, the roster could look dramatically different by midseason, and for a franchise trying to hit a great reset, that kind of volume might be exactly what jumpstarts the turnaround.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 31 · NE · HOWELL ============== -->
+<article class="pick reveal" id="pick-31" style="--team:#C60C30">
+  <div class="pick-id">
+    <div class="pick-num">31</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/ne.png" alt="New England Patriots">
+      <div class="meta">
+        <div class="lbl">On the Clock</div>
+        <div class="team">New England Patriots</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · EDGE</span><span>SSS GRADE · A</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Cashius Howell</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">OLB</span>
+        <span class="tag tag-school">Texas A&amp;M</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>Cashius Howell may not check every ideal size and length box that front offices obsess over, but what he does check is far more important - consistent disruption. His game is built on quick bursts, leverage and strength that allow him to win off the edge despite not looking like he was built in a lab. Over the last four seasons, he's piled up 120 total tackles, 35.5 tackles for loss, and 27 sacks, numbers look stunning on a résumé. What makes Howell such a strong fit in New England is how his skill set translates to immediate impact. His 2025 season alone—31 tackles, 14 for loss, 11.5 sacks, and six pass breakups earned him SEC Defensive Player of the Year honors, proving he can dominate against top-tier competition. While a draft loaded with offensive linemen and wide receivers may push him slightly down the board, that only increases the likelihood that a team like New England capitalizes. He may not always look the part, but he delivers when it matters. For a Patriots defense looking to regain its bite, that kind of reliability and edge presence is exactly what's needed.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;31</small></div>
+      <p>Just as the Patriots seemed to be building real momentum toward reestablishing themselves as a legitimate AFC contender, the off-field noise surrounding head coach Mike Vrabel and Dianna Russini has created an unexpected distraction. Whether it proves to be meaningful or just another passing headline, it's the kind of storyline that can shift focus at the wrong time. New England feels like a team that finally found its rhythm again - only to have someone bump the record player mid-song. The challenge now is simple: keep the music playing. If the Patriots can maintain their focus and let their on-field progress speak louder than off-field chatter, they still have the pieces to continue their upward climb.</p>
+    </aside>
+  </div>
+</article>
+
+<!-- ============== PICK 32 · SEA · YOUNG ============== -->
+<article class="pick reveal" id="pick-32" style="--team:#69BE28">
+  <div class="pick-id">
+    <div class="pick-num">32</div>
+    <div class="pick-team">
+      <img src="https://a.espncdn.com/i/teamlogos/nfl/500/sea.png" alt="Seattle Seahawks">
+      <div class="meta">
+        <div class="lbl">On the Clock · Final Pick</div>
+        <div class="team">Seattle Seahawks</div>
+      </div>
+    </div>
+    <div class="pick-coord"><span>NEED · DE</span><span>SSS GRADE · A−</span></div>
+  </div>
+  <div class="pick-content">
+    <div class="pick-player">
+      <h3 class="player-name">Zion Young</h3>
+      <div class="player-meta">
+        <span class="tag tag-pos">DE</span>
+        <span class="tag tag-school">Missouri</span>
+      </div>
+    </div>
+    <div class="pick-body">
+      <p>There has been buzz about Seattle potentially swinging a trade for an established pass rusher on draft night, but even if that scenario doesn't materialize, the logic remains the same - stockpile talent at a premium position as they do with Missouri DE Zion Young. Head coach Mike Macdonald has made it clear he prefers waves of rugged edge defenders rather than relying on a single star, and Young fits that mold like a glove. With heavy hands and a natural ability to collapse the pocket, he brings a physical presence that forces quarterbacks to feel pressure even when he's not finishing the play. Young's 2025 production at Missouri backs up the profile: 6.5 sacks and 16.5 tackles for loss, numbers that reflect both disruption and consistency. He wins with leverage, driving tackles backward, and creating chaos in tight spaces. While he may not carry the same headline value as some earlier edge prospects, he's widely viewed as one of the best late first-round options, making him an ideal value selection. With the potential departure of Boye Mafe, Young steps in as both depth and eventual replacement, ensuring Seattle's defensive front doesn't lose its edge - literally or figuratively.</p>
+    </div>
+    <aside class="extra-point">
+      <div class="extra-head">◆ The Extra Point <small>FILE&nbsp;NO.&nbsp;32</small></div>
+      <p>What makes Seattle's position even more interesting is how complete this roster already looks coming off a Super Bowl win. There aren't many glaring holes to fill, which allows the Seahawks to draft from a position of strength rather than desperation. Yes, losing Super Bowl LX MVP Kenneth Walker III to Kansas City stings, but in today's NFL, running back production is more about system than star power. Seattle can easily pivot to a two-back approach with Zach Charbonnet poised to take on a larger role after returning from injury. Defensively, departures like Coby Bryant, Boye Mafe, and Riq Woolen would hurt most teams, but this unit feels more like a well-stocked pantry than a single-ingredient recipe and losing a few items doesn't mean you can't still cook. If anything, it's a testament to how well Seattle has built its roster that even meaningful losses feel manageable rather than catastrophic.</p>
+    </aside>
+  </div>
+</article>
+
+</main>
+
+<!-- ========================= FOOTER ========================= -->
+<footer id="footer">
+  <div class="foot-stamp">SSS</div>
+  <div class="foot-line">S'FELD SCOUTING SERVICES</div>
+  <div class="foot-sub">Volume XXVI · 2026 NFL Draft Preview · Trust the Tape.</div>
+  <div class="foot-legal">
+    © 2026 S'FELD SCOUTING SERVICES &nbsp;·&nbsp; PROJECTED FIRST ROUND &nbsp;·&nbsp; ALL COMMENTARY ORIGINAL &nbsp;·&nbsp; TEAM MARKS PROPERTY OF THE NFL
+  </div>
+</footer>
+
+<script>
+/* Scroll reveal */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+  });
+},{rootMargin:"-8% 0px -8% 0px",threshold:.05});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Pick year in footer */
+document.querySelectorAll('.pick').forEach(p=>{
+  p.addEventListener('click',e=>{
+    /* no-op; reserved for future highlight toggle */
+  });
+});
+
+/* Active nav highlight */
+const navLinks=document.querySelectorAll('.nav-pills a');
+const targets=[...navLinks].map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY+140;
+  let active=null;
+  targets.forEach((t,i)=>{
+    if(t && t.offsetTop<=y) active=navLinks[i];
+  });
+  navLinks.forEach(a=>a.style.color='');
+  if(active){active.style.color='#fff';active.style.background='rgba(228,0,43,.4)'}
+},{passive:true});
+</script>
+
+</body>
+</html>
