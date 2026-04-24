@@ -874,6 +874,298 @@ body.has-status{padding-bottom:54px}
   color:var(--gold-bright);margin-left:10px;text-transform:none;
 }
 
+/* =========== LIVE: HEADSHOTS =========== */
+.pick-headshot{
+  width:56px;height:56px;border-radius:50%;
+  object-fit:cover;object-position:top center;
+  border:2px solid rgba(255,255,255,.18);
+  background:#0d0d10 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'><path d='M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z'/></svg>") center/55% no-repeat;
+  flex-shrink:0;align-self:center;
+  opacity:0;transform:scale(.92);
+  transition:opacity .55s ease,transform .55s cubic-bezier(.2,.8,.2,1),border-color .4s ease;
+  filter:contrast(1.05) saturate(.95);
+  box-shadow:0 4px 14px rgba(0,0,0,.5);
+}
+.pick-headshot.ready{opacity:1;transform:scale(1)}
+.pick[data-state="hit"] .pick-headshot{border-color:var(--red);box-shadow:0 0 0 2px rgba(228,0,43,.25),0 4px 14px rgba(0,0,0,.5)}
+
+.actual-headshot-wrap{
+  width:74px;height:74px;
+  background:#0d0d10;
+  border:1px solid rgba(255,255,255,.12);
+  position:relative;overflow:hidden;flex-shrink:0;
+}
+.actual-headshot-wrap::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:radial-gradient(circle at 50% -20%,rgba(228,0,43,.15),transparent 60%);
+}
+.actual-headshot{
+  width:100%;height:100%;
+  object-fit:cover;object-position:top center;
+  opacity:0;transform:scale(1.04);
+  transition:opacity .6s ease,transform .8s ease;
+  filter:grayscale(.1) contrast(1.08);
+}
+.actual-headshot.ready{opacity:1;transform:scale(1)}
+.actual-headshot-wrap .ah-team-chip{
+  position:absolute;bottom:0;left:0;right:0;z-index:2;
+  height:18px;
+  background:rgba(0,0,0,.78);
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Oswald",sans-serif;font-size:9px;letter-spacing:.28em;
+  color:#fff;font-weight:700;
+}
+
+/* Reserve headshot slot in pick-player so layout is stable */
+.pick-player{gap:16px}
+
+/* =========== LIVE: TEAM NEEDS =========== */
+.team-needs{
+  margin-top:10px;padding-top:10px;
+  border-top:1px dashed rgba(255,255,255,.12);
+  font-family:"Oswald",sans-serif;font-size:10px;
+  letter-spacing:.18em;color:var(--fg-muted);
+  text-transform:uppercase;
+  display:flex;flex-wrap:wrap;align-items:center;gap:5px;
+  position:relative;
+}
+.team-needs .lbl{
+  color:var(--gold);letter-spacing:.3em;font-size:9px;
+  margin-right:4px;
+}
+.team-needs .need{
+  padding:2px 6px;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.02);
+  letter-spacing:.2em;
+  font-size:10px;
+}
+.team-needs .need.met{
+  opacity:.4;text-decoration:line-through;
+  color:var(--fg-muted);
+}
+
+/* =========== LIVE: BREAKING NEWS IN TICKER =========== */
+.ticker-news{
+  color:#ffe57a !important;
+  font-weight:500;letter-spacing:.02em;font-size:12px;
+  text-transform:none;
+  max-width:780px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.ticker-news::before{
+  content:"\25CB  SCOOP" !important;
+  color:var(--gold);
+  font-weight:700;letter-spacing:.24em;
+  font-size:10px;
+  margin-right:10px;
+  background:rgba(228,0,43,.22);
+  padding:2px 6px;
+}
+
+/* =========== LIVE: UP NEXT STRIP =========== */
+.upnext{
+  position:sticky;top:104px;z-index:65;
+  background:linear-gradient(180deg,rgba(10,10,11,.96),rgba(10,10,11,.82));
+  backdrop-filter:blur(12px) saturate(160%);
+  -webkit-backdrop-filter:blur(12px) saturate(160%);
+  border-bottom:1px solid var(--rule-strong);
+  padding:10px 20px;
+  display:none;
+  align-items:center;gap:14px;
+  overflow-x:auto;scrollbar-width:none;
+  font-family:"Oswald",sans-serif;
+}
+.upnext.open{display:flex}
+.upnext::-webkit-scrollbar{display:none}
+.upnext-lbl{
+  font-weight:700;
+  font-size:10px;letter-spacing:.3em;color:var(--gold);
+  flex-shrink:0;padding-right:12px;border-right:1px solid var(--rule-strong);
+  text-transform:uppercase;line-height:1.1;
+  display:flex;flex-direction:column;gap:2px;
+}
+.upnext-lbl .sm{font-size:8px;color:var(--fg-muted);letter-spacing:.22em;font-weight:400}
+.upnext-item{
+  display:flex;align-items:center;gap:10px;flex-shrink:0;
+  padding:2px 14px 2px 0;border-right:1px solid var(--rule);
+  font-size:11px;letter-spacing:.14em;
+  color:var(--fg-dim);
+  min-width:180px;
+}
+.upnext-item:last-of-type{border-right:0}
+.upnext-item img{width:28px;height:28px;object-fit:contain;flex-shrink:0}
+.upnext-item .un-num{
+  color:var(--gold);font-weight:700;letter-spacing:.2em;font-size:11px;
+  font-family:"JetBrains Mono",monospace;
+  min-width:24px;
+}
+.upnext-item .un-body{display:flex;flex-direction:column;gap:1px;line-height:1.15;min-width:0}
+.upnext-item .un-team{color:var(--fg);font-weight:700;letter-spacing:.14em;font-size:11px}
+.upnext-item .un-proj{
+  font-family:"Fraunces",serif;font-style:italic;
+  font-size:12px;letter-spacing:0;color:var(--gold-bright);text-transform:none;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px;
+}
+.upnext-dismiss{
+  margin-left:auto;flex-shrink:0;
+  background:transparent;border:1px solid var(--rule);color:var(--fg-muted);
+  font:inherit;font-size:10px;letter-spacing:.2em;
+  padding:4px 10px;cursor:pointer;
+}
+.upnext-dismiss:hover{color:#fff;border-color:var(--red);background:var(--red)}
+.upnext-show{
+  position:fixed;right:14px;top:100px;z-index:66;
+  background:var(--red);color:#fff;border:0;
+  font-family:"Oswald",sans-serif;font-size:10px;letter-spacing:.22em;
+  padding:6px 10px;cursor:pointer;
+  display:none;box-shadow:0 4px 14px rgba(228,0,43,.35);
+}
+.upnext-show.show{display:block}
+.upnext-show:hover{background:var(--red-deep)}
+
+/* =========== LIVE: ESPN GRADE LINE (HIT) =========== */
+.grade-line{
+  margin-top:14px;
+  padding:8px 12px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.02);
+  display:flex;flex-wrap:wrap;align-items:center;gap:14px;
+  font-family:"JetBrains Mono",monospace;
+  font-size:11px;letter-spacing:.16em;
+  color:var(--fg-dim);
+  max-width:max-content;
+}
+.grade-line .gl-src{
+  font-family:"Oswald",sans-serif;
+  font-weight:700;font-size:10px;letter-spacing:.3em;
+  color:var(--gold);
+  padding-right:10px;border-right:1px solid rgba(255,255,255,.12);
+}
+.grade-line .gl-item{display:inline-flex;align-items:baseline;gap:6px}
+.grade-line .gl-item b{
+  color:var(--fg);font-weight:700;font-size:13px;letter-spacing:.08em;
+  font-family:"Barlow Condensed",sans-serif;
+}
+.grade-line .gl-item .gl-k{
+  font-size:9px;letter-spacing:.22em;color:var(--fg-muted);text-transform:uppercase;
+}
+/* grade tier tint */
+.grade-line[data-tier="elite"] .gl-item b[data-field="grade"]{color:#aee48c}
+.grade-line[data-tier="first"] .gl-item b[data-field="grade"]{color:var(--gold-bright)}
+.grade-line[data-tier="day2"]  .gl-item b[data-field="grade"]{color:var(--fg-dim)}
+
+/* MISS pip variant - grade badge inside .ap-meta */
+.ap-meta .ap-grade{
+  background:rgba(201,169,97,.12);
+  border-color:rgba(201,169,97,.55);
+  color:var(--gold-bright);
+  font-family:"JetBrains Mono",monospace;
+  letter-spacing:.12em;
+}
+
+/* =========== LIVE: SSS TRACE (where did SSS's guy go?) =========== */
+.sss-trace{
+  margin-top:14px;padding-top:12px;
+  border-top:1px dashed rgba(255,255,255,.12);
+  display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
+  position:relative;z-index:1;
+  font-family:"Fraunces",serif;font-style:italic;
+  font-size:13px;line-height:1.55;
+  color:var(--fg-dim);
+  font-variation-settings:"opsz" 16,"SOFT" 30,"WONK" 1;
+}
+.sss-trace .tr-lbl{
+  font-family:"Oswald",sans-serif;
+  font-style:normal;font-weight:700;
+  font-size:10px;letter-spacing:.3em;
+  color:var(--gold);
+  padding:2px 10px;
+  background:rgba(201,169,97,.1);
+  border:1px solid rgba(201,169,97,.25);
+  flex-shrink:0;text-transform:uppercase;
+  align-self:flex-start;
+}
+.sss-trace .tr-msg{flex:1;min-width:260px}
+.sss-trace b{color:var(--fg);font-weight:600;font-style:normal;letter-spacing:.01em}
+.sss-trace em{
+  font-family:"JetBrains Mono",monospace;
+  font-style:normal;color:var(--gold-bright);
+  font-size:11px;letter-spacing:.06em;
+}
+.sss-trace[data-trace="taken"] .tr-lbl{
+  background:rgba(228,0,43,.14);
+  border-color:rgba(228,0,43,.45);
+  color:#ffb8c4;
+}
+.sss-trace[data-trace="onboard"] .tr-lbl{
+  background:rgba(105,190,40,.14);
+  border-color:rgba(105,190,40,.4);
+  color:#aee48c;
+}
+.sss-trace[data-trace="onboard"] em{color:#aee48c}
+.sss-trace[data-trace="unknown"] .tr-lbl{
+  background:rgba(140,140,140,.1);
+  border-color:rgba(140,140,140,.3);
+  color:var(--fg-muted);
+}
+
+/* =========== LIVE: TEAM RECORD LINE =========== */
+.team-record{
+  margin-top:4px;
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+  font-family:"JetBrains Mono",monospace;
+  font-size:10px;letter-spacing:.12em;
+  color:var(--fg-muted);
+  line-height:1.2;
+}
+.team-record .tr-rec{
+  color:var(--fg-dim);font-weight:600;letter-spacing:.18em;
+}
+.team-record .tr-dot{color:var(--fg-muted);opacity:.5}
+.team-record .tr-stand{
+  font-family:"Oswald",sans-serif;
+  font-size:9px;letter-spacing:.22em;
+  text-transform:uppercase;
+}
+@media (max-width:480px){
+  .team-record .tr-stand{display:none}
+}
+
+/* =========== LIVE: PICK TIMER RING =========== */
+.pick-timer{
+  position:absolute;
+  top:-10px;left:-14px;
+  width:178px;height:178px;
+  pointer-events:none;overflow:visible;z-index:2;
+}
+.pick-timer circle{stroke-linecap:square;fill:none}
+.pick-timer .pt-bg{stroke:rgba(255,255,255,.08);stroke-width:2}
+.pick-timer .pt-progress{
+  stroke:var(--red);stroke-width:2.5;
+  transition:stroke-dashoffset 1s linear,stroke .4s ease;
+  filter:drop-shadow(0 0 6px rgba(228,0,43,.45));
+}
+.pick-timer.warn .pt-progress{
+  stroke:var(--gold-bright);
+  filter:drop-shadow(0 0 6px rgba(232,199,117,.55));
+}
+.pick-timer.over .pt-progress{
+  stroke:var(--red);
+  animation:clockPulse 1.2s ease-in-out infinite;
+}
+.pick-timer-label{
+  position:absolute;top:-6px;left:0;
+  font-family:"JetBrains Mono",monospace;
+  font-size:10px;letter-spacing:.18em;color:var(--gold);
+  font-weight:500;
+  z-index:3;pointer-events:none;
+  background:rgba(10,10,11,.7);padding:2px 6px;
+}
+@media (max-width:900px){
+  .pick-timer{width:132px;height:132px;top:-6px;left:-10px}
+  .pick-timer .pt-bg,.pick-timer .pt-progress{stroke-width:2}
+}
+
 /* =========== RESPONSIVE =========== */
 @media (max-width:900px){
   .intro{grid-template-columns:1fr;gap:18px;padding:48px 24px 24px}
@@ -893,6 +1185,14 @@ body.has-status{padding-bottom:54px}
   .status-bar .sb-sync{display:none}
   .status-bar .sb-dismiss{display:none}
   .pick[data-state="on-clock"]::after{display:none}
+  .upnext{top:72px;padding:8px 14px;gap:10px}
+  .upnext-item{min-width:150px;padding-right:10px}
+  .upnext-item .un-proj{font-size:11px;max-width:140px}
+  .upnext-lbl{font-size:9px;letter-spacing:.22em;padding-right:10px}
+  .upnext-show{top:72px;right:10px;font-size:9px;padding:5px 8px}
+  .pick-headshot{width:44px;height:44px}
+  .team-needs{font-size:9px}
+  .team-needs .need{padding:2px 5px;font-size:9px}
 }
 @media (max-width:560px){
   .pick-num{font-size:88px}
@@ -1042,6 +1342,10 @@ body.has-status{padding-bottom:54px}
     </div>
   </div>
 </section>
+
+<!-- ========================= UP NEXT STICKY STRIP ========================= -->
+<div class="upnext" id="upnext" aria-live="polite" role="complementary"></div>
+<button class="upnext-show" id="upnextShow" type="button" title="Show Up Next">UP NEXT &raquo;</button>
 
 <!-- ========================= LIVE SCOREBOARD ========================= -->
 <section class="scoreboard" id="scoreboard" aria-live="polite">
@@ -2254,8 +2558,28 @@ window.addEventListener('scroll',()=>{
   let lastSyncAt = 0;
   let lastError = null;
   const teamMap = Object.create(null);      // id -> ABBR
-  const teamByAbbr = Object.create(null);   // ABBR -> {name, logo}
+  const teamByAbbr = Object.create(null);   // ABBR -> {name, logo, record...}
   const posMap = Object.create(null);       // id -> ABBR
+  const teamNeeds = Object.create(null);    // ABBR -> [{pos, met}]
+  const actualPickByPlayer = Object.create(null); // normName -> {pick, teamAbbr, grade, overallRank, posRank}
+  const bestAvailable = Object.create(null);      // normName -> {grade, overallRank, posRank, posAbbr, college}
+  const PICK_CLOCK_SEC = 600;               // 10-minute Round 1 clock (best-effort estimate)
+  const PICK_WARN_SEC  = 480;               // amber past 8:00
+  const TIMER_KEY = "sss-timer-v1";
+  const timerState = { pickId: null, startedAt: 0 };
+  try {
+    const saved = JSON.parse(localStorage.getItem(TIMER_KEY) || "null");
+    if(saved && saved.pickId && saved.startedAt) {
+      timerState.pickId = saved.pickId;
+      timerState.startedAt = saved.startedAt;
+    }
+  } catch(e){}
+  let timerInterval = null;
+  const TRI_NEWS_KEY = "sss-news-seen-v1";
+  let newsSeenIds = Object.create(null);
+  try { newsSeenIds = JSON.parse(localStorage.getItem(TRI_NEWS_KEY) || "{}"); } catch(e){}
+  let upnextHidden = false;
+  try { upnextHidden = localStorage.getItem("sss-upnext-hidden-v1") === "1"; } catch(e){}
 
   /* ------------ DOM ------------ */
   const pickEls = Array.from(document.querySelectorAll("[data-pick]"))
@@ -2278,6 +2602,9 @@ window.addEventListener('scroll',()=>{
   const clockSub       = document.querySelector('[data-sb="clock-sub"]');
   const stateCell      = document.querySelector('[data-sb="state"]');
   const clockCell      = document.querySelector('[data-sb="on-clock"]');
+  const upnextEl       = document.getElementById("upnext");
+  const upnextShowBtn  = document.getElementById("upnextShow");
+  const tickerTrack    = document.querySelector(".ticker-track");
   document.body.classList.add("has-status");
 
   /* ------------ normalize payload ------------ */
@@ -2287,18 +2614,52 @@ window.addEventListener('scroll',()=>{
     // team / position lookups (rebuild each normalize in case ESPN tweaks order)
     for(const t of (payload.teams||[])) {
       teamMap[t.id] = t.abbreviation;
+      const rec = t.record || {};
       teamByAbbr[t.abbreviation] = {
         name: t.displayName || t.shortDisplayName || t.abbreviation,
         logo: t.logo || null,
-        id: t.id
+        id: t.id,
+        recordSummary: rec.summary || "",
+        recordStanding: rec.standing || "",
+        recordSeason: rec.season || ""
       };
     }
     for(const p of (payload.positions||[])) {
       posMap[p.id] = p.abbreviation;
     }
+    // teams[].needs -> teamNeeds[ABBR] = [{pos, met}, ...]
+    for(const t of (payload.teams||[])) {
+      const list = (t.needs || []).map(n => ({
+        pos: posMap[n.positionId] || "",
+        met: !!n.met
+      })).filter(n => n.pos);
+      teamNeeds[t.abbreviation] = list;
+    }
     const round1 = (payload.picks||[]).filter(p => p.round === CFG.round);
     const byPick = Object.create(null);
+    const attrLookup = attrs => {
+      const m = Object.create(null);
+      for(const a of (attrs||[])) {
+        if(a && a.name) m[a.name] = a.displayValue;
+      }
+      return m;
+    };
+    // clear stale reverse-lookup entries each tick
+    for(const k in actualPickByPlayer) delete actualPickByPlayer[k];
+    for(const k in bestAvailable) delete bestAvailable[k];
     for(const p of round1) {
+      const attrs = p.athlete ? attrLookup(p.athlete.attributes) : {};
+      if(p.athlete && p.athlete.displayName) {
+        const key = normName(p.athlete.displayName);
+        actualPickByPlayer[key] = {
+          pick: p.overall,
+          teamAbbr: teamMap[p.teamId] || null,
+          grade: attrs.grade || "",
+          overallRank: attrs.overall || "",
+          posRank: attrs.rank || "",
+          posAbbr: posMap[(p.athlete.position||{}).id] || ""
+        };
+      }
       byPick[p.overall] = {
         pick: p.overall,
         status: p.status,
@@ -2312,15 +2673,44 @@ window.addEventListener('scroll',()=>{
           posAbbr: posMap[(p.athlete.position||{}).id] || "",
           college: (p.athlete.team||{}).shortDisplayName || (p.athlete.team||{}).location || "",
           collegeAbbr: (p.athlete.team||{}).abbreviation || "",
-          headshot: (p.athlete.headshot||{}).href || null
+          headshot: (p.athlete.headshot||{}).href || null,
+          grade: attrs.grade || "",        // ESPN's numeric grade (e.g. "92")
+          overallRank: attrs.overall || "", // overall prospect rank (e.g. "2")
+          posRank: attrs.rank || ""         // positional rank (e.g. "1")
         } : null
       };
     }
+    // bestAvailablePicks - top prospects still on the board at the current slot
+    const baArr = ((payload.current||{}).bestAvailablePicks) || [];
+    for(const ba of baArr) {
+      if(ba && ba.displayName) {
+        const key = normName(ba.displayName);
+        const bAttrs = attrLookup(ba.attributes);
+        bestAvailable[key] = {
+          grade: bAttrs.grade || "",
+          overallRank: bAttrs.overall || "",
+          posRank: bAttrs.rank || "",
+          posAbbr: posMap[(ba.position||{}).id] || "",
+          college: (ba.team||{}).shortDisplayName || ""
+        };
+      }
+    }
+
+    // breakingNews normalization (dedupe + sort newest first)
+    const bnSrc = Array.isArray(payload.breakingNews) ? payload.breakingNews : [];
+    const bn = bnSrc.map(item => ({
+      id: String(item.id || ""),
+      headline: ((item.descriptions||{}).headline) || ((item.descriptions||{}).title) || item.payload || "",
+      createdAt: (item.dates||{}).created || (item.dates||{}).modified || ""
+    })).filter(x => x.id && x.headline);
+    bn.sort((a,b) => (b.createdAt||"").localeCompare(a.createdAt||""));
+
     return {
       statusName: (payload.status||{}).name || "",
       stateCode: (payload.status||{}).state || "",
       currentPickId: (payload.current||{}).pickId || null,
       byPick,
+      breakingNews: bn,
       raw: payload
     };
   }
@@ -2381,9 +2771,19 @@ window.addEventListener('scroll',()=>{
         else draft.byPick[n] = injected[k];
       }
     }
+    // timer state transitions (persisted so reloads don't reset the clock)
+    const newPickId = draft.currentPickId;
+    if(newPickId !== timerState.pickId) {
+      timerState.pickId = newPickId;
+      timerState.startedAt = Date.now();
+      try { localStorage.setItem(TIMER_KEY, JSON.stringify(timerState)); } catch(e){}
+    }
     for(const el of pickEls) renderPick(el, draft);
     for(const el of tradeEls) renderTrade(el, draft);
     updateChrome(draft);
+    renderUpNext(draft);
+    renderBreakingNews(draft);
+    tickTimer(); // immediate paint of the ring
   }
 
   function renderPick(el, draft) {
@@ -2398,7 +2798,11 @@ window.addEventListener('scroll',()=>{
     };
 
     // clean prior dynamic content (idempotent)
-    el.querySelectorAll(".clock-badge,.hit-stamp,.actual-pick").forEach(n => n.remove());
+    el.querySelectorAll(".clock-badge,.hit-stamp,.actual-pick,.pick-headshot,.team-needs,.pick-timer,.pick-timer-label,.grade-line,.team-record")
+      .forEach(n => n.remove());
+
+    // team record always appears (static context for every card)
+    insertTeamRecord(el, projected.team, (p && p.teamAbbr) ? p.teamAbbr : null);
 
     let state = "pending";
     if(p && p.athlete && p.athlete.name) {
@@ -2416,19 +2820,174 @@ window.addEventListener('scroll',()=>{
       badge.textContent = "ON THE CLOCK";
       const player = el.querySelector(".pick-player");
       if(player) player.parentNode.insertBefore(badge, player);
+      // pick timer ring + label live inside the sticky pick-id column
+      insertPickTimer(el);
+      // Needs watermark: the actual on-clock team (may differ from projection if trade flipped)
+      insertNeeds(el, (p && p.teamAbbr) ? p.teamAbbr : projected.team, projected.team);
     }
 
-    if(state === "hit") {
+    if(state === "pending") {
+      // needs under the projected team
+      insertNeeds(el, projected.team, projected.team);
+    }
+
+    if(state === "hit" && p && p.athlete) {
       const stamp = document.createElement("div");
       stamp.className = "hit-stamp";
       stamp.innerHTML = 'Correct Call<span class="dot">SSS / confirmed</span>';
       const content = el.querySelector(".pick-content");
       if(content) content.appendChild(stamp);
+      insertHeadshot(el, p.athlete);
+      insertGradeLine(el, p.athlete);
     }
 
     if(state === "miss" && p && p.athlete) {
+      insertHeadshot(el, p.athlete);
       appendActual(el, p, projected);
     }
+  }
+
+  /* ------------ small feature inserters ------------ */
+  function insertHeadshot(el, athlete) {
+    if(!athlete || !athlete.headshot) return;
+    const playerRow = el.querySelector(".pick-player");
+    if(!playerRow) return;
+    const img = document.createElement("img");
+    img.className = "pick-headshot";
+    img.alt = athlete.name || "";
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.referrerPolicy = "no-referrer";
+    img.onload = () => img.classList.add("ready");
+    img.onerror = () => img.remove(); // hide on 404
+    img.src = athlete.headshot;
+    playerRow.insertBefore(img, playerRow.firstChild);
+  }
+
+  function insertNeeds(el, teamAbbrForNeeds, projectedTeamAbbr) {
+    const needs = teamNeeds[teamAbbrForNeeds];
+    if(!needs || !needs.length) return;
+    const teamBox = el.querySelector(".pick-team");
+    if(!teamBox) return;
+    const row = document.createElement("div");
+    row.className = "team-needs";
+    const chips = needs.slice(0, 5).map(n =>
+      '<span class="need' + (n.met ? ' met' : '') + '">' + escapeHtml(n.pos) + '</span>'
+    ).join("");
+    row.innerHTML = '<span class="lbl">NEEDS</span>' + chips;
+    teamBox.appendChild(row);
+  }
+
+  function insertGradeLine(el, athlete) {
+    if(!athlete) return;
+    const { grade, overallRank, posRank, posAbbr } = athlete;
+    if(!grade && !overallRank && !posRank) return;
+    const playerRow = el.querySelector(".pick-player");
+    if(!playerRow) return;
+    const tier = !grade ? "" : (+grade >= 90 ? "elite" : (+grade >= 80 ? "first" : "day2"));
+    const line = document.createElement("div");
+    line.className = "grade-line";
+    if(tier) line.setAttribute("data-tier", tier);
+    const parts = ['<span class="gl-src">ESPN</span>'];
+    if(grade) parts.push(
+      '<span class="gl-item"><span class="gl-k">Grade</span><b data-field="grade">' + escapeHtml(grade) + '</b></span>'
+    );
+    if(overallRank) parts.push(
+      '<span class="gl-item"><span class="gl-k">Overall</span><b>#' + escapeHtml(overallRank) + '</b></span>'
+    );
+    if(posRank) parts.push(
+      '<span class="gl-item"><span class="gl-k">' + escapeHtml(posAbbr || "Pos") + ' rank</span><b>#' + escapeHtml(posRank) + '</b></span>'
+    );
+    line.innerHTML = parts.join("");
+    playerRow.insertAdjacentElement("afterend", line);
+  }
+
+  function insertTeamRecord(el, projectedTeamAbbr, actualTeamAbbr) {
+    // Prefer the team that is actually picking at this slot (captures trades).
+    const abbr = actualTeamAbbr || projectedTeamAbbr;
+    if(!abbr) return;
+    const info = teamByAbbr[abbr];
+    if(!info || (!info.recordSummary && !info.recordStanding)) return;
+    const meta = el.querySelector(".pick-team .meta");
+    if(!meta) return;
+    const row = document.createElement("div");
+    row.className = "team-record";
+    const parts = [];
+    if(info.recordSummary) {
+      const seasonLbl = info.recordSeason ? (info.recordSeason + " ") : "";
+      parts.push('<span class="tr-rec">' + escapeHtml(seasonLbl + info.recordSummary) + '</span>');
+    }
+    if(info.recordStanding) {
+      if(parts.length) parts.push('<span class="tr-dot">&bull;</span>');
+      parts.push('<span class="tr-stand">' + escapeHtml(info.recordStanding) + '</span>');
+    }
+    row.innerHTML = parts.join("");
+    meta.appendChild(row);
+  }
+
+  function insertPickTimer(el) {
+    const container = el.querySelector(".pick-id");
+    if(!container) return;
+    // svg ring
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("class","pick-timer");
+    svg.setAttribute("viewBox","0 0 120 120");
+    svg.setAttribute("aria-hidden","true");
+    const c1 = document.createElementNS(svgNS, "circle");
+    c1.setAttribute("class","pt-bg");
+    c1.setAttribute("cx","60"); c1.setAttribute("cy","60"); c1.setAttribute("r","56");
+    const c2 = document.createElementNS(svgNS, "circle");
+    c2.setAttribute("class","pt-progress");
+    c2.setAttribute("cx","60"); c2.setAttribute("cy","60"); c2.setAttribute("r","56");
+    c2.setAttribute("stroke-dasharray","351.86");
+    c2.setAttribute("stroke-dashoffset","351.86");
+    c2.setAttribute("transform","rotate(-90 60 60)");
+    svg.appendChild(c1); svg.appendChild(c2);
+    container.appendChild(svg);
+    // text label
+    const lbl = document.createElement("div");
+    lbl.className = "pick-timer-label";
+    lbl.textContent = "00:00";
+    container.appendChild(lbl);
+  }
+
+  // Cross-reference: where did SSS's projected guy ACTUALLY end up?
+  // Returns a ready-to-inject HTML string (or "" if no useful trace).
+  function buildSSSTrace(projectedPlayer, thisPickNum) {
+    if(!projectedPlayer) return "";
+    const key = normName(projectedPlayer);
+    const taken = actualPickByPlayer[key];
+    const ba = bestAvailable[key];
+    // If SSS's guy IS the actual selection at this slot, it's a HIT and we won't be here.
+    // Guard anyway against stale data:
+    if(taken && taken.pick === thisPickNum) return "";
+
+    let state, headline, rankBits = [];
+    if(taken) {
+      state = "taken";
+      const teamInfo = teamByAbbr[taken.teamAbbr] || {};
+      const teamLabel = teamInfo.name || taken.teamAbbr || "a different team";
+      const direction = taken.pick < thisPickNum ? "already gone at" : "went at";
+      headline = direction + " <b>#" + taken.pick + " overall</b> to " + escapeHtml(teamLabel);
+      if(taken.overallRank) rankBits.push("ESPN #" + escapeHtml(taken.overallRank) + " overall");
+      if(taken.grade) rankBits.push("grade " + escapeHtml(taken.grade));
+    } else if(ba) {
+      state = "onboard";
+      headline = "<b>still on the board</b>";
+      if(ba.overallRank) rankBits.push("ESPN #" + escapeHtml(ba.overallRank) + " overall");
+      if(ba.grade) rankBits.push("grade " + escapeHtml(ba.grade));
+    } else {
+      state = "unknown";
+      headline = "off ESPN's live tracked board";
+    }
+
+    const rankHtml = rankBits.length ? ' &middot; <em>' + rankBits.join(" &middot; ") + '</em>' : '';
+    const msg = '<b>' + escapeHtml(projectedPlayer) + '</b> ' + headline + rankHtml;
+    return '<div class="sss-trace" data-trace="' + state + '">' +
+             '<span class="tr-lbl">SSS Trace</span>' +
+             '<span class="tr-msg">' + msg + '</span>' +
+           '</div>';
   }
 
   function appendActual(el, actual, projected) {
@@ -2454,13 +3013,22 @@ window.addEventListener('scroll',()=>{
         <span class="revised-stamp">REVISED</span>
       </div>
       <div class="actual-body">
-        <div class="ap-logo-wrap"><img alt="${escapeHtml(teamInfo.name||teamAbbr)}" src="${escapeHtml(logo)}" loading="lazy"></div>
+        ${a.headshot
+          ? `<div class="actual-headshot-wrap">
+               <img class="actual-headshot" alt="${escapeHtml(a.name||"")}" src="${escapeHtml(a.headshot)}" loading="lazy" referrerpolicy="no-referrer"
+                    onload="this.classList.add('ready')"
+                    onerror="this.closest('.actual-headshot-wrap').innerHTML='&lt;img alt=&quot;${escapeHtml(teamInfo.name||teamAbbr)}&quot; src=&quot;${escapeHtml(logo)}&quot; style=&quot;width:100%;height:100%;object-fit:contain;padding:8px&quot;&gt;'">
+               <div class="ah-team-chip">${escapeHtml(teamAbbr)}</div>
+             </div>`
+          : `<div class="ap-logo-wrap"><img alt="${escapeHtml(teamInfo.name||teamAbbr)}" src="${escapeHtml(logo)}" loading="lazy"></div>`
+        }
         <div>
           <div class="ap-name">${escapeHtml(a.name || "Selection in")}</div>
           <div class="ap-meta">
             <span class="${teamHit?"ap-hit":"ap-miss"}">${escapeHtml(teamInfo.name || teamAbbr)}</span>
             <span class="${posHit?"ap-hit":"ap-miss"}">${escapeHtml(a.posAbbr || "-")}</span>
             <span class="${collegeHit?"ap-hit":"ap-miss"}">${escapeHtml(a.college || "-")}</span>
+            ${a.grade ? `<span class="ap-grade">ESPN GR ${escapeHtml(a.grade)}${a.overallRank ? " &middot; #" + escapeHtml(a.overallRank) + " OVR" : ""}</span>` : ""}
             ${actual.traded ? '<span>' + escapeHtml(actual.tradeNote || "Trade") + '</span>' : ""}
           </div>
         </div>
@@ -2469,6 +3037,7 @@ window.addEventListener('scroll',()=>{
         SSS projected <b>${escapeHtml(projected.player)}</b> (${escapeHtml(projected.pos)}, ${escapeHtml(projected.college)}) to ${escapeHtml(projected.team)}.
         The projection analysis above remains part of the historical record.
       </div>
+      ${buildSSSTrace(projected.player, actual.pick)}
     `;
     const content = el.querySelector(".pick-content");
     if(content) content.appendChild(box);
@@ -2628,6 +3197,111 @@ window.addEventListener('scroll',()=>{
     liveEls.forEach(el => { el.textContent = text; });
   }
 
+  /* ------------ up next strip ------------ */
+  function renderUpNext(draft) {
+    if(!upnextEl) return;
+    const currentId = draft.currentPickId;
+    const completedCount = Object.values(draft.byPick).filter(p => p.status === "SELECTION_MADE").length;
+    const isLive = draft.statusName === "IN_PROGRESS" && completedCount < CFG.totalPicks;
+    if(!isLive || upnextHidden) {
+      upnextEl.classList.remove("open");
+      if(upnextShowBtn) upnextShowBtn.classList.toggle("show", isLive && upnextHidden);
+      return;
+    }
+    const upcomingIds = [];
+    for(let n = (currentId||1) + 1; n <= CFG.totalPicks && upcomingIds.length < 3; n++) {
+      upcomingIds.push(n);
+    }
+    if(!upcomingIds.length) {
+      upnextEl.classList.remove("open");
+      return;
+    }
+    const parts = ['<div class="upnext-lbl"><span>Up Next</span><span class="sm">next 3 picks</span></div>'];
+    for(const n of upcomingIds) {
+      const el = pickEls.find(x => +x.dataset.pick === n);
+      if(!el) continue;
+      // prefer the actual team if ESPN already has it (captures trades), else projected
+      const p = draft.byPick[n];
+      const teamAbbr = (p && p.teamAbbr) || (el.dataset.projectedTeam || "");
+      const info = teamByAbbr[teamAbbr] || {};
+      const logo = info.logo || ("https://a.espncdn.com/i/teamlogos/nfl/500/" + (teamAbbr||"").toLowerCase() + ".png");
+      const projPlayer = el.dataset.projectedPlayer || "";
+      const projPos = el.dataset.projectedPosition || "";
+      parts.push(
+        '<a class="upnext-item" href="#pick-' + n + '">' +
+          '<img src="' + escapeHtml(logo) + '" alt="' + escapeHtml(info.name||teamAbbr) + '">' +
+          '<span class="un-num">#' + n + '</span>' +
+          '<div class="un-body">' +
+            '<span class="un-team">' + escapeHtml(teamAbbr || "?") + '</span>' +
+            '<span class="un-proj">' + escapeHtml(projPlayer) + ' &middot; ' + escapeHtml(projPos) + '</span>' +
+          '</div>' +
+        '</a>'
+      );
+    }
+    parts.push('<button class="upnext-dismiss" type="button" id="upnextDismissBtn" title="Hide Up Next">Hide</button>');
+    upnextEl.innerHTML = parts.join("");
+    upnextEl.classList.add("open");
+    if(upnextShowBtn) upnextShowBtn.classList.remove("show");
+    const dismiss = document.getElementById("upnextDismissBtn");
+    if(dismiss) dismiss.addEventListener("click", () => {
+      upnextHidden = true;
+      try { localStorage.setItem("sss-upnext-hidden-v1","1"); } catch(e){}
+      upnextEl.classList.remove("open");
+      if(upnextShowBtn) upnextShowBtn.classList.add("show");
+    });
+  }
+
+  /* ------------ breaking news ticker injection ------------ */
+  function renderBreakingNews(draft) {
+    if(!tickerTrack) return;
+    const news = (draft.breakingNews || []).slice(0, 6); // cap
+    if(!news.length) return;
+    const existing = new Set(
+      Array.from(tickerTrack.querySelectorAll(".ticker-news[data-nid]"))
+        .map(n => n.getAttribute("data-nid"))
+    );
+    const fresh = news.filter(n => !existing.has(n.id));
+    if(!fresh.length) return;
+    // Insert each fresh item twice to preserve marquee loop balance.
+    // Insertion point: right after the first ticker-live (or first child).
+    const children = Array.from(tickerTrack.children);
+    const mid = Math.floor(children.length / 2);
+    // capture anchors BEFORE any mutation
+    const firstAnchor = children[0] || null;
+    const midAnchor = children[mid] || null;
+    for(const item of fresh) {
+      const a = document.createElement("span");
+      a.className = "ticker-news";
+      a.setAttribute("data-nid", item.id);
+      a.textContent = item.headline;
+      const b = a.cloneNode(true);
+      tickerTrack.insertBefore(a, firstAnchor);
+      tickerTrack.insertBefore(b, midAnchor);
+    }
+    // persist seen ids so hot news can flash differently in future iterations
+    for(const n of news) newsSeenIds[n.id] = 1;
+    try { localStorage.setItem(TRI_NEWS_KEY, JSON.stringify(newsSeenIds)); } catch(e){}
+  }
+
+  /* ------------ pick timer tick (SVG ring) ------------ */
+  function tickTimer() {
+    const ring = document.querySelector(".pick-timer");
+    const label = document.querySelector(".pick-timer-label");
+    if(!ring || !label) return;
+    if(!timerState.startedAt) return;
+    const elapsed = Math.max(0, Math.floor((Date.now() - timerState.startedAt) / 1000));
+    const prog = Math.min(1, elapsed / PICK_CLOCK_SEC);
+    const C = 351.86;
+    const prgCircle = ring.querySelector(".pt-progress");
+    if(prgCircle) prgCircle.setAttribute("stroke-dashoffset", (C * (1 - prog)).toFixed(2));
+    ring.classList.toggle("warn", elapsed >= PICK_WARN_SEC && elapsed < PICK_CLOCK_SEC);
+    ring.classList.toggle("over", elapsed >= PICK_CLOCK_SEC);
+    const mm = String(Math.floor(elapsed / 60)).padStart(2,"0");
+    const ss = String(elapsed % 60).padStart(2,"0");
+    label.textContent = mm + ":" + ss;
+    label.classList.add("on");
+  }
+
   /* ------------ chrome helpers ------------ */
   function setSync(on) {
     if(!refreshBtn) return;
@@ -2655,6 +3329,17 @@ window.addEventListener('scroll',()=>{
   setInterval(() => {
     if(sbSync) sbSync.textContent = "LAST SYNC: " + fmtRel(lastSyncAt);
   }, 5000);
+
+  // 1-second tick for the pick timer ring (cheap; only paints if ring exists)
+  timerInterval = setInterval(tickTimer, 1000);
+
+  // Up Next show/hide button (when dismissed)
+  if(upnextShowBtn) upnextShowBtn.addEventListener("click", () => {
+    upnextHidden = false;
+    try { localStorage.setItem("sss-upnext-hidden-v1","0"); } catch(e){}
+    upnextShowBtn.classList.remove("show");
+    if(upnextEl) upnextEl.classList.add("open");
+  });
 
   // pause polling when tab hidden; resume on focus
   document.addEventListener("visibilitychange", () => {
