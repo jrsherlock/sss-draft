@@ -1154,13 +1154,19 @@ body.has-status{padding-bottom:54px}
   animation:clockPulse 1.2s ease-in-out infinite;
 }
 .pick-timer-label{
-  position:absolute;top:-6px;left:0;
+  position:absolute;top:-4px;right:0;
   font-family:"JetBrains Mono",monospace;
-  font-size:10px;letter-spacing:.18em;color:var(--gold);
-  font-weight:500;
+  font-size:11px;letter-spacing:.1em;
+  background:var(--red);color:#fff;
+  padding:3px 10px;font-weight:700;
   z-index:3;pointer-events:none;
-  background:rgba(10,10,11,.7);padding:2px 6px;
+  border:1px solid rgba(0,0,0,.4);
+  box-shadow:0 3px 10px rgba(0,0,0,.5);
+  opacity:0;transition:opacity .3s ease,background .3s ease;
 }
+.pick-timer-label.on{opacity:1}
+.pick-timer-label.warn{background:var(--gold-bright);color:#000}
+.pick-timer-label.over{background:#000;color:var(--red);border-color:var(--red);animation:clockPulse 1.2s ease-in-out infinite}
 @media (max-width:900px){
   .pick-timer{width:132px;height:132px;top:-6px;left:-10px}
   .pick-timer .pt-bg,.pick-timer .pt-progress{stroke-width:2}
@@ -3283,21 +3289,29 @@ window.addEventListener('scroll',()=>{
     try { localStorage.setItem(TRI_NEWS_KEY, JSON.stringify(newsSeenIds)); } catch(e){}
   }
 
-  /* ------------ pick timer tick (SVG ring) ------------ */
+  /* ------------ pick timer tick (SVG ring) ------------
+     Countdown semantics: ring starts FULL and drains to empty;
+     label shows remaining time (10:00 -> 00:00).                */
   function tickTimer() {
     const ring = document.querySelector(".pick-timer");
     const label = document.querySelector(".pick-timer-label");
     if(!ring || !label) return;
     if(!timerState.startedAt) return;
     const elapsed = Math.max(0, Math.floor((Date.now() - timerState.startedAt) / 1000));
-    const prog = Math.min(1, elapsed / PICK_CLOCK_SEC);
+    const remaining = Math.max(0, PICK_CLOCK_SEC - elapsed);
     const C = 351.86;
+    // drain: offset=0 (full) at start, offset=C (empty) when time is up
+    const drain = Math.min(C, C * elapsed / PICK_CLOCK_SEC);
     const prgCircle = ring.querySelector(".pt-progress");
-    if(prgCircle) prgCircle.setAttribute("stroke-dashoffset", (C * (1 - prog)).toFixed(2));
-    ring.classList.toggle("warn", elapsed >= PICK_WARN_SEC && elapsed < PICK_CLOCK_SEC);
-    ring.classList.toggle("over", elapsed >= PICK_CLOCK_SEC);
-    const mm = String(Math.floor(elapsed / 60)).padStart(2,"0");
-    const ss = String(elapsed % 60).padStart(2,"0");
+    if(prgCircle) prgCircle.setAttribute("stroke-dashoffset", drain.toFixed(2));
+    const isWarn = remaining > 0 && elapsed >= PICK_WARN_SEC;
+    const isOver = remaining === 0;
+    ring.classList.toggle("warn", isWarn);
+    ring.classList.toggle("over", isOver);
+    label.classList.toggle("warn", isWarn);
+    label.classList.toggle("over", isOver);
+    const mm = String(Math.floor(remaining / 60)).padStart(2,"0");
+    const ss = String(remaining % 60).padStart(2,"0");
     label.textContent = mm + ":" + ss;
     label.classList.add("on");
   }
