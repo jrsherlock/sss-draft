@@ -601,6 +601,279 @@ footer{
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
 
+/* =========== LIVE: SCOREBOARD ROW =========== */
+.scoreboard{
+  max-width:1360px;margin:0 auto;padding:0 32px;
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:0;
+  border-bottom:1px solid var(--rule-strong);
+  background:linear-gradient(90deg,rgba(228,0,43,.08),transparent 60%);
+}
+.scoreboard .cell{padding:22px 22px;border-right:1px solid var(--rule);position:relative}
+.scoreboard .cell:last-child{border-right:0}
+.scoreboard .cell .kick{
+  font-family:"Oswald",sans-serif;font-size:10px;letter-spacing:.3em;
+  color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:8px;
+}
+.scoreboard .cell .kick::before{
+  content:"";width:6px;height:6px;background:var(--red);border-radius:50%;
+  box-shadow:0 0 10px var(--red);
+}
+.scoreboard .cell.off .kick::before{background:var(--fg-muted);box-shadow:none;animation:none}
+.scoreboard .cell.on .kick::before{animation:blink 1.2s infinite}
+.scoreboard .cell .big{
+  font-family:"Barlow Condensed",sans-serif;font-weight:700;
+  font-size:56px;line-height:1;color:var(--fg);
+  margin-top:8px;display:flex;align-items:baseline;gap:10px;
+}
+.scoreboard .cell .big small{
+  font-size:14px;color:var(--fg-muted);letter-spacing:.18em;
+  font-family:"JetBrains Mono",monospace;font-weight:500;
+}
+.scoreboard .cell .big em{
+  font-style:normal;color:var(--gold-bright);font-size:22px;
+}
+.scoreboard .cell .sub{
+  margin-top:6px;
+  font-family:"Fraunces",serif;font-style:italic;font-size:13px;
+  color:var(--fg-dim);
+}
+.sss-accuracy-bar{
+  height:6px;background:rgba(255,255,255,.06);margin-top:10px;position:relative;overflow:hidden;
+}
+.sss-accuracy-bar i{
+  display:block;height:100%;background:linear-gradient(90deg,var(--gold) 0%,var(--red) 100%);
+  transition:width .6s cubic-bezier(.2,.8,.2,1);
+}
+
+/* =========== LIVE: STATUS BAR =========== */
+.status-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:90;
+  background:#000;border-top:2px solid var(--red);
+  display:flex;align-items:center;gap:14px;
+  padding:10px 18px;
+  font-family:"Oswald",sans-serif;font-size:11px;
+  letter-spacing:.2em;color:#fff;text-transform:uppercase;
+  transform:translateY(0);transition:transform .4s ease;
+  box-shadow:0 -8px 30px rgba(0,0,0,.6);
+}
+.status-bar.hidden{transform:translateY(110%)}
+.status-bar .sb-live{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--red);padding:4px 10px;font-weight:700;letter-spacing:.26em;
+  flex-shrink:0;
+}
+.status-bar .sb-live::before{
+  content:"";width:7px;height:7px;border-radius:50%;background:#fff;
+  animation:blink 1.2s infinite;
+}
+.status-bar.state-complete .sb-live{background:var(--gold);color:#000}
+.status-bar.state-complete .sb-live::before{animation:none;background:#000}
+.status-bar.state-idle .sb-live{background:#444}
+.status-bar.state-idle .sb-live::before{animation:none;background:#999}
+.status-bar .sb-msg{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.status-bar .sb-msg b{color:var(--gold-bright);font-weight:600}
+.status-bar .sb-sync{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;
+  color:var(--fg-muted);flex-shrink:0;
+}
+.status-bar .sb-refresh{
+  background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);
+  padding:6px 12px;font:inherit;letter-spacing:.22em;cursor:pointer;
+  transition:all .15s ease;flex-shrink:0;
+}
+.status-bar .sb-refresh:hover{background:var(--red);border-color:var(--red)}
+.status-bar .sb-refresh.spin{opacity:.5;pointer-events:none}
+.status-bar .sb-refresh.spin::before{
+  content:"";display:inline-block;width:9px;height:9px;margin-right:6px;
+  border:1.5px solid #fff;border-top-color:transparent;border-radius:50%;
+  animation:spin .8s linear infinite;vertical-align:-1px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.status-bar .sb-dismiss{
+  background:transparent;border:0;color:var(--fg-muted);
+  font:inherit;letter-spacing:.18em;cursor:pointer;padding:4px 8px;
+}
+.status-bar .sb-dismiss:hover{color:#fff}
+
+/* body gets padding to avoid status bar overlap */
+body.has-status{padding-bottom:54px}
+
+/* =========== LIVE: PICK STATES =========== */
+/* common badge anchor */
+.pick-content{position:relative}
+
+/* PROJECTED watermark (pending) — very subtle corner label */
+.pick[data-state="pending"] .pick-content::before{
+  content:"PROJECTED";
+  position:absolute;top:-4px;right:0;
+  font-family:"Oswald",sans-serif;font-size:9px;
+  letter-spacing:.34em;color:var(--fg-muted);
+  opacity:.5;pointer-events:none;
+}
+
+/* ON THE CLOCK: pulse border + badge */
+.pick[data-state="on-clock"]::after{
+  content:"";position:absolute;
+  left:-34px;top:40px;bottom:40px;width:6px;
+  background:var(--red);
+  box-shadow:0 0 24px var(--red),0 0 48px var(--red);
+  animation:clockPulse 1.6s ease-in-out infinite;
+}
+@keyframes clockPulse{
+  0%,100%{opacity:.6;filter:brightness(1)}
+  50%{opacity:1;filter:brightness(1.4)}
+}
+.clock-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--red);color:#fff;
+  padding:7px 14px;
+  font-family:"Oswald",sans-serif;font-weight:700;
+  font-size:12px;letter-spacing:.28em;text-transform:uppercase;
+  margin-bottom:14px;align-self:flex-start;
+  box-shadow:0 0 0 1px rgba(0,0,0,.3),0 6px 18px rgba(228,0,43,.4);
+  animation:clockPulse 1.6s ease-in-out infinite;
+}
+.clock-badge::before{
+  content:"";width:8px;height:8px;border-radius:50%;background:#fff;
+  animation:blink 1.2s infinite;
+}
+
+/* HIT: rubber stamp */
+.hit-stamp{
+  position:absolute;top:-8px;right:-6px;
+  padding:10px 18px 8px;
+  border:3px solid var(--red);
+  color:var(--red);
+  font-family:"Oswald",sans-serif;font-weight:700;
+  font-size:14px;letter-spacing:.32em;text-transform:uppercase;
+  background:transparent;
+  transform:rotate(-8deg);
+  z-index:3;
+  text-align:center;line-height:1;
+  box-shadow:inset 0 0 0 2px rgba(228,0,43,.18);
+}
+.hit-stamp::before{
+  content:"";position:absolute;inset:-2px;
+  border:1px dashed rgba(228,0,43,.55);pointer-events:none;
+}
+.hit-stamp .dot{
+  display:block;font-size:9px;letter-spacing:.22em;
+  margin-top:4px;color:var(--red-deep);opacity:.8;
+}
+@media (max-width:800px){.hit-stamp{top:-10px;right:8px;transform:rotate(-6deg) scale(.88)}}
+
+/* MISS: slight dimming of projection + correction strip */
+.pick[data-state="miss"] .pick-player .player-name{
+  text-decoration:line-through;
+  text-decoration-color:rgba(228,0,43,.55);
+  text-decoration-thickness:3px;
+  text-underline-offset:-6px;
+}
+.pick[data-state="miss"] .pick-body{opacity:.72}
+
+/* ACTUAL PICK addendum — telegraph / wire report */
+.actual-pick{
+  margin-top:28px;
+  max-width:72ch;
+  background:#0f0f12;
+  color:var(--fg);
+  padding:26px 32px 28px;
+  border:1px solid rgba(255,255,255,.08);
+  position:relative;
+  font-family:"Fraunces",serif;
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
+}
+.actual-pick::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:4px;
+  background:repeating-linear-gradient(90deg,#fff 0 6px,transparent 6px 12px);
+  opacity:.55;
+}
+.actual-pick::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(180deg,transparent 0 26px,rgba(255,255,255,.025) 26px 27px),
+    radial-gradient(circle at 95% 8%,rgba(228,0,43,.12),transparent 35%);
+}
+.actual-head{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  font-family:"Oswald",sans-serif;
+  font-weight:700;font-size:13px;letter-spacing:.28em;
+  color:var(--gold-bright);margin-bottom:16px;text-transform:uppercase;
+  position:relative;z-index:1;
+}
+.actual-head::before{
+  content:"●";color:var(--red);font-size:10px;
+}
+.actual-head .revised-stamp{
+  display:inline-block;
+  padding:4px 10px;
+  border:2px solid var(--red);color:var(--red);
+  font-size:11px;letter-spacing:.3em;
+  transform:rotate(-3deg);
+  background:rgba(228,0,43,.08);
+  margin-left:auto;
+}
+.actual-head .wire-ts{
+  font-family:"JetBrains Mono",monospace;
+  font-size:10px;letter-spacing:.16em;
+  color:var(--fg-muted);font-weight:400;
+}
+.actual-body{
+  display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;
+  position:relative;z-index:1;
+}
+.actual-body .ap-logo-wrap{
+  width:74px;height:74px;
+  background:#191920;
+  border:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  padding:8px;
+}
+.actual-body .ap-logo-wrap img{width:100%;height:100%;object-fit:contain}
+.actual-body .ap-name{
+  font-family:"Barlow Condensed",sans-serif;font-weight:700;
+  font-size:clamp(30px,4vw,46px);line-height:1;letter-spacing:-.005em;
+  color:var(--fg);text-transform:uppercase;
+}
+.actual-body .ap-meta{
+  margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;
+  font-family:"Oswald",sans-serif;font-size:11px;letter-spacing:.22em;
+  color:var(--fg-dim);text-transform:uppercase;
+}
+.actual-body .ap-meta span{
+  padding:5px 10px;border:1px solid rgba(255,255,255,.14);
+}
+.actual-body .ap-meta .ap-hit{background:rgba(105,190,40,.15);border-color:rgba(105,190,40,.6);color:#aee48c}
+.actual-body .ap-meta .ap-miss{background:rgba(228,0,43,.12);border-color:rgba(228,0,43,.55);color:#ffb2be}
+.actual-footnote{
+  margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);
+  font-family:"Fraunces",serif;font-style:italic;font-size:13px;
+  color:var(--fg-muted);position:relative;z-index:1;
+}
+
+@media (max-width:560px){
+  .actual-body{grid-template-columns:1fr}
+  .actual-body .ap-logo-wrap{width:58px;height:58px}
+  .actual-head .revised-stamp{margin-left:0;margin-top:6px}
+}
+
+/* TRADE BANNER: correction/confirmation state */
+.trade[data-trade-state="confirmed"] .trade-inner{
+  background:linear-gradient(90deg,#123d1e 0%,#0b2a15 100%);
+  box-shadow:0 6px 20px rgba(105,190,40,.15);
+}
+.trade[data-trade-state="confirmed"] .trade-inner .label{background:#69BE28;color:#000}
+.trade[data-trade-state="miss"] .trade-inner{
+  background:linear-gradient(90deg,#2a2a2a 0%,#151515 100%);
+  box-shadow:none;
+}
+.trade[data-trade-state="miss"] .trade-inner .label{background:#555;letter-spacing:.2em}
+.trade-actual{
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;
+  color:var(--gold-bright);margin-left:10px;text-transform:none;
+}
+
 /* =========== RESPONSIVE =========== */
 @media (max-width:900px){
   .intro{grid-template-columns:1fr;gap:18px;padding:48px 24px 24px}
@@ -613,6 +886,13 @@ footer{
   .hero{padding:56px 24px 48px}
   .round-banner{padding:0 24px}
   .trade{padding:0 24px}
+  .scoreboard{grid-template-columns:1fr;padding:0 24px}
+  .scoreboard .cell{border-right:0;border-bottom:1px solid var(--rule)}
+  .scoreboard .cell:last-child{border-bottom:0}
+  .status-bar{font-size:10px;gap:10px;padding:8px 12px}
+  .status-bar .sb-sync{display:none}
+  .status-bar .sb-dismiss{display:none}
+  .pick[data-state="on-clock"]::after{display:none}
 }
 @media (max-width:560px){
   .pick-num{font-size:88px}
@@ -763,6 +1043,26 @@ footer{
   </div>
 </section>
 
+<!-- ========================= LIVE SCOREBOARD ========================= -->
+<section class="scoreboard" id="scoreboard" aria-live="polite">
+  <div class="cell off" data-sb="state">
+    <div class="kick">Draft Status</div>
+    <div class="big" data-sb="state-label">AWAITING KICKOFF</div>
+    <div class="sub" data-sb="state-sub">Live feed standing by.</div>
+  </div>
+  <div class="cell" data-sb="accuracy">
+    <div class="kick">SSS Accuracy</div>
+    <div class="big" data-sb="score"><span data-sb="score-hits">0</span><small>of <span data-sb="score-total">0</span></small><em data-sb="score-pct">-</em></div>
+    <div class="sub">Hits on projected player at each slot.</div>
+    <div class="sss-accuracy-bar"><i data-sb="score-bar" style="width:0%"></i></div>
+  </div>
+  <div class="cell" data-sb="on-clock">
+    <div class="kick">On the Clock</div>
+    <div class="big" data-sb="clock-team">-</div>
+    <div class="sub" data-sb="clock-sub">Pick &nbsp;<span data-sb="clock-num">-</span></div>
+  </div>
+</section>
+
 <!-- ========================= INTRO ========================= -->
 <section class="intro">
   <aside class="intro-side">
@@ -786,7 +1086,7 @@ footer{
 <main class="board">
 
 <!-- ============== PICK 1 · LV · MENDOZA ============== -->
-<article class="pick reveal" id="pick-1" style="--team:#000000">
+<article class="pick reveal" id="pick-1" style="--team:#000000" data-pick="1" data-projected-player="Fernando Mendoza" data-projected-team="LV" data-projected-position="QB" data-projected-college="Indiana">
   <div class="pick-id">
     <div class="pick-num">01</div>
     <div class="pick-team">
@@ -817,7 +1117,7 @@ footer{
 </article>
 
 <!-- ============== PICK 2 · NYJ · REESE ============== -->
-<article class="pick reveal" id="pick-2" style="--team:#125740">
+<article class="pick reveal" id="pick-2" style="--team:#125740" data-pick="2" data-projected-player="Arvell Reese" data-projected-team="NYJ" data-projected-position="OLB" data-projected-college="Ohio State">
   <div class="pick-id">
     <div class="pick-num">02</div>
     <div class="pick-team">
@@ -848,7 +1148,7 @@ footer{
 </article>
 
 <!-- ============== TRADE · ARI ↔ NYG ============== -->
-<div class="trade reveal">
+<div class="trade reveal" data-trade-pick="3" data-trade-orig="ARI">
   <div class="trade-inner">
     <div class="label">★ TRADE ALERT</div>
     <div class="body"><strong>ARIZONA</strong> trades with <strong>NY GIANTS</strong> · giving up Pick #3 to acquire Picks #5, #37, and a 2027 6<sup>th</sup> Rd Pick</div>
@@ -856,7 +1156,7 @@ footer{
 </div>
 
 <!-- ============== PICK 3 · NYG · LOVE ============== -->
-<article class="pick reveal" id="pick-3" style="--team:#0B2265">
+<article class="pick reveal" id="pick-3" style="--team:#0B2265" data-pick="3" data-projected-player="Jeremiyah Love" data-projected-team="NYG" data-projected-position="RB" data-projected-college="Notre Dame" data-projected-trade-from="ARI">
   <div class="pick-id">
     <div class="pick-num">03</div>
     <div class="pick-team">
@@ -887,7 +1187,7 @@ footer{
 </article>
 
 <!-- ============== PICK 4 · TEN · BAILEY ============== -->
-<article class="pick reveal" id="pick-4" style="--team:#4B92DB">
+<article class="pick reveal" id="pick-4" style="--team:#4B92DB" data-pick="4" data-projected-player="David Bailey" data-projected-team="TEN" data-projected-position="OLB" data-projected-college="Texas Tech">
   <div class="pick-id">
     <div class="pick-num">04</div>
     <div class="pick-team">
@@ -918,7 +1218,7 @@ footer{
 </article>
 
 <!-- ============== TRADE · NYG ↔ ARI ============== -->
-<div class="trade reveal">
+<div class="trade reveal" data-trade-pick="5" data-trade-orig="NYG">
   <div class="trade-inner">
     <div class="label">★ TRADE ALERT</div>
     <div class="body"><strong>NY GIANTS</strong> trade with <strong>ARIZONA</strong> · giving up Picks #5, #37, and a 2027 6<sup>th</sup> Rd Pick to acquire Pick #3</div>
@@ -926,7 +1226,7 @@ footer{
 </div>
 
 <!-- ============== PICK 5 · ARI · MAUIGOA ============== -->
-<article class="pick reveal" id="pick-5" style="--team:#97233F">
+<article class="pick reveal" id="pick-5" style="--team:#97233F" data-pick="5" data-projected-player="Francis Mauigoa" data-projected-team="ARI" data-projected-position="OT" data-projected-college="Miami (FL)" data-projected-trade-from="NYG">
   <div class="pick-id">
     <div class="pick-num">05</div>
     <div class="pick-team">
@@ -957,7 +1257,7 @@ footer{
 </article>
 
 <!-- ============== PICK 6 · CLE · FANO ============== -->
-<article class="pick reveal" id="pick-6" style="--team:#FF3C00">
+<article class="pick reveal" id="pick-6" style="--team:#FF3C00" data-pick="6" data-projected-player="Spencer Fano" data-projected-team="CLE" data-projected-position="OL" data-projected-college="Utah">
   <div class="pick-id">
     <div class="pick-num">06</div>
     <div class="pick-team">
@@ -988,7 +1288,7 @@ footer{
 </article>
 
 <!-- ============== PICK 7 · WSH · DOWNS ============== -->
-<article class="pick reveal" id="pick-7" style="--team:#FFB612">
+<article class="pick reveal" id="pick-7" style="--team:#FFB612" data-pick="7" data-projected-player="Caleb Downs" data-projected-team="WSH" data-projected-position="S" data-projected-college="Ohio State">
   <div class="pick-id">
     <div class="pick-num">07</div>
     <div class="pick-team">
@@ -1019,7 +1319,7 @@ footer{
 </article>
 
 <!-- ============== PICK 8 · NO · BAIN ============== -->
-<article class="pick reveal" id="pick-8" style="--team:#D3BC8D">
+<article class="pick reveal" id="pick-8" style="--team:#D3BC8D" data-pick="8" data-projected-player="Rueben Bain Jr." data-projected-team="NO" data-projected-position="DE" data-projected-college="Miami (FL)">
   <div class="pick-id">
     <div class="pick-num">08</div>
     <div class="pick-team">
@@ -1050,7 +1350,7 @@ footer{
 </article>
 
 <!-- ============== PICK 9 · KC · DELANE ============== -->
-<article class="pick reveal" id="pick-9" style="--team:#E31837">
+<article class="pick reveal" id="pick-9" style="--team:#E31837" data-pick="9" data-projected-player="Mansoor Delane" data-projected-team="KC" data-projected-position="CB" data-projected-college="LSU">
   <div class="pick-id">
     <div class="pick-num">09</div>
     <div class="pick-team">
@@ -1081,7 +1381,7 @@ footer{
 </article>
 
 <!-- ============== PICK 10 · NYG · STYLES ============== -->
-<article class="pick reveal" id="pick-10" style="--team:#A71930">
+<article class="pick reveal" id="pick-10" style="--team:#A71930" data-pick="10" data-projected-player="Sonny Styles" data-projected-team="NYG" data-projected-position="LB" data-projected-college="Ohio State">
   <div class="pick-id">
     <div class="pick-num">10</div>
     <div class="pick-team">
@@ -1118,7 +1418,7 @@ footer{
 </div>
 
 <!-- ============== PICK 11 · MIA · PROCTOR ============== -->
-<article class="pick reveal" id="pick-11" style="--team:#008E97">
+<article class="pick reveal" id="pick-11" style="--team:#008E97" data-pick="11" data-projected-player="Kadyn Proctor" data-projected-team="MIA" data-projected-position="OT" data-projected-college="Alabama">
   <div class="pick-id">
     <div class="pick-num">11</div>
     <div class="pick-team">
@@ -1149,7 +1449,7 @@ footer{
 </article>
 
 <!-- ============== PICK 12 · DAL · FAULK ============== -->
-<article class="pick reveal" id="pick-12" style="--team:#003594">
+<article class="pick reveal" id="pick-12" style="--team:#003594" data-pick="12" data-projected-player="Keldric Faulk" data-projected-team="DAL" data-projected-position="DE" data-projected-college="Auburn">
   <div class="pick-id">
     <div class="pick-num">12</div>
     <div class="pick-team">
@@ -1180,7 +1480,7 @@ footer{
 </article>
 
 <!-- ============== PICK 13 · LAR · FREELING ============== -->
-<article class="pick reveal" id="pick-13" style="--team:#FFA300">
+<article class="pick reveal" id="pick-13" style="--team:#FFA300" data-pick="13" data-projected-player="Monroe Freeling" data-projected-team="LAR" data-projected-position="OT" data-projected-college="Georgia">
   <div class="pick-id">
     <div class="pick-num">13</div>
     <div class="pick-team">
@@ -1211,7 +1511,7 @@ footer{
 </article>
 
 <!-- ============== PICK 14 · BAL · IOANE ============== -->
-<article class="pick reveal" id="pick-14" style="--team:#241773">
+<article class="pick reveal" id="pick-14" style="--team:#241773" data-pick="14" data-projected-player="Olaivavega Ioane" data-projected-team="BAL" data-projected-position="OG" data-projected-college="Penn State">
   <div class="pick-id">
     <div class="pick-num">14</div>
     <div class="pick-team">
@@ -1242,7 +1542,7 @@ footer{
 </article>
 
 <!-- ============== PICK 15 · TB · MESIDOR ============== -->
-<article class="pick reveal" id="pick-15" style="--team:#D50A0A">
+<article class="pick reveal" id="pick-15" style="--team:#D50A0A" data-pick="15" data-projected-player="Akheem Mesidor" data-projected-team="TB" data-projected-position="DE" data-projected-college="Miami (FL)">
   <div class="pick-id">
     <div class="pick-num">15</div>
     <div class="pick-team">
@@ -1273,7 +1573,7 @@ footer{
 </article>
 
 <!-- ============== PICK 16 · NYJ · TATE ============== -->
-<article class="pick reveal" id="pick-16" style="--team:#125740">
+<article class="pick reveal" id="pick-16" style="--team:#125740" data-pick="16" data-projected-player="Carnell Tate" data-projected-team="NYJ" data-projected-position="WR" data-projected-college="Ohio State">
   <div class="pick-id">
     <div class="pick-num">16</div>
     <div class="pick-team">
@@ -1304,7 +1604,7 @@ footer{
 </article>
 
 <!-- ============== TRADE · DET ↔ CAR ============== -->
-<div class="trade reveal">
+<div class="trade reveal" data-trade-pick="17" data-trade-orig="DET">
   <div class="trade-inner">
     <div class="label">★ TRADE ALERT</div>
     <div class="body"><strong>DETROIT</strong> trades with <strong>CAROLINA</strong> · giving up Pick #17 to acquire Picks #19, #158 and a 2027 4<sup>th</sup> Rd Pick</div>
@@ -1312,7 +1612,7 @@ footer{
 </div>
 
 <!-- ============== PICK 17 · CAR · THIENEMAN ============== -->
-<article class="pick reveal" id="pick-17" style="--team:#0085CA">
+<article class="pick reveal" id="pick-17" style="--team:#0085CA" data-pick="17" data-projected-player="Dillon Thieneman" data-projected-team="CAR" data-projected-position="S" data-projected-college="Oregon" data-projected-trade-from="DET">
   <div class="pick-id">
     <div class="pick-num">17</div>
     <div class="pick-team">
@@ -1343,7 +1643,7 @@ footer{
 </article>
 
 <!-- ============== PICK 18 · MIN · WOODS ============== -->
-<article class="pick reveal" id="pick-18" style="--team:#4F2683">
+<article class="pick reveal" id="pick-18" style="--team:#4F2683" data-pick="18" data-projected-player="Peter Woods" data-projected-team="MIN" data-projected-position="DT" data-projected-college="Clemson">
   <div class="pick-id">
     <div class="pick-num">18</div>
     <div class="pick-team">
@@ -1374,7 +1674,7 @@ footer{
 </article>
 
 <!-- ============== TRADE · CAR ↔ DET ============== -->
-<div class="trade reveal">
+<div class="trade reveal" data-trade-pick="19" data-trade-orig="CAR">
   <div class="trade-inner">
     <div class="label">★ TRADE ALERT</div>
     <div class="body"><strong>CAROLINA</strong> trades with <strong>DETROIT</strong> · giving up Picks #19, #158 and a 2027 4<sup>th</sup> Rd Pick to acquire Pick #17</div>
@@ -1382,7 +1682,7 @@ footer{
 </div>
 
 <!-- ============== PICK 19 · DET · MILLER ============== -->
-<article class="pick reveal" id="pick-19" style="--team:#0076B6">
+<article class="pick reveal" id="pick-19" style="--team:#0076B6" data-pick="19" data-projected-player="Blake Miller" data-projected-team="DET" data-projected-position="OT" data-projected-college="Clemson" data-projected-trade-from="CAR">
   <div class="pick-id">
     <div class="pick-num">19</div>
     <div class="pick-team">
@@ -1413,7 +1713,7 @@ footer{
 </article>
 
 <!-- ============== TRADE · DAL ↔ CLE ============== -->
-<div class="trade reveal">
+<div class="trade reveal" data-trade-pick="20" data-trade-orig="DAL">
   <div class="trade-inner">
     <div class="label">★ TRADE ALERT</div>
     <div class="body"><strong>DALLAS</strong> trades with <strong>CLEVELAND</strong> · giving up Pick #20 to acquire Picks #24, #70 and a 2027 5<sup>th</sup> Rd Pick</div>
@@ -1421,7 +1721,7 @@ footer{
 </div>
 
 <!-- ============== PICK 20 · CLE · LEMON ============== -->
-<article class="pick reveal" id="pick-20" style="--team:#FF3C00">
+<article class="pick reveal" id="pick-20" style="--team:#FF3C00" data-pick="20" data-projected-player="Makai Lemon" data-projected-team="CLE" data-projected-position="WR" data-projected-college="USC" data-projected-trade-from="DAL">
   <div class="pick-id">
     <div class="pick-num">20</div>
     <div class="pick-team">
@@ -1458,7 +1758,7 @@ footer{
 </div>
 
 <!-- ============== TRADE · PIT ↔ KC ============== -->
-<div class="trade reveal">
+<div class="trade reveal" data-trade-pick="21" data-trade-orig="PIT">
   <div class="trade-inner">
     <div class="label">★ TRADE ALERT</div>
     <div class="body"><strong>PITTSBURGH</strong> trades with <strong>KC</strong> · giving up Pick #21 to acquire Picks #29, #40 and a 2027 3<sup>rd</sup> Rd Pick</div>
@@ -1466,7 +1766,7 @@ footer{
 </div>
 
 <!-- ============== PICK 21 · KC · SADIQ ============== -->
-<article class="pick reveal" id="pick-21" style="--team:#FFB81C">
+<article class="pick reveal" id="pick-21" style="--team:#FFB81C" data-pick="21" data-projected-player="Kenyon Sadiq" data-projected-team="KC" data-projected-position="TE" data-projected-college="Oregon" data-projected-trade-from="PIT">
   <div class="pick-id">
     <div class="pick-num">21</div>
     <div class="pick-team">
@@ -1497,7 +1797,7 @@ footer{
 </article>
 
 <!-- ============== PICK 22 · LAC · CONCEPCION ============== -->
-<article class="pick reveal" id="pick-22" style="--team:#0080C6">
+<article class="pick reveal" id="pick-22" style="--team:#0080C6" data-pick="22" data-projected-player="KC Concepcion" data-projected-team="LAC" data-projected-position="WR" data-projected-college="Texas A&amp;M">
   <div class="pick-id">
     <div class="pick-num">22</div>
     <div class="pick-team">
@@ -1528,7 +1828,7 @@ footer{
 </article>
 
 <!-- ============== PICK 23 · PHI · TYSON ============== -->
-<article class="pick reveal" id="pick-23" style="--team:#004C54">
+<article class="pick reveal" id="pick-23" style="--team:#004C54" data-pick="23" data-projected-player="Jordyn Tyson" data-projected-team="PHI" data-projected-position="WR" data-projected-college="Arizona State">
   <div class="pick-id">
     <div class="pick-num">23</div>
     <div class="pick-team">
@@ -1559,7 +1859,7 @@ footer{
 </article>
 
 <!-- ============== TRADE · CLE ↔ DAL ============== -->
-<div class="trade reveal">
+<div class="trade reveal" data-trade-pick="24" data-trade-orig="CLE">
   <div class="trade-inner">
     <div class="label">★ TRADE ALERT</div>
     <div class="body"><strong>CLEVELAND</strong> trades with <strong>DALLAS</strong> · giving up Picks #24, #70 and a 2027 5<sup>th</sup> Rd Pick to acquire Pick #20</div>
@@ -1567,7 +1867,7 @@ footer{
 </div>
 
 <!-- ============== PICK 24 · DAL · McCOY ============== -->
-<article class="pick reveal" id="pick-24" style="--team:#869397">
+<article class="pick reveal" id="pick-24" style="--team:#869397" data-pick="24" data-projected-player="Jermod McCoy" data-projected-team="DAL" data-projected-position="CB" data-projected-college="Tennessee" data-projected-trade-from="CLE">
   <div class="pick-id">
     <div class="pick-num">24</div>
     <div class="pick-team">
@@ -1598,7 +1898,7 @@ footer{
 </article>
 
 <!-- ============== PICK 25 · CHI · IHEANACHOR ============== -->
-<article class="pick reveal" id="pick-25" style="--team:#C83803">
+<article class="pick reveal" id="pick-25" style="--team:#C83803" data-pick="25" data-projected-player="Max Iheanachor" data-projected-team="CHI" data-projected-position="OT" data-projected-college="Arizona State">
   <div class="pick-id">
     <div class="pick-num">25</div>
     <div class="pick-team">
@@ -1629,7 +1929,7 @@ footer{
 </article>
 
 <!-- ============== PICK 26 · BUF · LOMU ============== -->
-<article class="pick reveal" id="pick-26" style="--team:#C60C30">
+<article class="pick reveal" id="pick-26" style="--team:#C60C30" data-pick="26" data-projected-player="Caleb Lomu" data-projected-team="BUF" data-projected-position="OT" data-projected-college="Utah">
   <div class="pick-id">
     <div class="pick-num">26</div>
     <div class="pick-team">
@@ -1660,7 +1960,7 @@ footer{
 </article>
 
 <!-- ============== PICK 27 · SF · McDONALD ============== -->
-<article class="pick reveal" id="pick-27" style="--team:#B3995D">
+<article class="pick reveal" id="pick-27" style="--team:#B3995D" data-pick="27" data-projected-player="Kayden McDonald" data-projected-team="SF" data-projected-position="DT" data-projected-college="Ohio State">
   <div class="pick-id">
     <div class="pick-num">27</div>
     <div class="pick-team">
@@ -1691,7 +1991,7 @@ footer{
 </article>
 
 <!-- ============== PICK 28 · HOU · PREGNON ============== -->
-<article class="pick reveal" id="pick-28" style="--team:#A71930">
+<article class="pick reveal" id="pick-28" style="--team:#A71930" data-pick="28" data-projected-player="Emmanuel Pregnon" data-projected-team="HOU" data-projected-position="OG" data-projected-college="Oregon">
   <div class="pick-id">
     <div class="pick-num">28</div>
     <div class="pick-team">
@@ -1722,7 +2022,7 @@ footer{
 </article>
 
 <!-- ============== TRADE · KC ↔ PIT ============== -->
-<div class="trade reveal">
+<div class="trade reveal" data-trade-pick="29" data-trade-orig="KC">
   <div class="trade-inner">
     <div class="label">★ TRADE ALERT</div>
     <div class="body"><strong>KC</strong> trades with <strong>PITTSBURGH</strong> · giving up Picks #29, #40 and a 2027 3<sup>rd</sup> Rd Pick to acquire Pick #21</div>
@@ -1730,7 +2030,7 @@ footer{
 </div>
 
 <!-- ============== PICK 29 · PIT · PARKER ============== -->
-<article class="pick reveal" id="pick-29" style="--team:#FFB612">
+<article class="pick reveal" id="pick-29" style="--team:#FFB612" data-pick="29" data-projected-player="T.J. Parker" data-projected-team="PIT" data-projected-position="DE" data-projected-college="Clemson" data-projected-trade-from="KC">
   <div class="pick-id">
     <div class="pick-num">29</div>
     <div class="pick-team">
@@ -1761,7 +2061,7 @@ footer{
 </article>
 
 <!-- ============== PICK 30 · MIA · HOOD ============== -->
-<article class="pick reveal" id="pick-30" style="--team:#FC4C02">
+<article class="pick reveal" id="pick-30" style="--team:#FC4C02" data-pick="30" data-projected-player="Colton Hood" data-projected-team="MIA" data-projected-position="CB" data-projected-college="Tennessee">
   <div class="pick-id">
     <div class="pick-num">30</div>
     <div class="pick-team">
@@ -1792,7 +2092,7 @@ footer{
 </article>
 
 <!-- ============== PICK 31 · NE · HOWELL ============== -->
-<article class="pick reveal" id="pick-31" style="--team:#C60C30">
+<article class="pick reveal" id="pick-31" style="--team:#C60C30" data-pick="31" data-projected-player="Cashius Howell" data-projected-team="NE" data-projected-position="OLB" data-projected-college="Texas A&amp;M">
   <div class="pick-id">
     <div class="pick-num">31</div>
     <div class="pick-team">
@@ -1823,7 +2123,7 @@ footer{
 </article>
 
 <!-- ============== PICK 32 · SEA · YOUNG ============== -->
-<article class="pick reveal" id="pick-32" style="--team:#69BE28">
+<article class="pick reveal" id="pick-32" style="--team:#69BE28" data-pick="32" data-projected-player="Zion Young" data-projected-team="SEA" data-projected-position="DE" data-projected-college="Missouri">
   <div class="pick-id">
     <div class="pick-num">32</div>
     <div class="pick-team">
@@ -1865,6 +2165,15 @@ footer{
   </div>
 </footer>
 
+<!-- ========================= STATUS BAR ========================= -->
+<div class="status-bar state-idle" id="statusBar" role="status" aria-live="polite">
+  <span class="sb-live" data-sb-bar="live">AWAITING</span>
+  <span class="sb-msg" data-sb-bar="msg">Connecting to draft feed...</span>
+  <span class="sb-sync" data-sb-bar="sync">LAST SYNC: never</span>
+  <button class="sb-refresh" type="button" id="sbRefresh" title="Refresh now">REFRESH</button>
+  <button class="sb-dismiss" type="button" id="sbDismiss" title="Hide status bar">HIDE</button>
+</div>
+
 <script>
 /* Scroll reveal */
 const io=new IntersectionObserver((entries)=>{
@@ -1893,6 +2202,481 @@ window.addEventListener('scroll',()=>{
   navLinks.forEach(a=>a.style.color='');
   if(active){active.style.color='#fff';active.style.background='rgba(228,0,43,.4)'}
 },{passive:true});
+
+/* ============================================================
+   LIVE DRAFT WIRING
+   Endpoint: ESPN undocumented public draft API
+   https://site.web.api.espn.com/apis/site/v2/sports/football/nfl/draft?season=2026
+   ============================================================ */
+(function(){
+  "use strict";
+  const CFG = {
+    endpoint: "https://site.web.api.espn.com/apis/site/v2/sports/football/nfl/draft?season=2026&region=us&lang=en",
+    pollMs: 20000,
+    timeoutMs: 9000,
+    cacheKey: "sss-draft-cache-v1",
+    round: 1,
+    totalPicks: 32
+  };
+
+  /* ------------ helpers ------------ */
+  const normName = s => (s||"")
+    .toLowerCase()
+    .normalize("NFD").replace(/[̀-ͯ]/g,"")
+    .replace(/\b(?:jr|sr|ii|iii|iv|v)\b\.?/g,"")
+    .replace(/[^\w\s]/g,"")
+    .replace(/\s+/g," ")
+    .trim();
+
+  const fmtRel = ms => {
+    if(!ms) return "never";
+    const s = Math.max(1, Math.round((Date.now()-ms)/1000));
+    if(s < 60) return s+"s ago";
+    const m = Math.floor(s/60);
+    if(m < 60) return m+"m "+(s%60)+"s ago";
+    const h = Math.floor(m/60);
+    return h+"h "+(m%60)+"m ago";
+  };
+
+  const loadCache = () => {
+    try { const r = localStorage.getItem(CFG.cacheKey); return r ? JSON.parse(r) : null; }
+    catch(e){ return null; }
+  };
+  const saveCache = (data) => {
+    try { localStorage.setItem(CFG.cacheKey, JSON.stringify({t:Date.now(), data})); }
+    catch(e){ /* quota or disabled */ }
+  };
+
+  /* ------------ state ------------ */
+  let ctrl = null;
+  let timer = null;
+  let backoffMs = CFG.pollMs;
+  let lastSyncAt = 0;
+  let lastError = null;
+  const teamMap = Object.create(null);      // id -> ABBR
+  const teamByAbbr = Object.create(null);   // ABBR -> {name, logo}
+  const posMap = Object.create(null);       // id -> ABBR
+
+  /* ------------ DOM ------------ */
+  const pickEls = Array.from(document.querySelectorAll("[data-pick]"))
+    .sort((a,b) => (+a.dataset.pick) - (+b.dataset.pick));
+  const tradeEls = Array.from(document.querySelectorAll("[data-trade-pick]"));
+  const statusBar = document.getElementById("statusBar");
+  const sbMsg  = document.querySelector('[data-sb-bar="msg"]');
+  const sbSync = document.querySelector('[data-sb-bar="sync"]');
+  const sbLive = document.querySelector('[data-sb-bar="live"]');
+  const refreshBtn = document.getElementById("sbRefresh");
+  const dismissBtn = document.getElementById("sbDismiss");
+  const scoreState     = document.querySelector('[data-sb="state-label"]');
+  const scoreStateSub  = document.querySelector('[data-sb="state-sub"]');
+  const scoreHits      = document.querySelector('[data-sb="score-hits"]');
+  const scoreTotal     = document.querySelector('[data-sb="score-total"]');
+  const scorePct       = document.querySelector('[data-sb="score-pct"]');
+  const scoreBar       = document.querySelector('[data-sb="score-bar"]');
+  const clockTeam      = document.querySelector('[data-sb="clock-team"]');
+  const clockNum       = document.querySelector('[data-sb="clock-num"]');
+  const clockSub       = document.querySelector('[data-sb="clock-sub"]');
+  const stateCell      = document.querySelector('[data-sb="state"]');
+  const clockCell      = document.querySelector('[data-sb="on-clock"]');
+  document.body.classList.add("has-status");
+
+  /* ------------ normalize payload ------------ */
+  function normalize(payload) {
+    if(!payload) return null;
+    teamByAbbr.__ = null; // just to keep ref live
+    // team / position lookups (rebuild each normalize in case ESPN tweaks order)
+    for(const t of (payload.teams||[])) {
+      teamMap[t.id] = t.abbreviation;
+      teamByAbbr[t.abbreviation] = {
+        name: t.displayName || t.shortDisplayName || t.abbreviation,
+        logo: t.logo || null,
+        id: t.id
+      };
+    }
+    for(const p of (payload.positions||[])) {
+      posMap[p.id] = p.abbreviation;
+    }
+    const round1 = (payload.picks||[]).filter(p => p.round === CFG.round);
+    const byPick = Object.create(null);
+    for(const p of round1) {
+      byPick[p.overall] = {
+        pick: p.overall,
+        status: p.status,
+        traded: !!p.traded,
+        tradeNote: p.tradeNote || "",
+        teamAbbr: teamMap[p.teamId] || null,
+        teamId: p.teamId,
+        athlete: p.athlete ? {
+          name: p.athlete.displayName || "",
+          posId: (p.athlete.position||{}).id,
+          posAbbr: posMap[(p.athlete.position||{}).id] || "",
+          college: (p.athlete.team||{}).shortDisplayName || (p.athlete.team||{}).location || "",
+          collegeAbbr: (p.athlete.team||{}).abbreviation || "",
+          headshot: (p.athlete.headshot||{}).href || null
+        } : null
+      };
+    }
+    return {
+      statusName: (payload.status||{}).name || "",
+      stateCode: (payload.status||{}).state || "",
+      currentPickId: (payload.current||{}).pickId || null,
+      byPick,
+      raw: payload
+    };
+  }
+
+  /* ------------ fetch ------------ */
+  async function fetchOnce() {
+    if(ctrl) ctrl.abort();
+    ctrl = new AbortController();
+    const to = setTimeout(()=>ctrl.abort(), CFG.timeoutMs);
+    try {
+      const res = await fetch(CFG.endpoint, {signal: ctrl.signal, cache:"no-store"});
+      clearTimeout(to);
+      if(!res.ok) throw new Error("HTTP "+res.status);
+      const json = await res.json();
+      saveCache(json);
+      lastSyncAt = Date.now();
+      lastError = null;
+      backoffMs = CFG.pollMs;
+      return normalize(json);
+    } catch(err) {
+      clearTimeout(to);
+      lastError = (err && err.message) || String(err);
+      console.warn("[SSS-live] fetch failed:", lastError);
+      backoffMs = Math.min(backoffMs * 1.7, 120000);
+      return null;
+    }
+  }
+
+  function scheduleNext(draft) {
+    if(timer) clearTimeout(timer);
+    // stop polling once all 32 are SELECTION_MADE
+    if(draft && draft.statusName === "COMPLETED") return;
+    if(draft) {
+      const allIn = Object.values(draft.byPick).length >= CFG.totalPicks &&
+        Object.values(draft.byPick).every(p => p.status === "SELECTION_MADE");
+      if(allIn) return;
+    }
+    timer = setTimeout(tick, backoffMs);
+  }
+
+  async function tick() {
+    setSync(true);
+    const data = await fetchOnce();
+    setSync(false);
+    const toRender = data || (loadCache() && normalize(loadCache().data));
+    if(toRender) renderAll(toRender);
+    else updateChrome(null);
+    scheduleNext(toRender);
+  }
+
+  /* ------------ render ------------ */
+  function renderAll(draft) {
+    const injected = window.__SSS_FAKE;
+    if(injected && typeof injected === "object") {
+      for(const k of Object.keys(injected)) {
+        const n = +k;
+        if(draft.byPick[n]) Object.assign(draft.byPick[n], injected[k]);
+        else draft.byPick[n] = injected[k];
+      }
+    }
+    for(const el of pickEls) renderPick(el, draft);
+    for(const el of tradeEls) renderTrade(el, draft);
+    updateChrome(draft);
+  }
+
+  function renderPick(el, draft) {
+    const pickId = +el.dataset.pick;
+    const p = draft.byPick[pickId];
+    const projected = {
+      player: el.dataset.projectedPlayer || "",
+      team: (el.dataset.projectedTeam || "").toUpperCase(),
+      pos: el.dataset.projectedPosition || "",
+      college: el.dataset.projectedCollege || "",
+      tradeFrom: (el.dataset.projectedTradeFrom || "").toUpperCase()
+    };
+
+    // clean prior dynamic content (idempotent)
+    el.querySelectorAll(".clock-badge,.hit-stamp,.actual-pick").forEach(n => n.remove());
+
+    let state = "pending";
+    if(p && p.athlete && p.athlete.name) {
+      const hit = normName(p.athlete.name) === normName(projected.player);
+      state = hit ? "hit" : "miss";
+    } else if(p && (p.status === "ON_THE_CLOCK" || p.status === "PICK_IS_IN") &&
+              draft.currentPickId === pickId) {
+      state = "on-clock";
+    }
+    el.setAttribute("data-state", state);
+
+    if(state === "on-clock") {
+      const badge = document.createElement("div");
+      badge.className = "clock-badge";
+      badge.textContent = "ON THE CLOCK";
+      const player = el.querySelector(".pick-player");
+      if(player) player.parentNode.insertBefore(badge, player);
+    }
+
+    if(state === "hit") {
+      const stamp = document.createElement("div");
+      stamp.className = "hit-stamp";
+      stamp.innerHTML = 'Correct Call<span class="dot">SSS / confirmed</span>';
+      const content = el.querySelector(".pick-content");
+      if(content) content.appendChild(stamp);
+    }
+
+    if(state === "miss" && p && p.athlete) {
+      appendActual(el, p, projected);
+    }
+  }
+
+  function appendActual(el, actual, projected) {
+    const a = actual.athlete;
+    const teamAbbr = (actual.teamAbbr || "").toUpperCase();
+    const teamInfo = teamByAbbr[teamAbbr] || {};
+    const logo = teamInfo.logo || ("https://a.espncdn.com/i/teamlogos/nfl/500/" + teamAbbr.toLowerCase() + ".png");
+
+    const teamHit = teamAbbr === projected.team;
+    const posHit  = normToken(a.posAbbr) === normToken(projected.pos) ||
+                    looseposMatch(a.posAbbr, projected.pos);
+    const collegeHit = normName(a.college) === normName(projected.college) ||
+                       normName(a.college).includes(normName(projected.college)) ||
+                       normName(projected.college).includes(normName(a.college));
+
+    const box = document.createElement("aside");
+    box.className = "actual-pick";
+    const wireTime = new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
+    box.innerHTML = `
+      <div class="actual-head">
+        The Real Call
+        <small class="wire-ts">WIRE &middot; ${escapeHtml(wireTime)}</small>
+        <span class="revised-stamp">REVISED</span>
+      </div>
+      <div class="actual-body">
+        <div class="ap-logo-wrap"><img alt="${escapeHtml(teamInfo.name||teamAbbr)}" src="${escapeHtml(logo)}" loading="lazy"></div>
+        <div>
+          <div class="ap-name">${escapeHtml(a.name || "Selection in")}</div>
+          <div class="ap-meta">
+            <span class="${teamHit?"ap-hit":"ap-miss"}">${escapeHtml(teamInfo.name || teamAbbr)}</span>
+            <span class="${posHit?"ap-hit":"ap-miss"}">${escapeHtml(a.posAbbr || "-")}</span>
+            <span class="${collegeHit?"ap-hit":"ap-miss"}">${escapeHtml(a.college || "-")}</span>
+            ${actual.traded ? '<span>' + escapeHtml(actual.tradeNote || "Trade") + '</span>' : ""}
+          </div>
+        </div>
+      </div>
+      <div class="actual-footnote">
+        SSS projected <b>${escapeHtml(projected.player)}</b> (${escapeHtml(projected.pos)}, ${escapeHtml(projected.college)}) to ${escapeHtml(projected.team)}.
+        The projection analysis above remains part of the historical record.
+      </div>
+    `;
+    const content = el.querySelector(".pick-content");
+    if(content) content.appendChild(box);
+  }
+
+  // Loose position equivalence (SSS copy uses OLB/DE/OL, ESPN uses LB/EDGE/OT/OG/C)
+  function looseposMatch(a, b) {
+    if(!a || !b) return false;
+    a = a.toUpperCase(); b = b.toUpperCase();
+    const pairs = [
+      ["EDGE","DE"],["EDGE","OLB"],["LB","OLB"],["LB","ILB"],
+      ["OT","OL"],["OG","OL"],["C","OL"],["CB","DB"],["S","DB"]
+    ];
+    return pairs.some(([x,y])=> (a===x&&b===y)||(a===y&&b===x));
+  }
+  function normToken(s){ return (s||"").toUpperCase().replace(/[^A-Z]/g,""); }
+
+  function renderTrade(el, draft) {
+    const pickId = +el.dataset.tradePick;
+    const origProjected = (el.dataset.tradeOrig || "").toUpperCase();
+    const p = draft.byPick[pickId];
+    el.removeAttribute("data-trade-state");
+    // Remove any prior appended actual notes
+    el.querySelectorAll(".trade-actual").forEach(n=>n.remove());
+    if(!p) return;
+
+    // Compute if actual shows a trade with a matching origin
+    const actualTraded = p.traded;
+    const actualFrom = (p.tradeNote || "").replace(/^from\s+/i,"").trim().toUpperCase();
+    const matchedOrigin = actualTraded && origProjected && actualFrom === origProjected;
+
+    const state = matchedOrigin ? "confirmed" : "miss";
+    el.setAttribute("data-trade-state", state);
+
+    const body = el.querySelector(".trade-inner .body");
+    if(!body) return;
+    const note = document.createElement("span");
+    note.className = "trade-actual";
+    if(actualTraded) {
+      note.textContent = " · ACTUAL: " + (p.teamAbbr||"?") + " picked" + (actualFrom ? " (from "+actualFrom+")" : "");
+    } else if(p.athlete) {
+      note.textContent = " · ACTUAL: no trade · " + (p.teamAbbr||"?") + " kept the slot";
+    } else {
+      note.textContent = " · pending";
+    }
+    body.appendChild(note);
+  }
+
+  /* ------------ chrome (status bar + scoreboard + ticker) ------------ */
+  function updateChrome(draft) {
+    if(!draft) {
+      statusBar.classList.remove("state-complete","state-live");
+      statusBar.classList.add("state-idle");
+      sbLive.textContent = "OFFLINE";
+      sbMsg.innerHTML = lastError ? "Feed unavailable. Showing cached projection." : "Connecting to draft feed...";
+      sbSync.textContent = "LAST SYNC: " + fmtRel(lastSyncAt);
+      return;
+    }
+
+    const picks = Object.values(draft.byPick);
+    const completed = picks.filter(p => p.status === "SELECTION_MADE" && p.athlete);
+    const hits = completed.filter(p => {
+      const el = pickEls.find(e => +e.dataset.pick === p.pick);
+      if(!el) return false;
+      return normName(p.athlete.name) === normName(el.dataset.projectedPlayer);
+    }).length;
+
+    scoreHits.textContent = hits;
+    scoreTotal.textContent = completed.length;
+    const pctVal = completed.length ? Math.round(100 * hits / completed.length) : 0;
+    scorePct.textContent = completed.length ? pctVal + "%" : "-";
+    scoreBar.style.width = pctVal + "%";
+
+    let phase = "LIVE"; // LIVE | COMPLETE | IDLE
+    if(completed.length >= CFG.totalPicks) phase = "COMPLETE";
+    else if(completed.length === 0 && draft.statusName !== "IN_PROGRESS") phase = "IDLE";
+
+    statusBar.classList.remove("state-complete","state-live","state-idle");
+
+    if(phase === "LIVE") {
+      statusBar.classList.add("state-live");
+      sbLive.textContent = "LIVE";
+      scoreState.textContent = "DRAFT IN PROGRESS";
+      scoreStateSub.textContent = "Picks arriving. Updates every 20 seconds.";
+      stateCell.classList.add("on"); stateCell.classList.remove("off");
+    } else if(phase === "COMPLETE") {
+      statusBar.classList.add("state-complete");
+      sbLive.textContent = "COMPLETE";
+      scoreState.textContent = "ROUND 1 COMPLETE";
+      scoreStateSub.textContent = "First round is in the books.";
+      stateCell.classList.remove("on","off");
+    } else {
+      statusBar.classList.add("state-idle");
+      sbLive.textContent = "STANDBY";
+      scoreState.textContent = "AWAITING KICKOFF";
+      scoreStateSub.textContent = "Live feed standing by.";
+      stateCell.classList.add("off"); stateCell.classList.remove("on");
+    }
+
+    // on-the-clock display
+    const currentId = draft.currentPickId;
+    const activePickEl = currentId ? pickEls.find(e => +e.dataset.pick === currentId) : null;
+    const projectedTeamAtCurrent = activePickEl ? activePickEl.dataset.projectedTeam : null;
+    const currentActual = currentId ? draft.byPick[currentId] : null;
+    const currentActualAbbr = currentActual ? (currentActual.teamAbbr || "") : "";
+    const currentTeam = currentActualAbbr || projectedTeamAtCurrent || "";
+    if(phase === "LIVE" && currentId) {
+      clockCell.classList.add("on"); clockCell.classList.remove("off");
+      const info = teamByAbbr[currentTeam] || {};
+      clockTeam.textContent = info.name || currentTeam || "-";
+      clockNum.textContent = currentId;
+      clockSub.innerHTML = "Pick &nbsp;<span data-sb=\"clock-num\">" + currentId + "</span>";
+      sbMsg.innerHTML = "PICK <b>" + currentId + "</b> &middot; " + escapeHtml(info.name || currentTeam || "") + " on the clock";
+    } else if(phase === "COMPLETE") {
+      clockCell.classList.remove("on"); clockCell.classList.add("off");
+      clockTeam.textContent = "ALL IN";
+      clockSub.textContent = "All 32 first-round picks submitted.";
+      sbMsg.innerHTML = "Round 1 complete &middot; " + hits + " of " + completed.length + " SSS projections hit";
+    } else {
+      clockCell.classList.add("off"); clockCell.classList.remove("on");
+      clockTeam.textContent = "-";
+      clockNum.textContent = "-";
+      clockSub.innerHTML = "Pick &nbsp;<span data-sb=\"clock-num\">-</span>";
+      sbMsg.innerHTML = "Awaiting first pick...";
+    }
+    sbSync.textContent = "LAST SYNC: " + fmtRel(lastSyncAt);
+    updateTickerLive(draft, phase, currentId, currentTeam);
+  }
+
+  /* inject a live message into the existing ticker track */
+  function updateTickerLive(draft, phase, currentId, currentTeam) {
+    const track = document.querySelector(".ticker-track");
+    if(!track) return;
+    let live = track.querySelector(".ticker-live");
+    if(!live) {
+      live = document.createElement("span");
+      live.className = "ticker-live";
+      live.style.color = "#ffe57a";
+      track.insertBefore(live, track.firstChild);
+      // also insert a duplicate at midpoint for the looping marquee
+      const mid = document.createElement("span");
+      mid.className = "ticker-live";
+      mid.style.color = "#ffe57a";
+      const children = track.children;
+      track.insertBefore(mid, children[Math.floor(children.length/2)]);
+    }
+    const liveEls = track.querySelectorAll(".ticker-live");
+    let text = "";
+    if(phase === "LIVE" && currentId) {
+      const info = teamByAbbr[currentTeam] || {};
+      text = "ON THE CLOCK: " + (info.name || currentTeam || "-") + " at pick " + currentId;
+    } else if(phase === "COMPLETE") {
+      text = "ROUND 1 COMPLETE / " + fmtRel(lastSyncAt) + " final sync";
+    } else {
+      text = "STANDBY / awaiting kickoff";
+    }
+    liveEls.forEach(el => { el.textContent = text; });
+  }
+
+  /* ------------ chrome helpers ------------ */
+  function setSync(on) {
+    if(!refreshBtn) return;
+    refreshBtn.classList.toggle("spin", !!on);
+  }
+
+  function escapeHtml(s) {
+    return String(s==null?"":s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+  }
+
+  /* ------------ events ------------ */
+  if(refreshBtn) refreshBtn.addEventListener("click", () => {
+    if(timer) clearTimeout(timer);
+    backoffMs = CFG.pollMs;
+    tick();
+  });
+  if(dismissBtn) dismissBtn.addEventListener("click", () => {
+    statusBar.classList.add("hidden");
+    document.body.classList.remove("has-status");
+  });
+
+  // keep "last sync" fresh every few seconds
+  setInterval(() => {
+    if(sbSync) sbSync.textContent = "LAST SYNC: " + fmtRel(lastSyncAt);
+  }, 5000);
+
+  // pause polling when tab hidden; resume on focus
+  document.addEventListener("visibilitychange", () => {
+    if(document.hidden) {
+      if(timer) { clearTimeout(timer); timer = null; }
+    } else {
+      if(!timer) tick();
+    }
+  });
+
+  /* ------------ boot ------------ */
+  const cached = loadCache();
+  if(cached && cached.data) {
+    lastSyncAt = cached.t || 0;
+    const data = normalize(cached.data);
+    renderAll(data);
+  }
+  tick();
+
+  // expose for manual MISS/HIT testing in console
+  window.__SSS_DRAFT = { tick, CFG, normalize, normName };
+})();
 </script>
 
 </body>
